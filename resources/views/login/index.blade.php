@@ -9,26 +9,20 @@
       flex-direction: column;
       align-items: center;
     }
-  </style>
+</style>
   
 <main>
     <div class="container-login">
         <div class="row justify-content-center align-item-center">
             <div class="col-lg-10 col-md-10 col-sm-12 py-md-5">
                 <div class="row shadow">
-                    <div class="col-lg-12 p-4">
-                        <div class="alert alert-info alert-message">
-                            <!--<strong>Operator</strong> : 123 | op@if.com | 123 <br />
-                            <strong>Mahasiswa</strong> : 24060120120120 | mahasiswa20@if.com | 123 <br />
-                            <strong>Dosen</strong> : H.1.289103252009131011 | dosen@if.com | 123 <br />
-                            <strong>Department</strong> : 24060 | department@if.com | 123-->
-                        </div>
+                    <div class="col-lg-12 p-0">
                         @error('loginError')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 p-0 p-md-0 order-1 order-md-0">
-                        <img src="{{ asset('assets/images/logo1.jpg') }}" alt="..." style="width:675px; height:550px;">
+                        <img src="{{ asset('assets/images/logo1.jpg') }}" alt="..." style="width:675px; height:545px;">
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 p-4 p-md-5 order-1 order-md-0">
                         <div class="center-content">

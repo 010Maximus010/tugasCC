@@ -2,14 +2,14 @@
 <html lang="en">
 
 <head>
-    <title>Sistem Informasi Monitoring Akademik Informatika | {{ $title }} </title>
+    <title>StudyfyIF - Informatika | {{ $title }} </title>
 
     <!-- Meta Tags -->
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Sistem Informasi Monitoring Akademik Informatika Universitas Diponegoro">
-    <meta name="author" content="Kelompok 4 PPL 2022">
+    <meta name="description" content="StudyfyIf">
+    <meta name="author" content="Kelompok 7 PPL 2023">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/undip.png') }}">
