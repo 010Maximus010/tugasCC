@@ -34,7 +34,7 @@
                     <div class="card">
                         <!-- Card header START -->
                         <div class="card-header d-sm-flex text-center align-items-center justify-content-between border-0 pb-0">
-                            <h1 class="card-title h5">Manajemen Akun</h1>
+                            <h1 class="card-title h5">Manage Users</h1>
                         </div>
                         <div class="card-body">
                             <ul class="nav nav-tabs nav-bottom-line justify-content-center justify-content-md-start">
@@ -49,7 +49,7 @@
                                     <div class="row g-3">
                                         @if ($mahasiswa->count() > 0)
                                         <div class="d-flex flex-column align-items-end">
-                                            <a class="btn btn-danger-soft btn-sm" id="buttonConfirmDelete_Mhs" data-bs-toggle="modal" data-bs-target="#confirm_delete_mhs" data-attr="{{ route('delete_mahasiswa', 'all') }}">
+                                            <a class="btn btn-danger btn-sm" id="buttonConfirmDelete_Mhs" data-bs-toggle="modal" data-bs-target="#confirm_delete_mhs" data-attr="{{ route('delete_mahasiswa', 'all') }}">
                                                 <i class="bi bi-trash-fill"></i> Delete All
                                             </a>
                                         </div>
@@ -74,10 +74,10 @@
                                                             <td>{{$data->angkatan}}</td>
                                                             <td>{{$data->status}}</td>
                                                             <td>
-                                                                <a class="btn btn-success-soft rounded-circle icon-md" id="buttonModalMahasiswa" data-bs-toggle="modal" data-bs-target="#mahasiswa_view" data-attr="{{ route('mahasiswa.edit', $data->nim) }}">
+                                                                <a class="btn btn-warning icon-md" id="buttonModalMahasiswa" data-bs-toggle="modal" data-bs-target="#mahasiswa_view" data-attr="{{ route('mahasiswa.edit', $data->nim) }}">
                                                                     <i class="bi bi-pencil-fill"></i>
                                                                 </a>
-                                                                <a class="btn btn-danger-soft rounded-circle icon-md" id="buttonConfirmDelete_Mhs" data-bs-toggle="modal" data-bs-target="#confirm_delete_mhs" data-attr="{{ route('delete_mahasiswa', $data->nim) }}">
+                                                                <a class="btn btn-danger icon-md" id="buttonConfirmDelete_Mhs" data-bs-toggle="modal" data-bs-target="#confirm_delete_mhs" data-attr="{{ route('delete_mahasiswa', $data->nim) }}">
                                                                     <i class="bi bi-trash-fill"></i>
                                                                 </a>
                                                             </td>
@@ -96,7 +96,7 @@
                                     <div class="row g-3">
                                         @if ($dosen->count() > 0)
                                         <div class="d-flex flex-column align-items-end">
-                                            <a class="btn btn-danger-soft btn-sm" id="buttonConfirmDelete_dsn" data-bs-toggle="modal" data-bs-target="#confirm_delete_dsn" data-attr="{{ route('delete_dosen', 'all') }}">
+                                            <a class="btn btn-danger btn-sm" id="buttonConfirmDelete_dsn" data-bs-toggle="modal" data-bs-target="#confirm_delete_dsn" data-attr="{{ route('delete_dosen', 'all') }}">
                                                 <i class="bi bi-trash-fill"></i> Delete All
                                             </a>
                                         </div>
@@ -119,10 +119,10 @@
                                                             <td>{{$data->nama}}</td>
                                                             <td>{{$data->status}}</td>
                                                             <td>
-                                                                <a class="btn btn-success-soft rounded-circle icon-md" id="buttonModalDosen" data-bs-toggle="modal" data-bs-target="#dosen_view" data-attr="{{ route('dosen.edit', $data->nip) }}">
+                                                                <a class="btn btn-warning icon-md" id="buttonModalDosen" data-bs-toggle="modal" data-bs-target="#dosen_view" data-attr="{{ route('dosen.edit', $data->nip) }}">
                                                                     <i class="bi bi-pencil-fill"></i>
                                                                 </a>
-                                                                <a class="btn btn-danger-soft rounded-circle icon-md" id="buttonConfirmDelete_dsn" data-bs-toggle="modal" data-bs-target="#confirm_delete_dsn" data-attr="{{ route('delete_dosen', $data->nip) }}">
+                                                                <a class="btn btn-danger icon-md" id="buttonConfirmDelete_dsn" data-bs-toggle="modal" data-bs-target="#confirm_delete_dsn" data-attr="{{ route('delete_dosen', $data->nip) }}">
                                                                     <i class="bi bi-trash-fill"></i>
                                                                 </a>
                                                             </td>
@@ -158,7 +158,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div id="showModalMahasiswa">
-
+                
             </div>
         </div>
     </div>

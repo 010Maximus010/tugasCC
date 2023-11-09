@@ -139,7 +139,7 @@ class EditProfileDosenController extends Controller
                 unlink(dosen::where('nip', $id)->first()->foto);
             }
             $uniq = time() . uniqid();
-            rename(public_path('files/temp/' . $temp->path), public_path('files/profile/' . $id . '_' . $uniq . '.jpg'));
+            rename(public_path('files/temp/' . $temp->path), public_path('files/Profile/' . $id . '_' . $uniq . '.jpg'));
             dosen::where('nip', $id)->update([
                 'foto' => 'files/profile/' . $id . '_' . $uniq . '.jpg',
             ]);

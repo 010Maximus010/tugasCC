@@ -27,10 +27,10 @@ class ProgressMhsContoller extends Controller
         ])->with(compact('mahasiswa', 'dosen'));
     }
 
-    public function department()
+    public function departemen()
     {
         $mahasiswa = mahasiswa::all();
-        return view('department.progress.index', [
+        return view('departemen.progress.index', [
             'title' => 'Progress Studi Mahasiswa',
         ])->with(compact('mahasiswa'));
     }
@@ -70,7 +70,7 @@ class ProgressMhsContoller extends Controller
                 return redirect()->back();
             }
         } else {
-            return view('department.progress.detail', [
+            return view('departemen.progress.detail', [
                 'title' => 'Progress Studi Mahasiswa',
             ])->with(compact('mahasiswa', 'dosen', 'semester'));
         }
@@ -86,7 +86,7 @@ class ProgressMhsContoller extends Controller
         if (Auth::user()->role == 'dosen') {
             return view('dosen.progress.modal', compact('request', 'irs', 'khs', 'pkl', 'skripsi'));
         } else {
-            return view('department.progress.modal', compact('request', 'irs', 'khs', 'pkl', 'skripsi'));
+            return view('departemen.progress.modal', compact('request', 'irs', 'khs', 'pkl', 'skripsi'));
         }
     }
 }

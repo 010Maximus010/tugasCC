@@ -79,7 +79,7 @@
                                 <div class="tab-pane fade" id="tab-2">
                                     <div class="d-flex flex-column align-items-end mb-4">
                                         <a class="btn btn-sm btn-dark mb-0" data-bs-toggle="modal" data-bs-target="#bulk_add_dosen">
-                                            <i class="bi bi-file-earmark-arrow-up"></i> Bulk Add Dosen
+                                            <i class="bi bi-file-earmark-arrow-up"></i> Tambah Dosen
                                         </a>
                                     </div>
                                     <form class="row g-3" action="/operator/dosen" method="POST">
@@ -159,7 +159,7 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="bulk_add_dosenLabel">Bulk Add Dosen</h5>
+                <h5 class="modal-title" id="bulk_add_dosenLabel">Tambah Dosen</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -172,8 +172,6 @@
                     Keterangan:
                     <ul>
                         <li>File harus berformat .xlsx, .xls, .csv</li>
-                        <li>File harus memiliki header kolom minimal nip, nama, email, status</li>
-                        <li>Header kolom harus sesuai dengan contoh</li>
                     </ul>
                 </div>
                 <form action="/operator/dosen/bulk" method="POST" enctype="multipart/form-data">

@@ -39,9 +39,9 @@
                     <li class="nav-item ms-2 dropdown">
                         <a class="avatar avatar-l p-0" href="" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
                             @if (Auth::user()->role == 'mahasiswa')
-                            <img class="avatar-img rounded-circle border border-white border-0" src="{{ Auth::user()->foto == null ? asset('assets/profil/default.jpg') : asset(Auth::user()->foto) }}" alt="">
+                            <img class="avatar-img rounded-circle border border-white border-0" src="{{ $mahasiswa->foto == null ? asset('assets/profil/default.jpg') : asset($mahasiswa->foto) }}" alt="">
                             @elseif (Auth::user()->role == 'dosen')
-                            <img class="avatar-img rounded-circle border border-white border-0" src="{{ Auth::user()->foto == null ? asset('assets/profil/default.jpg') : asset(Auth::user()->foto) }}" alt="">
+                            <img class="avatar-img rounded-circle border border-white border-0" src="{{ $dosen->foto == null ? asset('assets/profil/default.jpg') : asset($dosen->foto) }}" alt="">
                             @else
                             <img class="avatar-img rounded-circle border border-white border-0" src="{{ asset('assets/profil/profile_department.jpg') }}" alt="">
                             @endif

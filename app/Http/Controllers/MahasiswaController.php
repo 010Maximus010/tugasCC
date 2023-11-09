@@ -260,12 +260,12 @@ class MahasiswaController extends Controller
     public function data_pkl()
     {
         $mahasiswaAll = mahasiswa::orderBy('angkatan', 'asc')->get();
-        $selectPKL = mahasiswa::orderBy('tb_entry_progress.semester_aktif', 'desc')->join('pkls', 'mahasiswas.nim', '=', 'pkls.nim')
-            ->join('tb_entry_progress', 'pkls.nim', '=', 'tb_entry_progress.nim')
-            ->where('pkls.semester_aktif', '=', DB::raw('tb_entry_progress.semester_aktif'))
-            ->where('tb_entry_progress.is_pkl', '=', 1)
-            ->where('tb_entry_progress.is_verifikasi', '=', '1')
-            ->select('mahasiswas.*', 'pkls.*', 'tb_entry_progress.*')
+        $selectPKL = mahasiswa::orderBy('tb_entry_progresses.semester_aktif', 'desc')->join('pkls', 'mahasiswas.nim', '=', 'pkls.nim')
+            ->join('tb_entry_progresses', 'pkls.nim', '=', 'tb_entry_progresses.nim')
+            ->where('pkls.semester_aktif', '=', DB::raw('tb_entry_progresses.semester_aktif'))
+            ->where('tb_entry_progresses.is_pkl', '=', 1)
+            ->where('tb_entry_progresses.is_verifikasi', '=', '1')
+            ->select('mahasiswas.*', 'pkls.*', 'tb_entry_progresses.*')
             ->get()
             ->unique('nim');
 
@@ -282,12 +282,12 @@ class MahasiswaController extends Controller
     public function data_skripsi()
     {
         $mahasiswaAll = mahasiswa::orderBy('angkatan', 'asc')->get();
-        $selectSkripsi = mahasiswa::orderBy('tb_entry_progress.semester_aktif', 'desc')->join('skripsis', 'mahasiswas.nim', '=', 'skripsis.nim')
-            ->join('tb_entry_progress', 'skripsis.nim', '=', 'tb_entry_progress.nim')
-            ->where('skripsis.semester_aktif', '=', DB::raw('tb_entry_progress.semester_aktif'))
-            ->where('tb_entry_progress.is_skripsi', '=', 1)
-            ->where('tb_entry_progress.is_verifikasi', '=', '1')
-            ->select('mahasiswas.*', 'skripsis.*', 'tb_entry_progress.*')
+        $selectSkripsi = mahasiswa::orderBy('tb_entry_progresses.semester_aktif', 'desc')->join('skripsis', 'mahasiswas.nim', '=', 'skripsis.nim')
+            ->join('tb_entry_progresses', 'skripsis.nim', '=', 'tb_entry_progresses.nim')
+            ->where('skripsis.semester_aktif', '=', DB::raw('tb_entry_progresses.semester_aktif'))
+            ->where('tb_entry_progresses.is_skripsi', '=', 1)
+            ->where('tb_entry_progresses.is_verifikasi', '=', '1')
+            ->select('mahasiswas.*', 'skripsis.*', 'tb_entry_progresses.*')
             ->get()
             ->unique('nim');
         $mahasiswaSkripsi = [];

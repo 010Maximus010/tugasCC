@@ -67,7 +67,7 @@ class Kernel extends HttpKernel
         'operator' => \App\Http\Middleware\Operator::class,
         'dosen' => \App\Http\Middleware\Dosen::class,
         'mahasiswa' => \App\Http\Middleware\Mahasiswa::class,
-        'department' => \App\Http\Middleware\Department::class,
+        'departemen' => \App\Http\Middleware\Departemen::class,
         'entry_progress' => \App\Http\Middleware\entry_progress::class,
         'irs' => \App\Http\Middleware\IRS::class,
         'khs' => \App\Http\Middleware\KHS::class,

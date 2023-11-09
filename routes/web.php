@@ -113,7 +113,7 @@ Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
         Route::get('/departemen/progress_studi_mahasiswa/semester', [ProgressMhsContoller::class, 'show_semester'])->name('departemen_progress_detail_semester');
 
         // berkas mahasiswa
-        Route::get('/departemen/berkas_mahasiswa/detail', [VerifikasiBerkasController::class, 'show'])->name('department_berkas_detail');
+        Route::get('/departemen/berkas_mahasiswa/detail', [VerifikasiBerkasController::class, 'show'])->name('departemen_berkas_detail');
 
         // data dosen
         Route::get('/departemen/data_dosen', [DosenController::class, 'data_dosen']);
@@ -134,7 +134,7 @@ Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
     Route::resource('/mahasiswa/edit_profile', EditProfileController::class)->middleware('mahasiswa')->names('edit_profile_mahasiswa');
     Route::resource('/operator/edit_profile', EditProfileOperatorController::class)->middleware('operator')->names('edit_profile_operator');
     Route::resource('/dosen/edit_profile', EditProfileDosenController::class)->middleware('dosen')->names('edit_profile_dosen');
-    Route::resource('/departemen/edit_profile', EditProfileDepartmentController::class)->middleware('departemen')->names('edit_profile_departemen');
+    Route::resource('/departemen/edit_profile', EditProfileDepartemenController::class)->middleware('departemen')->names('edit_profile_departemen');
 
     // Change Password
     Route::resource('/dosen/change_password', PasswordController::class);
