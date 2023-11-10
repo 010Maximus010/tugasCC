@@ -86,7 +86,7 @@ class DosenController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\tb_dosen  $tb_dosen
+     * @param  \App\Models\dosen  $dosen
      * @return \Illuminate\Http\Response
      */
     public function show(dosen $dosen)
@@ -178,10 +178,10 @@ class DosenController extends Controller
         // Delete to table Dosen & users
         if ($id == 'all') {
             User::where('role', 'dosen')->delete();
-            tb_dosen::where('nip', '!=', '')->delete();
+            dosen::where('nip', '!=', '')->delete();
         } else {
             User::where('nim_nip', $id)->delete();
-            tb_dosen::where('nip', $id)->delete();
+            dosen::where('nip', $id)->delete();
         }
 
         // Alert success

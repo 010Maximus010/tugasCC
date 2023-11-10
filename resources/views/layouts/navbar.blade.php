@@ -43,7 +43,7 @@
                             @elseif (Auth::user()->role == 'dosen')
                             <img class="avatar-img rounded-circle border border-white border-0" src="{{ $dosen->foto == null ? asset('assets/profil/default.jpg') : asset($dosen->foto) }}" alt="">
                             @else
-                            <img class="avatar-img rounded-circle border border-white border-0" src="{{ asset('assets/profil/profile_department.jpg') }}" alt="">
+                            <img class="avatar-img rounded-circle border border-white border-0" src="{{ asset('assets/profil/operator.jpg') }}" alt="">
                             @endif
                         </a>
                         <ul class="dropdown-menu dropdown-animation dropdown-menu-end pt-3 small me-md-n3" aria-labelledby="profileDropdown">

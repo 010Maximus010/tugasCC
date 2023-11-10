@@ -96,7 +96,7 @@
 
                                 {{-- Form Email SSO --}}
                                 <div class="row mb-1">
-                                    <label class="col-sm-2 col-form-label text-dark">Email SSO :</label>
+                                    <label class="col-sm-2 col-form-label text-dark">Email :</label>
                                     <div class="col-sm-10">
                                         <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="Email" value="{{ old('email', $dosen->email) }}" required>
                                         @error('email')
