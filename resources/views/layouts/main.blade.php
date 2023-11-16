@@ -12,7 +12,7 @@
     <meta name="author" content="Kelompok 7 PPL 2023">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('assets/images/undip.png') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo2.png') }}">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
