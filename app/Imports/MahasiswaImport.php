@@ -48,11 +48,12 @@ class MahasiswaImport implements ToModel, WithHeadingRow, WithValidation
             'nim' => str_replace(' ', '', $row['nim']),
             'nama' => $row['nama'],
             'status' => $row['status'],
+            'kode_wali' => $row['kode_wali'],
 
             // jika tidak null dan null
             'angkatan' => str_replace(' ', '', $row['angkatan'] ?? $angkatan),
             'jalur_masuk' => $row['jalur_masuk'] ?? $jalur_masuk,
-            'email' => str_replace(' ', '', $row['email'] ?? $row['nim'] . '@students.undip.ac.id'),
+           // 'email' => str_replace(' ', '', $row['email'] ?? $row['nim'] . '@students.undip.ac.id'),
         ]);
 
         return $user;

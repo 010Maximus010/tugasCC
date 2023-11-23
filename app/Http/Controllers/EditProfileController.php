@@ -112,7 +112,7 @@ class EditProfileController extends Controller
             'alamat' => 'required',
             'provinsi' => 'required|exists:provs,kode_prov',
             'kabupatenkota' => 'required|exists:kabs,kode_kab',
-            'dosen_wali' => 'required|exists:dosens,nip',
+           // 'dosen_wali' => 'required|exists:dosens,nip',
         ], [
             'fileProfile.required' => 'File Profile harus diisi.',
             'nama.required' => 'Nama harus diisi.',
@@ -129,8 +129,8 @@ class EditProfileController extends Controller
             'provinsi.exists' => 'Provinsi tidak terdaftar.',
             'kabupatenkota.required' => 'Kabupaten/Kota harus diisi.',
             'kabupatenkota.exists' => 'Kabupaten/Kota tidak terdaftar.',
-            'dosen_wali.required' => 'Dosen Wali harus diisi.',
-            'dosen_wali.exists' => 'Dosen Wali tidak terdaftar.',
+          //  'dosen_wali.required' => 'Dosen Wali harus diisi.',
+           // 'dosen_wali.exists' => 'Dosen Wali tidak terdaftar.',
         ]);
 
         $temp = temp_file::where('path', $request->fileProfile)->first();
@@ -143,7 +143,7 @@ class EditProfileController extends Controller
             'alamat' => $request->alamat,
             'kode_prov' => $request->provinsi,
             'kode_kab' => $request->kabupatenkota,
-            'kode_wali' => $request->dosen_wali,
+           // 'kode_wali' => $request->dosen_wali,
         ]);
         User::where('nim_nip', $id)->update([
             'nama' => $request->nama,

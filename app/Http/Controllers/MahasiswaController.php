@@ -94,6 +94,7 @@ class MahasiswaController extends Controller
             'angkatan' => $angkatan,
             'status' => $request->status,
             'jalur_masuk' => $jalur_masuk,
+            'kode_wali' => $request->dosen_wali,
         ]);
 
         User::insert([

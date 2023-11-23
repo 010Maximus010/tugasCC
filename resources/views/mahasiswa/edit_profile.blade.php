@@ -175,9 +175,16 @@
                                 <div class="row mb-1">
                                     <label class="col-sm-3 col-form-label text-dark">Dosen Wali </label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control @error('dosen_wali') is-invalid @enderror" id="dosen_wali" name="dosen_wali" placeholder="Dosen Wali" value="{{ $mahasiswa->dosen_wali }}" readonly required>
+                                        @php
+                                            $dosenWali = \App\Models\Dosen::where('nip', $mahasiswa->kode_wali)->first();
+                                        @endphp
+                                
+                                        <input type="text" class="form-control @error('dosen_wali') is-invalid @enderror" 
+                                               id="dosen_wali" name="dosen_wali" 
+                                               placeholder="Dosen Wali" value="{{ $dosenWali->nama }}" readonly required>
                                     </div>
                                 </div>
+                                
 
                                 <div class="col-12 text-end">
                                     <button type="submit" class="btn btn-sm btn-primary mt-2 mb-0">Save</button>
