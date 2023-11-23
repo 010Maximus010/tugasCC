@@ -21,7 +21,7 @@
             <!-- Offcanvas body -->
             <div class="offcanvas-body d-block px-4 px-lg-0">
                 <!-- Card START -->
-                <div class="card overflow-hidden" style="background-color: #fca311;">
+                <div class="card overflow-hidden" style="background-color: #cad2c5;">
                     <!-- Card body START -->
                     <div class="card-body pt-5">
                         <div class="text-center">
@@ -49,7 +49,7 @@
                         @if ($title != 'Edit Profile' && $title != 'Change Password')
 
                         <!-- Divider -->
-                        <hr style="background-color: #023047;">
+                        <hr style="background-color: #1f363d;">
                         <!-- Side Nav START -->
                         <ul class="nav nav-link-secondary flex-column fw-bold gap-2" >
                             <li class="nav-item">
@@ -114,27 +114,27 @@
                             </li>
                             @elseif (Auth::user()->role == 'departemen')
                             <li class="nav-item">
-                                <a style="font-size: 14px;" class="nav-link {{ ($title == 'Progress Studi Mahasiswa')? 'active' : '' }}" href="/department/progress_studi_mahasiswa">
+                                <a style="font-size: 14px;" class="nav-link {{ ($title == 'Progress Studi Mahasiswa')? 'active' : '' }}" href="/departemen/progress_studi_mahasiswa">
                                     <i class="bi bi-clipboard2-data"></i><span> Progress Studi Mahasiswa</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a style="font-size: 14px;" class="nav-link {{ ($title == 'Data Dosen')? 'active' : '' }}" href="/department/data_dosen">
+                                <a style="font-size: 14px;" class="nav-link {{ ($title == 'Data Dosen')? 'active' : '' }}" href="/departemen/data_dosen">
                                     <i class="bi bi-file-earmark-text"></i><span> Data Dosen</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a style="font-size: 14px;" class="nav-link {{ ($title == 'Data Mahasiswa')? 'active' : '' }}" href="/department/data_mahasiswa">
+                                <a style="font-size: 14px;" class="nav-link {{ ($title == 'Data Mahasiswa')? 'active' : '' }}" href="/departemen/data_mahasiswa">
                                     <i class="bi bi-file-earmark-text"></i><span> Data Mahasiswa</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a style="font-size: 14px;" class="nav-link {{ ($title == 'Data Mahasiswa PKL')? 'active' : '' }}" href="/department/data_mahasiswa_pkl">
+                                <a style="font-size: 14px;" class="nav-link {{ ($title == 'Data Mahasiswa PKL')? 'active' : '' }}" href="/departemen/data_mahasiswa_pkl">
                                     <i class="bi bi-building"></i><span> Data Mahasiswa PKL</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a style="font-size: 14px;" class="nav-link {{ ($title == 'Data Mahasiswa Skripsi')? 'active' : '' }}" href="/department/data_mahasiswa_skripsi">
+                                <a style="font-size: 14px;" class="nav-link {{ ($title == 'Data Mahasiswa Skripsi')? 'active' : '' }}" href="/departemen/data_mahasiswa_skripsi">
                                     <i class="bi bi-mortarboard"></i><span> Data Mahasiswa Skripsi</span>
                                 </a>
                             </li>
@@ -146,12 +146,12 @@
                     <!-- Card body END -->
                     <!-- Card footer -->
                     @if ($title == 'Edit Profile' || $title == 'Change Password')
-                    <div class="card-footer text-center py-2" style="background-color: #023047;">
+                    <div class="card-footer text-center py-2" style="background-color: #52796f;">
                         <div class="mt-3" style="color: white;">
                             Informatika S1 <br />
                             Fakultas Sains dan Matematika
                         </div>
-                        <ul class="nav nav-link-secondary flex-column">
+                        <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
                             <li class="nav-item mt-2 mb-0">
                                 <a style="font-size: 14px;" class="nav-link" href="/">
                                     <i class="bi bi-house-door"></i><span> Dashboard</span>
@@ -171,8 +171,8 @@
                         </ul>
                     </div>
                     @else
-                    <div class="card-footer text-center py-2" style="background-color: #023047;">
-                        <a class="btn btn-link btn-sm bold" style="font-size: 14px; background-color: #023047;" href="/{{ Auth::user()->role }}/edit_profile">Edit Profile </a>
+                    <div class="card-footer text-center py-2" style="background-color: #52796f;">
+                        <a class="btn btn-white btn-sm bold" style="font-size: 14px; background-color: #52796f;" href="/{{ Auth::user()->role }}/edit_profile">Edit Profile </a>
                     </div>
                     @endif
                 </div>

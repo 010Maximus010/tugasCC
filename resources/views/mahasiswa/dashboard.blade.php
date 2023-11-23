@@ -1,7 +1,7 @@
 @include('layouts.sidebar')
 
 <div class="col-md-8 col-lg-6 vstack gap-4">
-    <div class="card">
+    <div class="card" style="background: linear-gradient(to right, #8fb996, #a1cca5);">
         <div class="card-body">
             <h5 class="card-title">Informasi Mahasiswa</h5>
             <br />
@@ -14,9 +14,9 @@
                 <div>
                     <h5 class="mb-3">PKL</h5>
                     @if ($pkl == null)
-                    <span class="badge btn-danger-soft">Belum Ambil</span>
+                    <span class="badge bg-danger">Belum Ambil</span>
                     @elseif ($pkl->status == 'Belum Ambil')
-                    <span class="badge btn-danger-soft">{{ $pkl->status }}</span>
+                    <span class="badge bg-danger">{{ $pkl->status }}</span>
                     @elseif ($pkl->status == 'Sedang Ambil')
                     <span class="badge btn-warning-soft">{{ $pkl->status }}</span>
                     @else
@@ -27,9 +27,9 @@
                 <div>
                     <h5 class="mb-3">Skripsi</h5>
                     @if ($skripsi == null)
-                    <span class="badge btn-danger-soft">Belum Ambil</span>
+                    <span class="badge bg-danger">Belum Ambil</span>
                     @elseif ($skripsi->status == 'Belum Ambil')
-                    <span class="badge btn-danger-soft">{{ $skripsi->status }}</span>
+                    <span class="badge bg-danger">{{ $skripsi->status }}</span>
                     @elseif ($skripsi->status == 'Sedang Ambil')
                     <span class="badge btn-warning-soft">{{ $skripsi->status }}</span>
                     @else

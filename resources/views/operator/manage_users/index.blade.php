@@ -34,7 +34,7 @@
                     <div class="card">
                         <!-- Card header START -->
                         <div class="card-header d-sm-flex text-center align-items-center justify-content-between border-0 pb-0">
-                            <h1 class="card-title h5">Manage Users</h1>
+                            <h1 class="card-title h5">Manajemen Akun</h1>
                         </div>
                         <div class="card-body">
                             <ul class="nav nav-tabs nav-bottom-line justify-content-center justify-content-md-start">
@@ -107,7 +107,7 @@
                                                     <thead class="thead-dark">
                                                         <tr>
                                                             <th>NIP</th>
-                                                            <th width="300px">Nama</th>
+                                                            <th>Nama</th>
                                                             <th>Status</th>
                                                             <th>Action</th>
                                                         </tr>

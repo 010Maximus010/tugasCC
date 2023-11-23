@@ -8,7 +8,7 @@
 
     <main>
         <!-- Container START -->
-        <div class="container">
+        <div class="container" >
             <div class="row g-10">
                 @if (Auth::user()->role == 'operator')
                 @include('operator.dashboard')

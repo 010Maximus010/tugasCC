@@ -52,10 +52,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{-- Form Nama --}}
+                                <!-- Form Nama -->
                                 <div class="row mt-1 mb-1">
-                                    <label class="col-sm-2 col-form-label text-dark">Nama :</label>
-                                    <div class="col-sm-10">
+                                    <label class="col-sm-3 col-form-label text-dark">Nama</label>
+                                    <div class="col-sm-9">
                                         <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" placeholder="Nama" value="{{ old('nama', $mahasiswa->nama) }}" required>
                                         @error('nama')
                                         <div class="invalid-feedback">
@@ -65,42 +65,42 @@
                                     </div>
                                 </div>
 
-                                {{-- Form NIM --}}
+                                <!-- Form NIM -->
                                 <div class="row mb-1">
-                                    <label class="col-sm-2 col-form-label text-dark">NIM :</label>
-                                    <div class="col-sm-10">
+                                    <label class="col-sm-3 col-form-label text-dark">NIM</label>
+                                    <div class="col-sm-9">
                                         <input type="text" class="form-control @error('nim') is-invalid @enderror" id="nim" name="nim" placeholder="NIM" value="{{ $mahasiswa->nim }}" readonly required>
                                     </div>
                                 </div>
 
                                 {{-- Form Angkatan --}}
                                 <div class="row mb-1">
-                                    <label class="col-sm-2 col-form-label text-dark">Angkatan :</label>
-                                    <div class="col-sm-10">
+                                    <label class="col-sm-3 col-form-label text-dark">Angkatan </label>
+                                    <div class="col-sm-9">
                                         <input type="text" class="form-control @error('angkatan') is-invalid @enderror" id="angkatan" name="angkatan" placeholder="Angkatan" value="{{ $mahasiswa->angkatan }}" readonly required>
                                     </div>
                                 </div>
 
                                 {{-- Form Status --}}
                                 <div class="row mb-1">
-                                    <label class="col-sm-2 col-form-label text-dark">Status :</label>
-                                    <div class="col-sm-10">
+                                    <label class="col-sm-3 col-form-label text-dark">Status </label>
+                                    <div class="col-sm-9">
                                         <input type="text" class="form-control @error('status') is-invalid @enderror" id="status" name="status" placeholder="Status" value="{{ $mahasiswa->status }}" readonly required>
                                     </div>
                                 </div>
 
                                 {{-- Form Jalur Masuk --}}
                                 <div class="row mb-1">
-                                    <label class="col-sm-2 col-form-label text-dark">Jalur Masuk :</label>
-                                    <div class="col-sm-10">
+                                    <label class="col-sm-3 col-form-label text-dark">Jalur Masuk </label>
+                                    <div class="col-sm-9">
                                         <input type="text" class="form-control @error('jalur_masuk') is-invalid @enderror" id="jalur_masuk" name="jalur_masuk" placeholder="Jalur Masuk" value="{{ $mahasiswa->jalur_masuk }}" readonly required>
                                     </div>
                                 </div>
 
                                 {{-- Form Nomor HP --}}
                                 <div class="row mb-1">
-                                    <label class="col-sm-2 col-form-label text-dark">Nomor HP :</label>
-                                    <div class="col-sm-10">
+                                    <label class="col-sm-3 col-form-label text-dark">Nomor HP </label>
+                                    <div class="col-sm-9">
                                         <input type="text" class="form-control @error('handphone') is-invalid @enderror" id="handphone" name="handphone" placeholder="Nomor HP" value="{{ old('handphone', $mahasiswa->handphone) }}" required>
                                         @error('handphone')
                                         <div class="invalid-feedback">
@@ -112,8 +112,8 @@
 
                                 {{-- Form Email SSO --}}
                                 <div class="row mb-1">
-                                    <label class="col-sm-2 col-form-label text-dark">Email :</label>
-                                    <div class="col-sm-10">
+                                    <label class="col-sm-3 col-form-label text-dark">Email </label>
+                                    <div class="col-sm-9">
                                         <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="Email" value="{{ old('email', $mahasiswa->email) }}" required>
                                         @error('email')
                                         <div class="invalid-feedback">
@@ -125,8 +125,8 @@
 
                                 {{-- Form Alamat --}}
                                 <div class="row mb-1">
-                                    <label class="col-sm-2 col-form-label text-dark">Alamat :</label>
-                                    <div class="col-sm-10">
+                                    <label class="col-sm-3 col-form-label text-dark">Alamat </label>
+                                    <div class="col-sm-9">
                                         <textarea class="form-control @error('alamat') is-invalid @enderror" id="alamat" name="alamat" placeholder="Alamat" required>{{ old('alamat', $mahasiswa->alamat) }}</textarea>
                                         @error('alamat')
                                         <div class="invalid-feedback">
@@ -138,8 +138,8 @@
 
                                 {{-- Select Provinsi --}}
                                 <div class="row mb-1">
-                                    <label class="col-sm-2 col-form-label text-dark">Provinsi :</label>
-                                    <div class="col-sm-10">
+                                    <label class="col-sm-3 col-form-label text-dark">Provinsi </label>
+                                    <div class="col-sm-9">
                                         <select class="form-select @error('provinsi') is-invalid @enderror" id="provinsi" name="provinsi" required>
                                             <option value="">Pilih Provinsi</option>
                                             @foreach ($provinsi as $prov)
@@ -156,8 +156,8 @@
 
                                 {{-- Select Kota/Kab --}}
                                 <div class="row mb-1">
-                                    <label class="col-sm-2 col-form-label text-dark">Kabupaten/Kota :</label>
-                                    <div class="col-sm-10">
+                                    <label class="col-sm-3 col-form-label text-dark">Kabupaten/Kota </label>
+                                    <div class="col-sm-9">
                                         <select class="form-select @error('kabupatenkota') is-invalid @enderror" id="kabupatenkota" name="kabupatenkota" required>
                                             <option value="">Pilih Kabupaten/Kota</option>
                                             @foreach ($kabupaten as $kab)
@@ -171,22 +171,11 @@
                                         @enderror
                                     </div>
                                 </div>
-
-                                {{-- Select Dosen Wali --}}
+                                {{-- Form Dosen Wali --}}
                                 <div class="row mb-1">
-                                    <label class="col-sm-2 col-form-label text-dark">Dosen Wali :</label>
-                                    <div class="col-sm-10">
-                                        <select class="form-select @error('dosen_wali') is-invalid @enderror" id="dosen_wali" name="dosen_wali" required>
-                                            <option value="">Pilih Dosen Wali</option>
-                                            @foreach ($dosen_wali as $wali)
-                                            <option value="{{ $wali->nip }}" {{ $mahasiswa->kode_wali == $wali->nip ? 'selected="true"' : '' }}>{{ $wali->nama }}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('dosen_wali')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
+                                    <label class="col-sm-3 col-form-label text-dark">Dosen Wali </label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control @error('dosen_wali') is-invalid @enderror" id="dosen_wali" name="dosen_wali" placeholder="Dosen Wali" value="{{ $mahasiswa->dosen_wali }}" readonly required>
                                     </div>
                                 </div>
 

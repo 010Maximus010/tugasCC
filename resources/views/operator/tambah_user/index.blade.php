@@ -41,7 +41,7 @@
                                 <!-- Tab Mahasiswa -->
                                 <div class="tab-pane fade show active" id="tab-1">
                                     <div class="d-flex flex-column align-items-end mb-4">
-                                        <a class="btn btn-sm btn-dark mb-0" data-bs-toggle="modal" data-bs-target="#bulk_add_mahasiswa">
+                                        <a class="btn btn-sm btn-dark mb-0" style="background-color: #1f363d;" data-bs-toggle="modal" data-bs-target="#bulk_add_mahasiswa">
                                             <i class="bi bi-file-earmark-arrow-up"></i> Tambah Mahasiswa
                                         </a>
                                     </div>
@@ -56,20 +56,25 @@
                                             <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama" value="{{ old('nama') }}" required>
                                         </div>
                                         <div class="col-6">
-                                            <label class="form-label text-dark">Status </label>
-                                            <select class="form-select" id="status" name="status" required>
-                                                <option value="">Pilih Status</option>
-                                                <option value="Aktif" @if (old('status')=="Aktif" ) {{ 'selected' }} @endif>Aktif</option>
-                                                <option value="Cuti" @if (old('status')=="Cuti" ) {{ 'selected' }} @endif>Cuti</option>
-                                                <option value="Mangkir" @if (old('status')=="Mangkir" ) {{ 'selected' }} @endif>Mangkir</option>
-                                                <option value="DO" @if (old('status')=="DO" ) {{ 'selected' }} @endif>DO</option>
-                                                <option value="Undur Diri" @if (old('status')=="Undur Diri" ) {{ 'selected' }} @endif>Undur Diri</option>
-                                                <option value="Meninggal Dunia" @if (old('status')=="Meninggal Dunia" ) {{ 'selected' }} @endif>Meninggal Dunia</option>
-                                                <option value="Lulus" @if (old('status')=="Lulus" ) {{ 'selected' }} @endif>Lulus</option>
-                                            </select>
+                                            <label class="form-label text-dark">Dosen Wali </label>
+                                                <select class="form-select @error('dosen_wali') is-invalid @enderror" id="dosen_wali" name="dosen_wali" required>
+                                                    <option value="">Pilih Dosen Wali</option>
+                                                    @foreach ($dosen_wali as $wali)
+                                                        <option value="{{ $wali->nip }}">{{ $wali->nama }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('dosen_wali')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label text-dark">Angkatan</label>
+                                            <input type="text" class="form-control" id="angkatan" name="angkatan" placeholder="Angkatan" value="{{ old('angkatan') }}" required>
                                         </div>
                                         <div class="col-12 text-end">
-                                            <button type="submit" class="btn btn-sm btn-primary mb-0">Generate</button>
+                                            <button type="submit" class="btn btn-sm btn-success mb-0" style="background-color: #73ba9b;" >Generate</button>
                                         </div>
                                     </form>
                                 </div>
@@ -78,7 +83,7 @@
                                 <!-- Tab Dosen -->
                                 <div class="tab-pane fade" id="tab-2">
                                     <div class="d-flex flex-column align-items-end mb-4">
-                                        <a class="btn btn-sm btn-dark mb-0" data-bs-toggle="modal" data-bs-target="#bulk_add_dosen">
+                                        <a class="btn btn-sm btn-dark mb-0" style="background-color: #1f363d;" data-bs-toggle="modal" data-bs-target="#bulk_add_dosen">
                                             <i class="bi bi-file-earmark-arrow-up"></i> Tambah Dosen
                                         </a>
                                     </div>
@@ -105,7 +110,7 @@
                                             </select>
                                         </div>
                                         <div class="col-12 text-end">
-                                            <button type="submit" class="btn btn-sm btn-primary mb-0">Generate</button>
+                                            <button type="submit" class="btn btn-sm btn-success mb-0" style="background-color: #73ba9b;">Generate</button>
                                         </div>
                                     </form>
                                 </div>
@@ -146,7 +151,7 @@
                         <input class="form-control" type="file" id="file" name="file" accept=".xlsx, .xls, .csv" required>
                     </div>
                     <div class="mb-3 text-end">
-                        <button type="submit" class="btn btn-sm btn-primary">Upload</button>
+                        <button type="submit" class="btn btn-sm btn-success" style="background-color: #73ba9b;" >Upload</button>
                     </div>
                 </form>
             </div>
@@ -176,7 +181,7 @@
                         <input class="form-control" type="file" id="file" name="file" accept=".xlsx, .xls, .csv" required>
                     </div>
                     <div class="mb-3 text-end">
-                        <button type="submit" class="btn btn-sm btn-primary">Upload</button>
+                        <button type="submit" class="btn btn-sm btn-success" style="background-color: #73ba9b;">Upload</button>
                     </div>
                 </form>
             </div>

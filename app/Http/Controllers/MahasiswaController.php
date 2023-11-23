@@ -56,13 +56,13 @@ class MahasiswaController extends Controller
         $request->validate([
             'nim' => 'required|numeric|unique:users,nim_nip|digits:14',
             'nama' => 'required|string',
-            'status' => 'required',
+            //'status' => 'required',
         ], [
             'nim.required' => 'NIM tidak boleh kosong',
             'nim.unique' => 'NIM sudah terdaftar',
             'nim.digits' => 'NIM harus 14 digit',
             'nama.required' => 'Nama tidak boleh kosong',
-            'status.required' => 'Status tidak boleh kosong',
+            //'status.required' => 'Status tidak boleh kosong',
         ]);
 
         // Angkatan Mahasiswa
@@ -84,6 +84,8 @@ class MahasiswaController extends Controller
         }
 
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
+        $request->merge(['status' => 'Aktif']);
 
         // Insert to table mahasiswa & users
         mahasiswa::insert([

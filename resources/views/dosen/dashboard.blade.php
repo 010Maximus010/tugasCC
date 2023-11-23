@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body" style="background: linear-gradient(to right, #8fb996, #a1cca5);">
                     <h5 class="card-title">Total Mahasiswa</h5>
                     <br />
                     <div class="table-responsive">
@@ -13,31 +13,31 @@
                                 <tr>
                                     <th style="text-align: center; width: 70px;">
                                         <h5 class="mb-0">{{ $mahasiswaAll->where('status', 'Aktif')->count() }}</h5>
-                                        <span class="badge btn-success-soft small">Aktif</span>
+                                        <span class="badge bg-success">Aktif</span>
                                     </th>
                                     <th style="text-align: center; width: 70px;">
                                         <h5 class="mb-0">{{ $mahasiswaAll->where('status', 'Cuti')->count() }}</h5>
-                                        <span class="badge btn-primary-soft small">Cuti</span>
+                                        <span class="badge bg-primary">Cuti</span>
                                     </th>
                                     <th style="text-align: center; width: 70px;">
                                         <h5 class="mb-0">{{ $mahasiswaAll->where('status', 'Mangkir')->count() }}</h5>
-                                        <span class="badge btn-warning-soft small">Mangkir</span>
+                                        <span class="badge bg-warning">Mangkir</span>
                                     </th>
                                     <th style="text-align: center; width: 70px;">
                                         <h5 class="mb-0">{{ $mahasiswaAll->where('status', 'DO')->count() }}</h5>
-                                        <span class="badge btn-danger-soft small">DO</span>
+                                        <span class="badge bg-danger">DO</span>
                                     </th>
                                     <th style="text-align: center; width: 70px;">
                                         <h5 class="mb-0">{{ $mahasiswaAll->where('status', 'Undur Diri')->count() }}</h5>
-                                        <span class="badge btn-secondary-soft small">Undur Diri</span>
+                                        <span class="badge bg-secondary">Undur Diri</span>
                                     </th>
                                     <th style="text-align: center; width: 160px;">
                                         <h5 class="mb-0">{{ $mahasiswaAll->where('status', 'Meninggal Dunia')->count() }}</h5>
-                                        <span class="badge bg-dark bg-opacity-25 small">Meninggal Dunia</span>
+                                        <span class="badge bg-dark bg-opacity-25">Meninggal Dunia</span>
                                     </th>
                                     <th style="text-align: center; width: 40px;">
                                         <h5 class="mb-0">{{ $mahasiswaAll->where('status', 'Lulus')->count() }}</h5>
-                                        <span class="badge btn-info small">Lulus</span>
+                                        <span class="badge bg-info">Lulus</span>
                                     </th>
                                 </tr>
                             </thead>

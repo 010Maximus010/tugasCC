@@ -38,7 +38,7 @@
                                             <label class="form-label text-dark">Pilih Angkatan</label>
                                             <select class="form-select column_filter" id="col3_filter">
                                                 <option value="">Semua</option>
-                                                @for ($i = 2015; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
+                                                @for ($i = 2017; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
                                                     @endfor
                                             </select>
                                         </div>
