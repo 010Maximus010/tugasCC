@@ -32,7 +32,7 @@
                             <h5 class="card-title">Entry Progress</h5>
                             @include('layouts/entryprogress')
                             <div class="tab-content mb-0 pb-0">
-                                <div class="tab-pane fade show active">
+                                <div class="tab-pane fade {{ $title == 'Entry Progress' ? 'show active' : '' }}" id="tab-1">
                                     <div class="col-12">
                                         <div class="mb-4 alert alert-success">
                                             Semester yang telah dientry adalah
@@ -71,7 +71,7 @@
                                             </div>
                                             <!-- Pilih Semester END -->
                                             <div class="col-12 text-end">
-                                                <button type="submit" class="btn btn-sm btn-primary mb-0">Next</button>
+                                                <button type="submit" class="btn btn-sm btn-primary mb-0">Simpan</button>
                                             </div>
                                         </form>
                                     </div>
@@ -119,7 +119,18 @@
             `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
             Loading...`
         );
-        $('button').attr('disabled', 'disabled');
+        //$('button').attr('disabled', 'disabled');
+    });
+
+    // Enable all buttons after submission is complete
+    $(document).ajaxComplete(function() {
+        $('button').removeAttr('disabled');
+    });
+
+    // Beralih tab tanpa mengirimkan formulir
+    $('#tab-1-tab').on('click', function (e) {
+            e.preventDefault();
+            $(this).tab('show');
     });
 </script>
 

@@ -74,7 +74,7 @@
                                             <div class="text-danger small fst-italic">*Format file [.pdf], pastikan file yang diupload benar.</div>
 
                                             <div class="col-12 text-end">
-                                                <button type="submit" class="btn btn-sm btn-primary mb-0">Next</button>
+                                                <button type="submit" class="btn btn-sm btn-primary mb-0">Simpan</button>
                                             </div>
                                         </form>
                                     </div>

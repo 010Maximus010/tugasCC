@@ -104,7 +104,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-12 text-end">
-                                                <button type="submit" class="btn btn-sm btn-primary mb-0">Finish</button>
+                                                <button type="submit" class="btn btn-sm btn-primary mb-0">Simpan</button>
                                             </div>
                                         </form>
                                     </div>

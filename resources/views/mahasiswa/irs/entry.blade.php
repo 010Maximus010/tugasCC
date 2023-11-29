@@ -32,7 +32,7 @@
                             <h5 class="card-title">Entry Progress</h5>
                             @include('layouts/entryprogress')
                             <div class="tab-content mb-0 pb-0">
-                                <div class="tab-pane fade show active">
+                                <div class="tab-pane fade {{ $title == 'Entry IRS' ? 'show active' : '' }}" id="tab-2">
                                     <div class="col-12">
                                         <div class="mb-4 alert alert-info"> Semester aktif saat ini adalah <strong> {{ $progress != null ? $progress->semester_aktif : 'Belum ada data' }} </strong> </div>
                                     </div>
@@ -64,7 +64,7 @@
                                             <div class="text-danger small fst-italic">*Format file [.pdf], pastikan file yang diupload benar.</div>
 
                                             <div class="col-12 text-end">
-                                                <button type="submit" class="btn btn-sm btn-primary mb-0">Next</button>
+                                                <button type="submit" class="btn btn-sm btn-primary mb-0">Simpan</button>
                                             </div>
                                         </form>
                                     </div>
@@ -112,7 +112,23 @@
             `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
             Loading...`
         );
-        $('button').attr('disabled', 'disabled');
+        //$('button').attr('disabled', 'disabled');
+    });
+
+    // Enable all buttons after submission is complete
+    $(document).ajaxComplete(function() {
+        $('button').removeAttr('disabled');
+    });
+
+    // Beralih tab tanpa mengirimkan formulir
+    $('#tab-2-tab').on('click', function (e) {
+            e.preventDefault();
+            if (!isFormSubmitted()) {
+                if (!confirm('Anda belum menyimpan perubahan. Apakah Anda yakin ingin beralih tab?')) {
+                    return;
+                }
+            }
+            $(this).tab('show');
     });
 </script>
 

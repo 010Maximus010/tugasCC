@@ -15,6 +15,7 @@ use App\Models\temp_file;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Storage;
 
 class IRSController extends Controller
 {
@@ -119,7 +120,7 @@ class IRSController extends Controller
 
         if ($db->save()) {
             Alert::success('Berhasil', 'Data berhasil disimpan');
-            return redirect()->route('khs.index');
+            return redirect()->route('irs.index');
         } else {
             Alert::error('Gagal', 'Data gagal disimpan');
             return redirect()->route('irs.index');
@@ -132,7 +133,7 @@ class IRSController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(irs $irs)
     {
         //
     }
@@ -146,7 +147,7 @@ class IRSController extends Controller
     public function edit($semester_aktif, $nim)
     {
         $data = irs::where('nim', $nim)->where('semester_aktif', $semester_aktif)->first();
-        return view('mahasiswa.irs.modal', compact('data'));
+        return view('mahasiswa.irs.modal.edit_irs', compact('data'));
     }
 
     /**
@@ -213,14 +214,25 @@ class IRSController extends Controller
         }
     }
 
+    public function delete($semester_aktif, $nim)
+    {
+        $data = irs::where('nim', $nim)->where('semester_aktif', $semester_aktif)->first();
+        return view('mahasiswa.irs.modal.delete_irs', compact('data'));
+    }
+
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($semester_aktif, $nim)
     {
-        //
+        irs::where('nim', $nim)->where('semester_aktif', $semester_aktif)->delete();
+
+        // Alert success
+        Alert::success('Success!', 'Data IRS berhasil dihapus');
+        return redirect()->route('irs.index');
     }
+
 }
