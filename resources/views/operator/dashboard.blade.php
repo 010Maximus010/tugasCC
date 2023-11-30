@@ -87,18 +87,19 @@
             <div class="hstack gap-2 gap-xl-3 justify-content-center text-center">
                 <!--Aktif-->
                 <div class="col-md-2">
-                    <div class="card" style="background: linear-gradient(to right, #6a994e, #a7c957);">
-                        <div class="card-body">
+                    <div class="card-box" style="background: linear-gradient(to right, #6a994e, #a7c957);">
+                        <div class="card-body" style="margin-top: 0px;">
                             <h5 class="mb-0">{{ $dosenAll->where('status', 'Aktif')->count()}}</h5>
                             <h6>Aktif</h6>
                         </div>
                     </div>
                 </div>
-                <div class="vr"></div>
                 <div class="col-md-2">
-                    <div class="card" style="background: linear-gradient(to right, #6a994e, #a7c957);">
-                        <h5 class="mb-0">{{ $dosenAll->where('status', 'Cuti')->count() }}</h5>
-                        <h6>Cuti</h6>
+                    <div class="card-box" style="background: linear-gradient(to right, #0077b6, #00b4d8);">
+                        <div class="card-body" style="margin-top: 0px;">
+                            <h5 class="mb-0">{{ $dosenAll->where('status', 'Cuti')->count() }}</h5>
+                            <h6>Cuti</h6>
+                        </div>
                     </div>
                 </div>
                 </div>

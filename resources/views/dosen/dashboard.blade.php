@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-body" style="background: linear-gradient(to right, #8fb996, #a1cca5);">
+            <div class="card-body" style="margin-top: 0px; background: linear-gradient(to right, #cfdbd5, #778da9);">
                     <h5 class="card-title">Total Mahasiswa</h5>
                     <br />
                     <div class="table-responsive">
@@ -51,7 +51,7 @@
     <div class="row2">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body" style="margin-top: 0px;">
                     <h5 class="card-title">Mahasiswa per Angkatan</h5>
                     <br />
                     <div class="chart-container">
