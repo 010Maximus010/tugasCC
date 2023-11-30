@@ -156,7 +156,18 @@
                                     <div class="card-body" style="margin-top: 0px;">
                                         <form class="row g-3" action="{{ route('pkl.store') }}" method="POST" enctype="multipart/form-data">
                                             @csrf
-                                            <input type="hidden" name="semester_aktif" value="{{ $progress != null ? $progress->semester_aktif : '' }}">
+                                             <!-- Pilih Semester START-->
+                                             <div class="col-12">
+                                                <label class="form-label text-dark">Semester Aktif</label>
+                                                   <select class="form-select @error('semester_aktif') is-invalid @enderror" id="semester_aktif" name="semester_aktif" required>
+                                                       <option value="">Pilih Semester</option>
+                                                        
+                                                           @for ($i = 6; $i <= 14; $i++) <option value="{{ $i }}">Semester {{ $i }}</option>
+                                                        @endfor
+                                                    </select>
+                                                </div>
+                                                <!-- Pilih Semester END -->
+                                          
                                             <div id="pkl" class="col-12">
                                                 <div class="row">
                                                     <!-- Input Pilih Status START -->
@@ -214,7 +225,17 @@
                                     <div class="card-body" style="margin-top: 0px;">
                                         <form class="row g-3" action="{{ route('skripsi.store') }}" method="POST" enctype="multipart/form-data">
                                             @csrf
-                                            <input type="hidden" name="semester_aktif" value="{{ $progress != null ? $progress->semester_aktif : '' }}">
+                                             <!-- Pilih Semester START-->
+                                             <div class="col-12">
+                                                <label class="form-label text-dark">Semester Aktif</label>
+                                                   <select class="form-select @error('semester_aktif') is-invalid @enderror" id="semester_aktif" name="semester_aktif" required>
+                                                       <option value="">Pilih Semester</option>
+                                                        
+                                                           @for ($i = 7; $i <= 14; $i++) <option value="{{ $i }}">Semester {{ $i }}</option>
+                                                        @endfor
+                                                    </select>
+                                                </div>
+                                                <!-- Pilih Semester END -->
 
                                             <div id="skripsi" class="col-12">
                                                 <div class="row">

@@ -88,7 +88,7 @@ class SkripsiController extends Controller
             'file' => 'required_if:confirm,on',
         ], [
             'semester_aktif.required' => 'Semester Aktif tidak boleh kosong',
-            'semester_aktif.unique' => 'Semester Aktif sudah ada',
+            'semester_aktif.unique' => 'Anda sudah mengisi Skripsi semester ini',
             'tanggal_sidang.required_if' => 'Tanggal Sidang tidak boleh kosong',
             'nilai_skripsi.required_if' => 'Nilai Skripsi tidak boleh kosong',
             'nilai_skripsi.in' => 'Nilai Skripsi harus diisi dengan A, B, C, D, E',

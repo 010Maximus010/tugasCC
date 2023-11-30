@@ -87,7 +87,7 @@ class PKLController extends Controller
             'file' => 'required_if:confirm,on',
         ], [
             'semester_aktif.required' => 'Semester Aktif tidak boleh kosong',
-            'semester_aktif.unique' => 'Semester Aktif sudah ada',
+            'semester_aktif.unique' => 'Anda sudah mengisi PKL semester ini',
             'status_pkl.required_if' => 'Status PKL tidak boleh kosong',
             'status_pkl.in' => 'Status PKL tidak valid',
             'nilai_pkl.required_if' => 'Nilai PKL tidak boleh kosong',
