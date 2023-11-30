@@ -28,7 +28,7 @@
                         <div class="card-header d-sm-flex text-center align-items-center justify-content-between border-0 pb-0">
                             <h1 class="card-title h5">Entry Progress</h1>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" style="margin-top: 0px;">
                             @include('layouts/entryprogress')
 
                             <div class="tab-content mb-0 pb-0">
@@ -40,7 +40,7 @@
                                         <h1 class="card-title h5">Input IRS</h1>
                                         <div class="small italic text-danger">Harap diisi dengan data yang benar.</div>
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body" style="margin-top: 0px;">
                                         <form class="row g-3" action="{{ route('irs.store') }}" method="POST" enctype="multipart/form-data">
                                             @csrf
                                             
@@ -49,8 +49,8 @@
                                             <label class="form-label text-dark">Semester Aktif</label>
                                                <select class="form-select @error('semester_aktif') is-invalid @enderror" id="semester_aktif" name="semester_aktif" required>
                                                    <option value="">Pilih Semester</option>
-                                                       {{ $progress == null ? $i = 1 : $i = $progress->semester_aktif + 1 }}
-                                                       @for ($i = $i; $i <= 14; $i++) <option value="{{ $i }}">Semester {{ $i }}</option>
+                                                    
+                                                       @for ($i = 1; $i <= 14; $i++) <option value="{{ $i }}">Semester {{ $i }}</option>
                                                     @endfor
                                                 </select>
                                             </div>
@@ -89,17 +89,17 @@
                                         <h1 class="card-title h5">Input KHS</h1>
                                         <div class="text-dark small">Harap diisi dengan data yang benar.</div>
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body" style="margin-top: 0px;">
                                         <form class="row g-3" action="{{ route('khs.store') }}" method="POST" enctype="multipart/form-data">
                                             @csrf
-                                            <input type="hidden" name="semester_aktif" value="{{ $progress != null ? $progress->semester_aktif : '' }}">
+                                           
                                             <!-- Pilih Semester START-->
                                             <div class="col-12">
                                                 <label class="form-label text-dark">Semester Aktif</label>
                                                    <select class="form-select @error('semester_aktif') is-invalid @enderror" id="semester_aktif" name="semester_aktif" required>
                                                        <option value="">Pilih Semester</option>
-                                                           {{ $progress == null ? $i = 1 : $i = $progress->semester_aktif + 1 }}
-                                                           @for ($i = $i; $i <= 14; $i++) <option value="{{ $i }}">Semester {{ $i }}</option>
+                                                       
+                                                           @for ($i = 1; $i <= 14; $i++) <option value="{{ $i }}">Semester {{ $i }}</option>
                                                         @endfor
                                                     </select>
                                                 </div>
@@ -147,7 +147,7 @@
                                         <h1 class="card-title h5">PKL</h1>
                                         <div class="text-dark small">Harap diisi dengan data yang benar.</div>
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body" style="margin-top: 0px;">
                                         <form class="row g-3" action="{{ route('pkl.store') }}" method="POST" enctype="multipart/form-data">
                                             @csrf
                                             <input type="hidden" name="semester_aktif" value="{{ $progress != null ? $progress->semester_aktif : '' }}">
@@ -205,7 +205,7 @@
                                         <h1 class="card-title h5">Skripsi</h1>
                                         <div class="text-dark small">Harap diisi dengan data yang benar.</div>
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body" style="margin-top: 0px;">
                                         <form class="row g-3" action="{{ route('skripsi.store') }}" method="POST" enctype="multipart/form-data">
                                             @csrf
                                             <input type="hidden" name="semester_aktif" value="{{ $progress != null ? $progress->semester_aktif : '' }}">

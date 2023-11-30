@@ -134,7 +134,7 @@ class KHSController extends Controller
 
         if ($db->save()) {
             Alert::success('Berhasil', 'Data berhasil disimpan');
-            return redirect()->route('pkl.index');
+            return redirect()->route('khs.index');
         } else {
             Alert::error('Gagal', 'Data gagal disimpan');
             return redirect()->route('khs.index');
