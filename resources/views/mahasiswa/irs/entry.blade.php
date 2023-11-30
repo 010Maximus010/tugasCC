@@ -33,9 +33,7 @@
                             @include('layouts/entryprogress')
                             <div class="tab-content mb-0 pb-0">
                                 <div class="tab-pane fade {{ $title == 'Entry IRS' ? 'show active' : '' }}" id="tab-2">
-                                    <div class="col-12">
-                                        <div class="mb-4 alert alert-info"> Semester aktif saat ini adalah <strong> {{ $progress != null ? $progress->semester_aktif : 'Belum ada data' }} </strong> </div>
-                                    </div>
+    
                                     <!-- Card header START -->
                                     <div class="card-header d-sm-flex text-center align-items-center justify-content-between border-0 pb-0">
                                         <h1 class="card-title h5">Input IRS</h1>

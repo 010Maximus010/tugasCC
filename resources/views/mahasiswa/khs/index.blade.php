@@ -159,3 +159,124 @@
 </script>
 
 @stop
+
+@section('script')
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+<script>
+    // disable all input and button after submit
+    $('form').submit(function() {
+        // show spinner on button
+        $(this).find('button[type=submit]').html(
+            `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Loading...`
+        );
+        $('button').attr('disabled', 'disabled');
+    });
+
+    $(document).ready(function () {
+    // Set the active tab to tab-1-link
+    var activeTab = 'tab-1-link';
+    sessionStorage.setItem('activeTab', activeTab);
+    $('#' + activeTab.replace('-link', '')).addClass('show active');
+
+    // Hide content of other tabs
+    $('.tab-content .tab-pane').not('#' + activeTab.replace('-link', '')).removeClass('show active');
+
+    // Handle tab change event
+    $('.nav-link').on('shown.bs.tab', function (e) {
+        var activeTab = e.target.id;
+
+        // Show content of the active tab and hide others
+        $('.tab-content .tab-pane').not('#' + activeTab.replace('-link', '')).removeClass('show active');
+        $('#' + activeTab.replace('-link', '')).addClass('show active');
+
+        sessionStorage.setItem('activeTab', activeTab);
+    });
+});
+
+
+
+</script>
+<!-- Load FilePond library -->
+<script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+<script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
+<script src="https://unpkg.com/filepond@4.17.1/dist/filepond.js"></script>
+
+<!-- Turn all file input elements into ponds -->
+<script>
+    FilePond.registerPlugin(
+        FilePondPluginFileValidateType,
+        FilePondPluginFileValidateSize
+    );
+    FilePond.create(document.getElementById('file1'), {
+        maxParallelUploads: 1,
+        maxFileSize: "15MB",
+        acceptedFileTypes: ['application/pdf'],
+        labelIdle: '<br/><div class="avatar avatar-xxl"><a class="link"><img class="avatar-img" src="{{ asset("assets/images/upload.png") }}" alt=""></a></div><br/><span class="link">Upload File</span><br/><br><br/>',
+        stylePanelAspectRatio: 0.2,
+    });
+   /* FilePond.create(document.getElementById('file2'), {
+        maxParallelUploads: 1,
+        maxFileSize: "15MB",
+        acceptedFileTypes: ['application/pdf'],
+        labelIdle: '<br/><div class="avatar avatar-xxl"><a class="link"><img class="avatar-img" src="{{ asset("assets/images/upload.png") }}" alt=""></a></div><br/><span class="link">Upload File</span><br/><br><br/>',
+        stylePanelAspectRatio: 0.2,
+    });
+    FilePond.create(document.getElementById('file3'), {
+        maxParallelUploads: 1,
+        maxFileSize: "15MB",
+        acceptedFileTypes: ['application/pdf'],
+        labelIdle: '<br/><div class="avatar avatar-xxl"><a class="link"><img class="avatar-img" src="{{ asset("assets/images/upload.png") }}" alt=""></a></div><br/><span class="link">Upload File</span><br/><br><br/>',
+        stylePanelAspectRatio: 0.2,
+    });
+    FilePond.create(document.getElementById('file4'), {
+        maxParallelUploads: 1,
+        maxFileSize: "15MB",
+        acceptedFileTypes: ['application/pdf'],
+        labelIdle: '<br/><div class="avatar avatar-xxl"><a class="link"><img class="avatar-img" src="{{ asset("assets/images/upload.png") }}" alt=""></a></div><br/><span class="link">Upload File</span><br/><br><br/>',
+        stylePanelAspectRatio: 0.2,
+    });*/
+
+    // Send the files to the Controller
+    FilePond.setOptions({
+        server: {
+            url: '/upload',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }
+        }
+    });
+</script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+$(document).ready(function () {
+    $('#semester_aktif').change(function () {
+        var selectedSemester = $(this).val();
+
+        // Make an AJAX request to the entry_progress route
+        $.ajax({
+            type: 'POST',  // Change the request type to POST
+            url: '{{ route("entry_progress") }}',  // Update the URL to the correct route
+            data: {
+                '_token': '{{ csrf_token() }}',  // Add CSRF token for security
+                'semester_aktif': selectedSemester
+            },
+            success: function (response) {
+                // You can handle the response if needed
+                console.log('Success:', response);
+
+                // Reload the current page after successful entry progress
+                window.location.reload();
+            },
+            error: function (error) {
+                console.error('Error:', error);
+            }
+        });
+    });
+});
+</script>
+
+
+@stop

@@ -28,7 +28,7 @@ class entry_progress
             ->where('semester_aktif', $countSemsester)
             ->where('is_khs', 0)->exists()
         ) {
-            return redirect()->route('khs.index');
+            return redirect()->route('irs.index');
         } else if (tb_entry_progress::where('nim', Auth::user()->nim_nip)
             ->where('semester_aktif', $countSemsester)
             ->where('is_pkl', 0)->exists()
