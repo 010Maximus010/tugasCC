@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-body" style="background: linear-gradient(to right, #8fb996, #a1cca5);">
+            <div class="card-body" style="margin-top: 0px; background: linear-gradient(to right, #cfdbd5, #778da9);">
                     <h5 class="card-title">Total Mahasiswa</h5>
                     <br />
                     <div class="table-responsive">
@@ -51,7 +51,7 @@
     <div class="row2">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body" style="margin-top: 0px;">
                     <h5 class="card-title">Mahasiswa per Angkatan</h5>
                     <br />
                     <div class="chart-container">
@@ -61,9 +61,9 @@
 
                         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
                         <script src="https://code.highcharts.com/highcharts.js"></script>
-                        <!--<script src="https://code.highcharts.com/modules/exporting.js"></script>
+                        <script src="https://code.highcharts.com/modules/exporting.js"></script>
                         <script src="https://code.highcharts.com/modules/export-data.js"></script>
-                        <script src="https://code.highcharts.com/modules/accessibility.js"></script>-->
+                        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
                         <script type="text/javascript">
                             $(document).ready(function() {
                                 var data = <?php echo json_encode($mahasiswaAll); ?>;
@@ -118,7 +118,7 @@
                                     meninggal.push(meninggalCount);
                                     lulus.push(lulusCount);
                                 }
-                                /*Highcharts.setOptions({
+                                Highcharts.setOptions({
                                     exporting: {
                                         buttons: {
                                             contextButton: {
@@ -129,7 +129,7 @@
                                                     r: 5,
                                                     states: {
                                                         hover: {
-                                                            fill: '#0d6efd',
+                                                            fill: '#87c38f',
                                                             style: {
                                                                 color: 'white'
                                                             }
@@ -143,7 +143,7 @@
                                             }
                                         }
                                     }
-                                });*/
+                                });
                                 Highcharts.chart('grafik', {
                                     chart: {
                                         type: 'column'

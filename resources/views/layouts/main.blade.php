@@ -12,22 +12,29 @@
     <meta name="author" content="Kelompok 7 PPL 2023">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('assets/images/logo2.png') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/images/undip.png') }}">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap">
 
     <!-- Plugins CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/MochammadAryaJadmika/cdn-bootstrap-5/vendor/font-awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('cdn-bootstrap-5/vendor/font-awesome/css/all.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('cdn-bootstrap-5/vendor/bootstrap-icons/bootstrap-icons.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('cdn-bootstrap-5/vendor/dropzone/dist/dropzone.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('cdn-bootstrap-5/vendor/flatpickr/dist/flatpickr.css') }}">
+
+    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/MochammadAryaJadmika/cdn-bootstrap-5/vendor/font-awesome/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/MochammadAryaJadmika/cdn-bootstrap-5/vendor/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/MochammadAryaJadmika/cdn-bootstrap-5/vendor/dropzone/dist/dropzone.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/MochammadAryaJadmika/cdn-bootstrap-5/vendor/flatpickr/dist/flatpickr.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/MochammadAryaJadmika/cdn-bootstrap-5/vendor/flatpickr/dist/flatpickr.css"> --}}
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.bootstrap5.min.css">
 
     <!-- Theme CSS -->
-    <link id="style-switch" rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/MochammadAryaJadmika/cdn-bootstrap-5/css/style.css">
+    <link id="style-switch" rel="stylesheet" type="text/css" href="{{ asset('cdn-bootstrap-5/css/style.css') }}">
+    {{-- <link id="style-switch" rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/MochammadAryaJadmika/cdn-bootstrap-5/css/style.css"> --}}
+
 
 </head>
 
@@ -36,15 +43,22 @@
     @yield('content')
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/gh/MochammadAryaJadmika/cdn-bootstrap-5/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('cdn-bootstrap-5/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/gh/MochammadAryaJadmika/cdn-bootstrap-5/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script> --}}
 
     <!-- Vendors -->
-    <script src="https://cdn.jsdelivr.net/gh/MochammadAryaJadmika/cdn-bootstrap-5/vendor/tiny-slider/dist/tiny-slider.js"></script>
+    <script src="{{ asset('cdn-bootstrap-5/vendor/tiny-slider/dist/tiny-slider.js') }}"></script>
+    <script src="{{ asset('cdn-bootstrap-5/vendor/OverlayScrollbars-master/js/OverlayScrollbars.min.js') }}"></script>
+    <script src="{{ asset('cdn-bootstrap-5/vendor/choices.js/public/assets/scripts/choices.min.js') }}"></script>
+    <script src="{{ asset('cdn-bootstrap-5/vendor/glightbox-master/dist/js/glightbox.min.js') }}"></script>
+    <script src="{{ asset('cdn-bootstrap-5/vendor/flatpickr/dist/flatpickr.min.js') }}"></script>
+    <script src="{{ asset('cdn-bootstrap-5/vendor/plyr/plyr.js') }}"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/gh/MochammadAryaJadmika/cdn-bootstrap-5/vendor/tiny-slider/dist/tiny-slider.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/MochammadAryaJadmika/cdn-bootstrap-5/vendor/OverlayScrollbars-master/js/OverlayScrollbars.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/MochammadAryaJadmika/cdn-bootstrap-5/vendor/choices.js/public/assets/scripts/choices.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/MochammadAryaJadmika/cdn-bootstrap-5/vendor/glightbox-master/dist/js/glightbox.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/MochammadAryaJadmika/cdn-bootstrap-5/vendor/flatpickr/dist/flatpickr.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/MochammadAryaJadmika/cdn-bootstrap-5/vendor/plyr/plyr.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/MochammadAryaJadmika/cdn-bootstrap-5/vendor/plyr/plyr.js"></script> --}}
 
     <!-- Template Functions -->
     <script src="{{ asset('assets/js/template.js') }}"></script>

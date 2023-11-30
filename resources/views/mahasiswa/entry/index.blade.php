@@ -38,7 +38,7 @@
                                     <!-- Card header START -->
                                     <div class="card-header d-sm-flex text-center align-items-center justify-content-between border-0 pb-0">
                                         <h1 class="card-title h5">Input IRS</h1>
-                                        <div class="text-dark small">Harap diisi dengan data yang benar.</div>
+                                        <div class="small italic text-danger">Harap diisi dengan data yang benar.</div>
                                     </div>
                                     <div class="card-body">
                                         <form class="row g-3" action="{{ route('irs.store') }}" method="POST" enctype="multipart/form-data">
