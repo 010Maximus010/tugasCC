@@ -86,7 +86,7 @@ class IRSController extends Controller
             'file' => 'required',
         ], [
             'semester_aktif.required' => 'Semester Aktif tidak boleh kosong',
-            'semester_aktif.unique' => 'Semester Aktif sudah ada',
+            'semester_aktif.unique' => 'Anda sudah mengisi IRS semester ini',
             'jumlah_sks.required' => 'Jumlah SKS tidak boleh kosong',
             'jumlah_sks.numeric' => 'Jumlah SKS harus berupa angka',
             'jumlah_sks.between' => 'Jumlah SKS harus antara 1 - 24',

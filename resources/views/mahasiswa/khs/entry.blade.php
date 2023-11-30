@@ -353,7 +353,7 @@
         labelIdle: '<br/><div class="avatar avatar-xxl"><a class="link"><img class="avatar-img" src="{{ asset("assets/images/upload.png") }}" alt=""></a></div><br/><span class="link">Upload File</span><br/><br><br/>',
         stylePanelAspectRatio: 0.2,
     });
-    /*FilePond.create(document.getElementById('file3'), {
+    FilePond.create(document.getElementById('file3'), {
         maxParallelUploads: 1,
         maxFileSize: "15MB",
         acceptedFileTypes: ['application/pdf'],
@@ -366,7 +366,7 @@
         acceptedFileTypes: ['application/pdf'],
         labelIdle: '<br/><div class="avatar avatar-xxl"><a class="link"><img class="avatar-img" src="{{ asset("assets/images/upload.png") }}" alt=""></a></div><br/><span class="link">Upload File</span><br/><br><br/>',
         stylePanelAspectRatio: 0.2,
-    });*/
+    });
 
     // Send the files to the Controller
     FilePond.setOptions({
