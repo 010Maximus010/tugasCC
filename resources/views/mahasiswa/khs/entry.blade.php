@@ -372,6 +372,31 @@
             },
         });
     });
+    $(document).ready(function () {
+    $('#semester_aktif').change(function () {
+        var selectedSemester = $(this).val();
+
+        // Make an AJAX request to the entry_progress route
+        $.ajax({
+            type: 'POST',  // Change the request type to POST
+            url: '{{ route("entry_progress") }}',  // Update the URL to the correct route
+            data: {
+                '_token': '{{ csrf_token() }}',  // Add CSRF token for security
+                'semester_aktif': selectedSemester
+            },
+            success: function (response) {
+                // You can handle the response if needed
+                console.log('Success:', response);
+
+                // Reload the current page after successful entry progress
+                window.location.reload();
+            },
+            error: function (error) {
+                console.error('Error:', error);
+            }
+        });
+    });
+});
 </script>
 
 @stop
