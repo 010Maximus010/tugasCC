@@ -79,7 +79,7 @@
                                                             r: 5,
                                                             states: {
                                                                 hover: {
-                                                                    fill: '#0d6efd',
+                                                                    fill: '#87c38f',
                                                                     style: {
                                                                         color: 'white'
                                                                     }
@@ -195,7 +195,7 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Rincian Data Mahasiswa PKL</h5>
+                            <h5 class="card-title"style="text-align: center;">Daftar Sudah/Belum Lulus PKL Mahasiswa Informatika</h5>
                             <div class="col-12">
                                 <div class="d-flex flex-column align-items-end mb-4">
                                     <div id="table_wrapper"></div>

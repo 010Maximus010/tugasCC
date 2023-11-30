@@ -119,11 +119,23 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content bg-info">
             <div class="modal-header">
+                @php
+                    $isShowPKL = request('semester') >= 6;
+                    $isShowSkripsi = request('semester') >= 8;
+                @endphp
                 <ul class="nav nav-tabs nav-bottom-line justify-content-center justify-content-md-start">
-                    <li class="nav-item"> <a class="text-white nav-link active" data-bs-toggle="tab" href="#tab-1" id="tab1"> IRS </a> </li>
-                    <li class="nav-item"> <a class="text-white nav-link" data-bs-toggle="tab" href="#tab-2" id="tab2"> KHS </a> </li>
-                    <li class="nav-item"> <a class="text-white nav-link" data-bs-toggle="tab" href="#tab-3" id="tab3"> PKL </a> </li>
-                    <li class="nav-item"> <a class="text-white nav-link" data-bs-toggle="tab" href="#tab-4" id="tab4"> Skripsi </a> </li>
+                    <li class="nav-item"> <a class="text-white nav-link {{ request('semester') == 1 ? 'active' : '' }}" data-bs-toggle="tab" href="#tab-1" id="tab1"> IRS </a> </li>
+                    <li class="nav-item"> <a class="text-white nav-link {{ request('semester') == 2 ? 'active' : '' }}" data-bs-toggle="tab" href="#tab-2" id="tab2"> KHS </a> </li>
+
+                    {{-- Tampilkan PKL hanya jika $isShowPKL true --}}
+                    @if ($isShowPKL)
+                        <li class="nav-item"> <a class="text-white nav-link {{ request('semester') == 3 ? 'active' : '' }}" data-bs-toggle="tab" href="#tab-3" id="tab3"> PKL </a> </li>
+                    @endif
+
+                    {{-- Tampilkan Skripsi hanya jika $isShowSkripsi true --}}
+                    @if ($isShowSkripsi)
+                        <li class="nav-item"> <a class="text-white nav-link {{ request('semester') == 4 ? 'active' : '' }}" data-bs-toggle="tab" href="#tab-4" id="tab4"> Skripsi </a> </li>
+                    @endif
                 </ul>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" id="btnClose" aria-label="Close"></button>
             </div>

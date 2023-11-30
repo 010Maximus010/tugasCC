@@ -61,9 +61,9 @@
 
                         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
                         <script src="https://code.highcharts.com/highcharts.js"></script>
-                        <!--<script src="https://code.highcharts.com/modules/exporting.js"></script>
+                        <script src="https://code.highcharts.com/modules/exporting.js"></script>
                         <script src="https://code.highcharts.com/modules/export-data.js"></script>
-                        <script src="https://code.highcharts.com/modules/accessibility.js"></script>-->
+                        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
                         <script type="text/javascript">
                             $(document).ready(function() {
                                 var data = <?php echo json_encode($mahasiswaAll); ?>;
@@ -118,7 +118,7 @@
                                     meninggal.push(meninggalCount);
                                     lulus.push(lulusCount);
                                 }
-                                /*Highcharts.setOptions({
+                                Highcharts.setOptions({
                                     exporting: {
                                         buttons: {
                                             contextButton: {
@@ -129,7 +129,7 @@
                                                     r: 5,
                                                     states: {
                                                         hover: {
-                                                            fill: '#0d6efd',
+                                                            fill: '#87c38f',
                                                             style: {
                                                                 color: 'white'
                                                             }
@@ -143,7 +143,7 @@
                                             }
                                         }
                                     }
-                                });*/
+                                });
                                 Highcharts.chart('grafik', {
                                     chart: {
                                         type: 'column'

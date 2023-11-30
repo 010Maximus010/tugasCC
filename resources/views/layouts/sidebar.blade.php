@@ -1,5 +1,10 @@
 <!-- Sidenav START -->
-<div class="col-lg-3">
+<div class="sidebar">
+    <div class="col-lg-3">
+    {{-- <div class="logo-details">
+        <img class="img" src="{{ asset('assets/images/logo2.png') }}">
+        <span class="logo_name">StudyFyIF</span>
+    </div> --}}
 
     <!-- Advanced filter responsive toggler START -->
     <div class="d-flex align-items-center d-lg-none">
@@ -21,9 +26,32 @@
             <!-- Offcanvas body -->
             <div class="offcanvas-body d-block px-4 px-lg-0">
                 <!-- Card START -->
-                <div class="card overflow-hidden" style="background-color: #cad2c5;">
+                <div class="sidebar overflow-hidden">
                     <!-- Card body START -->
-                    <div class="card-body pt-5">
+                    {{-- <ul class="nav-links">
+                        <li>
+                            <a href="#">
+                                <i class="bi bi-house-door"></i>
+                                <span class="link_name">Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <div class="icon-link">
+                                <a href="#">
+                                    <i class="bi bi-bar-chart"></i>
+                                    <span class="link_name">Entry Progress</span>
+                                </a>
+                                <i class="fa fa-caret-down"></i>
+                            </div>
+                            <ul class="sub-menu">
+                                <li><a href="#">IRS</a></li>
+                                <li><a href="#">KHS</a></li>
+                                <li><a href="#">PKL</a></li>
+                                <li><a href="#">Skripsi</a></li>
+                            </ul>
+                        </li>
+                    </ul> --}}
+                    <div class="sidebar-body pt-5">
                         <div class="text-center">
                             <!-- Avatar -->
                             <div class="avatar avatar-xxl mt-n5 mb-1">
@@ -32,13 +60,13 @@
                                 @elseif (Auth::user()->role == 'dosen')
                                 <a href="#"><img class="avatar-img rounded-circle border border-4" style="border-color: #023047 !important;" src="{{ $dosen->foto == null ? asset('assets/profil/default.jpg') : asset($dosen->foto) }}" alt=""></a>
                                 @else
-                                <a href="#"><img class="avatar-img rounded-circle border border-4" style="border-color: #023047 !important;" src="{{ asset('assets/profil/operator.jpg') }}" alt=""></a>
+                                <a href="#"><img class="avatar-img rounded-circle border border-4" style="border-color: #023047 !important; background-color: white;" src="{{ asset('assets/profil/operator.jpg') }}" alt=""></a>
                                 @endif
                             </div>
                             <!-- Info -->
-                            <h1 class="mb-0 mt-2 small bold"><a href=""><strong>{{ Auth::user()->nama }}</strong></a></h1>
+                            <h1 class="mb-0 mt-2 small bold"><a href="" class="text-light"><strong>{{ Auth::user()->nama }}</strong></a></h1>
                             <div class="mt-1 small bold">{{ Auth::user()->nim_nip }}</div>
-                            <div class="mt-1 text-dark" style="font-size: 14px;">
+                            <div class="mt-1 text-light" style="font-size: 14px;">
                                 {{ Auth::user()->role == 'operator' ? 'Operator Departemen' : ''}}
                                 {{ Auth::user()->role == 'mahasiswa' ? 'Mahasiswa' : ''}}
                                 {{ Auth::user()->role == 'dosen' ? 'Dosen' : ''}}
@@ -49,7 +77,7 @@
                         @if ($title != 'Edit Profile' && $title != 'Change Password')
 
                         <!-- Divider -->
-                        <hr style="background-color: #1f363d;">
+                        <hr style="background-color: #023047;">
                         <!-- Side Nav START -->
                         <ul class="nav nav-link-secondary flex-column fw-bold gap-2" >
                             <li class="nav-item">
@@ -146,12 +174,12 @@
                     <!-- Card body END -->
                     <!-- Card footer -->
                     @if ($title == 'Edit Profile' || $title == 'Change Password')
-                    <div class="card-footer text-center py-2" style="background-color: #52796f;">
+                    <div class="sidebar-footer text-center py-2">
                         <div class="mt-3" style="color: white;">
                             Informatika S1 <br />
                             Fakultas Sains dan Matematika
                         </div>
-                        <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
+                        <ul class="nav nav-link-secondary flex-column">
                             <li class="nav-item mt-2 mb-0">
                                 <a style="font-size: 14px;" class="nav-link" href="/">
                                     <i class="bi bi-house-door"></i><span> Dashboard</span>
@@ -171,8 +199,10 @@
                         </ul>
                     </div>
                     @else
-                    <div class="card-footer text-center py-2" style="background-color: #52796f;">
-                        <a class="btn btn-white btn-sm bold" style="font-size: 14px; background-color: #52796f;" href="/{{ Auth::user()->role }}/edit_profile">Edit Profile </a>
+                    <div class="sidebar-footer text-center py-2">
+                        <a class="btn btn-link btn-sm bold" style="font-size: 14px;" href="/{{ Auth::user()->role }}/edit_profile">
+                            <i class="bi bi-mortarboard" style="margin-right: 5px;"></i><span>Edit Profile</span>
+                        </a>
                     </div>
                     @endif
                 </div>
@@ -181,5 +211,6 @@
         </div>
     </nav>
     <!-- Navbar END-->
+</div>
 </div>
 <!-- Sidenav END -->
