@@ -33,7 +33,7 @@
                         <div class="card-header d-sm-flex text-center align-items-center justify-content-between border-0 pb-0">
                             <h1 class="card-title h5">Data PKL</h1>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" style="margin-top: 0px;">
                             <div class="table-responsive">
                                 <table class="table" id="table">
                                     <thead class="thead-dark">

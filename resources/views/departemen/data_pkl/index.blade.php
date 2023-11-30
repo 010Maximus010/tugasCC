@@ -16,7 +16,7 @@
 
                 <div class="col-md-8 col-lg-6 vstack gap-4">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body" style="margin-top: 0px;">
                             <h5 class="card-title">Grafik Mahasiswa PKL per Angkatan</h5>
                             <div class="chart-container">
                                 <div id="grafik"></div>
@@ -194,7 +194,7 @@
                     </div>
 
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body" style="margin-top: 0px;">
                             <h5 class="card-title"style="text-align: center;">Daftar Sudah/Belum Lulus PKL Mahasiswa Informatika</h5>
                             <div class="col-12">
                                 <div class="d-flex flex-column align-items-end mb-4">

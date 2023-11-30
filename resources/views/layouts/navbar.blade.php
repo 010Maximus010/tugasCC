@@ -8,7 +8,7 @@
                 <a class="navbar-brand" href="/">
                     <img class="light-mode-item navbar-brand-item" src="{{ asset('assets/images/logo2.png') }}" alt="logo">
                 </a>
-                <a class="text-light desktop" href="/">
+                <a class="text-light desktop" href="/" style="margin-left: 20px;">
                     <strong>STUDYFYIF</strong>
                 </a>
                 <!-- Logo END -->
@@ -33,7 +33,7 @@
                 <!-- Main navbar END -->
 
                 <!-- Nav right START -->
-                <ul class="nav flex-nowrap align-items-center list-unstyled">
+                <ul class="nav-right flex-nowrap align-items-center list-unstyled">
                     <!-- Notification dropdown END -->
                     <a class="text-light desktop"><strong>Selamat Datang, {{ Auth::user()->nama }}!</strong></a>
                     <li class="nav-item ms-2 dropdown">

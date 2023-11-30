@@ -27,7 +27,7 @@
                     <!-- Card START -->
                     <div class="card">
                         <!-- Card header START -->
-                        <div class="card-body">
+                        <div class="card-body" style="margin-top: 0px;">
                             <h1 class="card-title h5">Dosen</h1>
                             <div class="d-flex flex-column align-items-end mb-4">
                                 <div id="table_wrapper"></div>
