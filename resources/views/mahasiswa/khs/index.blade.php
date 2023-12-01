@@ -9,7 +9,72 @@
     <main>
 
         <!-- Container START -->
-        
+        <div class="container">
+            <div class="row g-4">
+
+                @include('layouts.sidebar')
+
+                <div class="col-md-8 col-lg-6 vstack gap-4">
+
+                    <!-- Event alert START -->
+                    @if ($errors->any())
+                    <div class="alert alert-danger alert-dismissible fade show mb-0" role="alert">
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    @endif
+                    <!-- Event alert END -->
+
+                    <!-- Card START -->
+                    <div class="card">
+                        <!-- Card header START -->
+                        <div class="card-header d-sm-flex text-center align-items-center justify-content-between border-0 pb-0">
+                            <h1 class="card-title h5">Data KHS</h1>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table" id="table">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>Semester</th>
+                                            <th>SKS/SKSK</th>
+                                            <th>IPS/IPK</th>
+                                            <th>Scan KHS</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($khs as $item)
+                                        <tr>
+                                            <td>{{$item->semester_aktif}}</td>
+                                            <td>{{$item->sks}}/{{$item->sks_kumulatif}}</td>
+                                            <td>{{$item->ip}}/{{$item->ip_kumulatif}}</td>
+                                            <td><a href="{{ asset($item->upload_khs) }}" class="btn btn-info btn-sm"><i class="bi bi-eye"></i> Lihat</a></td>
+                                            </td>
+                                            <td>
+                                                @if ($progress->where('nim', Auth::User()->nim_nip)->where('semester_aktif', $item->semester_aktif)->first()->is_verifikasi == 1)
+                                                <small>Data telah diverifikasi</small>
+                                                @else
+                                                <a href="" class="btn btn-success btn-sm" id="buttonModalKHS" data-bs-toggle="modal" data-bs-target="#editKHS" data-attr="{{ route('khs.edit', [$item->semester_aktif, $item->nim]) }}">
+                                                    <i class="bi bi-pencil-square"></i> Edit
+                                                </a>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div> <!-- Row END -->
+        </div>
+        <!-- Container END -->
     </main>
 </div>
 <!-- modal edit khs -->
