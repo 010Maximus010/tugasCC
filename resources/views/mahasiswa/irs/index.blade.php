@@ -57,6 +57,9 @@
                                                 <a href="" class="btn btn-success btn-sm" id="buttonModalIRS" data-bs-toggle="modal" data-bs-target="#editIRS" data-attr="{{ route('irs.edit', [$item->semester_aktif, $item->nim]) }}">
                                                     <i class="bi bi-pencil-square"></i> Edit
                                                 </a>
+                                                <a class="btn btn-danger btn-sm" id="buttonConfirmDelete_irs" data-bs-toggle="modal" data-bs-target="#confirm_delete_irs" data-attr="{{ route('delete_irs', [$item->semester_aktif, $item->nim]) }}">
+                                                    <i class="bi bi-trash-fill"></i>
+                                                </a>
                                                 @endif
 
                                             </td>
@@ -86,6 +89,30 @@
             <div class="modal-body">
                 <div id="showModalIRS">
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal confirm delete -->
+<div class="modal fade" data-bs-backdrop="static" id="confirm_delete_irs" tabindex="-1" role="dialog" aria-labelledby="modalConfirmDeleteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalConfirmDeleteLabel">Konfirmasi Hapus Data</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div id="showModalConfirmDelete_irs">
+            <form action="{{ route('irs.destroy', [$item->semester_aktif, $item->nim]) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <div class="modal-body">
+                    <p>Apakah anda yakin ingin menghapus data ini?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-sm btn-danger" id="btnDelete">Hapus</button>
+                </div>
+            </form>
             </div>
         </div>
     </div>
