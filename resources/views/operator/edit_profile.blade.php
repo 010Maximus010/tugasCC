@@ -33,7 +33,7 @@
                         <div class="card-header d-sm-flex text-center align-items-center justify-content-between border-0 pb-0">
                             <h1 class="card-title h5">Profile</h1>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" style="margin-top: 0px;">
                             <form action="{{ route('edit_profile_operator.update', $operator->nim_nip) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')

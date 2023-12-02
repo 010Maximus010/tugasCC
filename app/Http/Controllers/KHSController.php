@@ -86,7 +86,7 @@ class KHSController extends Controller
             'file' => 'required',
         ], [
             'semester_aktif.required' => 'Semester Aktif tidak boleh kosong',
-            'semester_aktif.unique' => 'Semester Aktif sudah ada',
+            'semester_aktif.unique' => 'Anda sudah mengisi KHS semester ini',
             'ip_semester.required' => 'IP Semester tidak boleh kosong',
             'ip_semester.between' => 'IP Semester harus antara 0 - 4',
             'ip_semester.numeric' => 'IP Semester harus berupa angka',

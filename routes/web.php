@@ -75,9 +75,9 @@ Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
         Route::resource('/mahasiswa/irs', IRSController::class);
         Route::get('/mahasiswa/data/irs', [IRSController::class, 'data'])->name('data_irs');
         Route::get('/mahasiswa/irs/{semester}/{nim}/edit', [IRSController::class, 'edit'])->name('irs.edit');
-         //Menampilkan konfirmasi penghapusan
         Route::get('/mahasiswa/delete_irs/{semester_aktif}/{nim}', [IRSController::class, 'delete'])->name('delete_irs');
         Route::delete('/mahasiswa/delete_irs/{semester_aktif}/{nim}', [IRSController::class, 'destroy'])->name('irs.destroy');
+
 
         // khs
         Route::resource('/mahasiswa/khs', KHSController::class);

@@ -93,7 +93,6 @@
         </div>
     </div>
 </div>
-
 <!-- modal confirm delete -->
 <div class="modal fade" data-bs-backdrop="static" id="confirm_delete_irs" tabindex="-1" role="dialog" aria-labelledby="modalConfirmDeleteLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -172,7 +171,6 @@
             },
         });
     });
-
 </script>
 
 

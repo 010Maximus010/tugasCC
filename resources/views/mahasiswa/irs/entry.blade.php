@@ -149,8 +149,18 @@
                                     <div class="card-body" style="margin-top: 0px;">
                                         <form class="row g-3" action="{{ route('pkl.store') }}" method="POST" enctype="multipart/form-data">
                                             @csrf
-                                            <input type="hidden" name="semester_aktif" value="{{ $progress != null ? $progress->semester_aktif : '' }}">
-                                            <div id="pkl" class="col-12">
+                                             <!-- Pilih Semester START-->
+                                             <div class="col-12">
+                                                <label class="form-label text-dark">Semester Aktif</label>
+                                                   <select class="form-select @error('semester_aktif') is-invalid @enderror" id="semester_aktif" name="semester_aktif" required>
+                                                       <option value="">Pilih Semester</option>
+                                                        
+                                                           @for ($i = 6; $i <= 14; $i++) <option value="{{ $i }}">Semester {{ $i }}</option>
+                                                        @endfor
+                                                    </select>
+                                                </div>
+                                                <!-- Pilih Semester END -->
+                                            
                                                 <div class="row">
                                                     <!-- Input Pilih Status START -->
                                                     <div class="col-6">
@@ -207,8 +217,17 @@
                                     <div class="card-body" style="margin-top: 0px;">
                                         <form class="row g-3" action="{{ route('skripsi.store') }}" method="POST" enctype="multipart/form-data">
                                             @csrf
-                                            <input type="hidden" name="semester_aktif" value="{{ $progress != null ? $progress->semester_aktif : '' }}">
-
+                                            <!-- Pilih Semester START-->
+                                            <div class="col-12">
+                                                <label class="form-label text-dark">Semester Aktif</label>
+                                                   <select class="form-select @error('semester_aktif') is-invalid @enderror" id="semester_aktif" name="semester_aktif" required>
+                                                       <option value="">Pilih Semester</option>
+                                                        
+                                                           @for ($i = 7; $i <= 14; $i++) <option value="{{ $i }}">Semester {{ $i }}</option>
+                                                        @endfor
+                                                    </select>
+                                                </div>
+                                                <!-- Pilih Semester END -->
                                             <div id="skripsi" class="col-12">
                                                 <div class="row">
 
@@ -339,7 +358,7 @@
         labelIdle: '<br/><div class="avatar avatar-xxl"><a class="link"><img class="avatar-img" src="{{ asset("assets/images/upload.png") }}" alt=""></a></div><br/><span class="link">Upload File</span><br/><br><br/>',
         stylePanelAspectRatio: 0.2,
     });
-   /* FilePond.create(document.getElementById('file2'), {
+    FilePond.create(document.getElementById('file2'), {
         maxParallelUploads: 1,
         maxFileSize: "15MB",
         acceptedFileTypes: ['application/pdf'],
@@ -359,7 +378,7 @@
         acceptedFileTypes: ['application/pdf'],
         labelIdle: '<br/><div class="avatar avatar-xxl"><a class="link"><img class="avatar-img" src="{{ asset("assets/images/upload.png") }}" alt=""></a></div><br/><span class="link">Upload File</span><br/><br><br/>',
         stylePanelAspectRatio: 0.2,
-    });*/
+    });
 
     // Send the files to the Controller
     FilePond.setOptions({

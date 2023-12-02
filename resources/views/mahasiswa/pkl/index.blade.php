@@ -33,7 +33,7 @@
                         <div class="card-header d-sm-flex text-center align-items-center justify-content-between border-0 pb-0">
                             <h1 class="card-title h5">Data PKL</h1>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" style="margin-top: 0px;">
                             <div class="table-responsive">
                                 <table class="table" id="table">
                                     <thead class="thead-dark">
@@ -67,6 +67,9 @@
                                                 <a href="" class="btn btn-success btn-sm" id="buttonModalPKL" data-bs-toggle="modal" data-bs-target="#editPKL" data-attr="{{ route('pkl.edit', [$item->semester_aktif, $item->nim]) }}">
                                                     <i class="bi bi-pencil-square"></i> Edit
                                                 </a>
+                                                <a class="btn btn-danger btn-sm" id="buttonConfirmDelete_pkl" data-bs-toggle="modal" data-bs-target="#confirm_delete_pkl" data-attr="{{ route('delete_pkl', [$item->semester_aktif, $item->nim]) }}">
+                                                    <i class="bi bi-trash-fill"></i>
+                                                </a>
                                                 @endif
                                             </td>
                                         </tr>
@@ -97,7 +100,30 @@
         </div>
     </div>
 </div>
-
+<!-- modal confirm delete -->
+<div class="modal fade" data-bs-backdrop="static" id="confirm_delete_pkl" tabindex="-1" role="dialog" aria-labelledby="modalConfirmDeleteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalConfirmDeleteLabel">Konfirmasi Hapus Data</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div id="showModalConfirmDelete_khs">
+            <form action="{{ route('pkls.destroy', [$item->semester_aktif, $item->nim]) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <div class="modal-body">
+                    <p>Apakah anda yakin ingin menghapus data ini?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-sm btn-danger" id="btnDelete">Hapus</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('script')
