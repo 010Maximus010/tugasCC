@@ -167,6 +167,7 @@
                                                     </select>
                                                 </div>
                                                 <!-- Pilih Semester END -->
+                                          
                                             <div id="pkl" class="col-12">
                                                 <div class="row">
                                                     <!-- Input Pilih Status START -->
@@ -200,7 +201,7 @@
                                                     <div class="col-12 mt-3">
                                                         <label class="form-label">Scan PKL</label>
                                                         <div class="dropzone">
-                                                            <input type="file" class="filepond" id="file3" name="file3" data-allow-reorder="true">
+                                                            <input type="file" class="filepond" id="file3" name="file" data-allow-reorder="true">
                                                         </div>
                                                     </div>
                                                     <!-- Dropzone END -->

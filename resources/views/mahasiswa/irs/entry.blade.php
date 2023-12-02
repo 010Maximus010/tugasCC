@@ -49,6 +49,7 @@
                                             <label class="form-label text-dark">Semester Aktif</label>
                                                <select class="form-select @error('semester_aktif') is-invalid @enderror" id="semester_aktif" name="semester_aktif" required>
                                                    <option value="">Pilih Semester</option>
+                                                      
                                                        @for ($i = 1; $i <= 14; $i++) <option value="{{ $i }}">Semester {{ $i }}</option>
                                                     @endfor
                                                 </select>
@@ -86,23 +87,24 @@
                                     <!-- Card header START -->
                                     <div class="card-header d-sm-flex text-center align-items-center justify-content-between border-0 pb-0">
                                         <h1 class="card-title h5">Input KHS</h1>
-                                        <div class="text-dark small">Harap diisi dengan data yang benar.</div>
+                                        <div class="small italic text-danger">Harap diisi dengan data yang benar.</div>
                                     </div>
                                     <div class="card-body" style="margin-top: 0px;">
                                         <form class="row g-3" action="{{ route('khs.store') }}" method="POST" enctype="multipart/form-data">
                                             @csrf
-                    
+                                            
                                             <!-- Pilih Semester START-->
                                             <div class="col-12">
-                                                <label class="form-label text-dark">Semester Aktif</label>
-                                                   <select class="form-select @error('semester_aktif') is-invalid @enderror" id="semester_aktif" name="semester_aktif" required>
-                                                       <option value="">Pilih Semester</option>
-            
-                                                           @for ($i = 1; $i <= 14; $i++) <option value="{{ $i }}">Semester {{ $i }}</option>
-                                                        @endfor
-                                                    </select>
-                                                </div>
-                                                <!-- Pilih Semester END -->
+                                            <label class="form-label text-dark">Semester Aktif</label>
+                                               <select class="form-select @error('semester_aktif') is-invalid @enderror" id="semester_aktif" name="semester_aktif" required>
+                                                   <option value="">Pilih Semester</option>
+                                                      
+                                                       @for ($i = 1; $i <= 14; $i++) <option value="{{ $i }}">Semester {{ $i }}</option>
+                                                    @endfor
+                                                </select>
+                                            </div>
+                                            <!-- Pilih Semester END -->
+
                                             <!-- Input IP Semester START -->
                                             <div class="col-6">
                                                 <label class="form-label text-dark">IP Semester</label>
@@ -120,13 +122,15 @@
                                             </div>
                                             <!-- Input IP Kumulatif END -->
 
+
                                             <!-- Dropzone START-->
                                             <div class="col-12">
                                                 <label class="form-label">Scan KHS</label>
                                                 <div class="dropzone">
-                                                    <input type="file" class="filepond" id="file2" name="file2" data-allow-reorder="true">
+                                                    <input type="file" class="filepond" id="file2" name="file" data-allow-reorder="true" required>
                                                 </div>
                                             </div>
+
                                             <!-- Dropzone END -->
                                             <div class="text-danger small fst-italic">*Format file [.pdf], pastikan file yang diupload benar.</div>
 
@@ -134,8 +138,11 @@
                                                 <button type="submit" class="btn btn-sm btn-primary mb-0">Submit</button>
                                             </div>
                                         </form>
-                                    </div>   
-                                </div>
+                                    </div>
+
+                                </div> 
+                               
+                                
 
 
                                 <!-- Tab Dosen END -->
@@ -160,7 +167,8 @@
                                                     </select>
                                                 </div>
                                                 <!-- Pilih Semester END -->
-                                            
+                                          
+                                            <div id="pkl" class="col-12">
                                                 <div class="row">
                                                     <!-- Input Pilih Status START -->
                                                     <div class="col-6">
@@ -193,7 +201,7 @@
                                                     <div class="col-12 mt-3">
                                                         <label class="form-label">Scan PKL</label>
                                                         <div class="dropzone">
-                                                            <input type="file" class="filepond" id="file3" name="file3" data-allow-reorder="true">
+                                                            <input type="file" class="filepond" id="file3" name="file" data-allow-reorder="true">
                                                         </div>
                                                     </div>
                                                     <!-- Dropzone END -->
@@ -217,8 +225,8 @@
                                     <div class="card-body" style="margin-top: 0px;">
                                         <form class="row g-3" action="{{ route('skripsi.store') }}" method="POST" enctype="multipart/form-data">
                                             @csrf
-                                            <!-- Pilih Semester START-->
-                                            <div class="col-12">
+                                             <!-- Pilih Semester START-->
+                                             <div class="col-12">
                                                 <label class="form-label text-dark">Semester Aktif</label>
                                                    <select class="form-select @error('semester_aktif') is-invalid @enderror" id="semester_aktif" name="semester_aktif" required>
                                                        <option value="">Pilih Semester</option>
@@ -228,6 +236,7 @@
                                                     </select>
                                                 </div>
                                                 <!-- Pilih Semester END -->
+
                                             <div id="skripsi" class="col-12">
                                                 <div class="row">
 

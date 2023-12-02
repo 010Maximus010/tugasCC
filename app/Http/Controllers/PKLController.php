@@ -81,18 +81,17 @@ class PKLController extends Controller
         // Validate
         $request->validate([
             'semester_aktif' => 'required|unique:pkls,semester_aktif,NULL,id,nim,' . Auth::user()->nim_nip,
-            'confirm' => 'sometimes|accepted',
-            'status_pkl' => 'required_if:confirm,on|in:,Lulus,Sedang Ambil,Belum Ambil',
+            'status_pkl' => 'required|in:,Lulus,Tidak Lulus',
             'nilai_pkl' => 'required_if:status_pkl,Lulus|in:,A,B,C,D,E',
-            'file' => 'required_if:confirm,on',
+            'file' => 'required',
         ], [
             'semester_aktif.required' => 'Semester Aktif tidak boleh kosong',
-            'semester_aktif.unique' => 'Anda sudah mengisi PKL semester ini',
-            'status_pkl.required_if' => 'Status PKL tidak boleh kosong',
+            'semester_aktif.unique' => 'Semester Aktif sudah ada',
+            'status_pkl.required' => 'Status PKL tidak boleh kosong',
             'status_pkl.in' => 'Status PKL tidak valid',
             'nilai_pkl.required_if' => 'Nilai PKL tidak boleh kosong',
             'nilai_pkl.in' => 'Nilai PKL tidak valid',
-            'file.required_if' => 'File tidak boleh kosong',
+            'file.required' => 'File tidak boleh kosong',
         ]);
 
         if ($request->status_pkl != 'Lulus' && $request->nilai_pkl != null) {
@@ -103,7 +102,7 @@ class PKLController extends Controller
         $temp = temp_file::where('path', $request->file)->first();
 
         // Insert to DB
-        if ($request->confirm == 'on') {
+       
             $db = pkl::create([
                 'nim' => Auth::user()->nim_nip,
                 'semester_aktif' => $request->semester_aktif,
@@ -117,13 +116,7 @@ class PKLController extends Controller
                         'nilai' => $request->nilai_pkl,
                     ]);
             }
-        } else {
-            $db = pkl::create([
-                'nim' => Auth::user()->nim_nip,
-                'semester_aktif' => $request->semester_aktif,
-                'status' => 'Belum Ambil',
-            ]);
-        }
+        
 
         tb_entry_progress::where('nim', Auth::user()->nim_nip)
             ->where('semester_aktif', $request->semester_aktif)
@@ -183,16 +176,15 @@ class PKLController extends Controller
     {
         // Validate
         $request->validate([
-            'confirm' => 'sometimes|accepted',
-            'status_pkl' => 'required|in:Lulus,Sedang Ambil,Belum Ambil',
+            'status_pkl' => 'required|in:Lulus,Tidak Lulus',
             'nilai_pkl' => 'required_if:status_pkl,Lulus|in:,A,B,C,D,E',
-            'fileEdit' => 'required_if:confirm,on',
+            'fileEdit' => 'required',
         ], [
             'status_pkl.required' => 'Status PKL tidak boleh kosong',
             'status_pkl.in' => 'Status PKL tidak valid',
             'nilai_pkl.required_if' => 'Nilai PKL tidak boleh kosong',
             'nilai_pkl.in' => 'Nilai PKL tidak valid',
-            'fileEdit.required_if' => 'File tidak boleh kosong',
+            'fileEdit.required' => 'File tidak boleh kosong',
         ]);
 
         if ($request->status_pkl != 'Lulus' && $request->nilai_pkl != null) {
@@ -202,9 +194,8 @@ class PKLController extends Controller
 
         $db = pkl::where('semester_aktif', $semester_aktif)->where('nim', $request->nim)->first();
 
-        $temp = temp_file::where('path', $request->fileEdit)->first();
+        $temp = temp_file::where('path', $request->file)->first();
 
-        if ($temp && $request->confirm == 'on') {
             if (pkl::where('semester_aktif', $semester_aktif)->where('nim', $request->nim)->where('upload_pkl', '!=', NULL)->first()) {
                 unlink(public_path($db->upload_pkl));
             }
@@ -216,12 +207,7 @@ class PKLController extends Controller
                 'upload_pkl' => 'files/pkl/' . $db->nim . '_' . $db->semester_aktif  . '_' . $uniq . '.pdf'
             ]);
             $temp->delete();
-        } else {
-            pkl::where('semester_aktif', $semester_aktif)->where('nim', $request->nim)->update([
-                'status' => $request->status_pkl,
-                'nilai' => $request->nilai_pkl,
-            ]);
-        }
+        
 
         if ($db->update()) {
             Alert::success('Berhasil', 'Data berhasil diubah');

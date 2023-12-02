@@ -81,20 +81,19 @@ class SkripsiController extends Controller
         // Validate
         $request->validate([
             'semester_aktif' => 'required|unique:skripsis,semester_aktif,NULL,id,nim,' . Auth::user()->nim_nip,
-            'confirm' => 'sometimes|accepted',
             'tanggal_sidang' => 'required_if:status_skripsi,Lulus',
             'nilai_skripsi' => 'required_if:status_skripsi,Lulus|in:,A,B,C,D,E',
-            'status_skripsi' => 'required_if:confirm,on|in:,Lulus,Sedang Ambil,Belum Ambil',
-            'file' => 'required_if:confirm,on',
+            'status_skripsi' => 'required|in:,Lulus,Tidak Lulus',
+            'file' => 'required',
         ], [
             'semester_aktif.required' => 'Semester Aktif tidak boleh kosong',
             'semester_aktif.unique' => 'Anda sudah mengisi Skripsi semester ini',
             'tanggal_sidang.required_if' => 'Tanggal Sidang tidak boleh kosong',
             'nilai_skripsi.required_if' => 'Nilai Skripsi tidak boleh kosong',
             'nilai_skripsi.in' => 'Nilai Skripsi harus diisi dengan A, B, C, D, E',
-            'status_skripsi.required_if' => 'Status Skripsi tidak boleh kosong',
-            'status_skripsi.in' => 'Status Skripsi harus diisi dengan Lulus, Sedang Ambil, Belum Ambil',
-            'file.required_if' => 'File tidak boleh kosong',
+            'status_skripsi.required' => 'Status Skripsi tidak boleh kosong',
+            'status_skripsi.in' => 'Status Skripsi harus diisi dengan Lulus, Tidak Lulus',
+            'file.required' => 'File tidak boleh kosong',
         ]);
 
         if ($request->status_skripsi != 'Lulus' && $request->nilai_skripsi != null) {
@@ -105,7 +104,7 @@ class SkripsiController extends Controller
         $temp = temp_file::where('path', $request->file)->first();
 
         // Insert to DB
-        if ($request->confirm == 'on') {
+        
             $db = skripsi::create([
                 'nim' => Auth::user()->nim_nip,
                 'semester_aktif' => $request->semester_aktif,
@@ -120,13 +119,7 @@ class SkripsiController extends Controller
                         'nilai' => $request->nilai_skripsi,
                     ]);
             }
-        } else {
-            $db = skripsi::create([
-                'nim' => Auth::user()->nim_nip,
-                'semester_aktif' => $request->semester_aktif,
-                'status' => 'Belum Ambil',
-            ]);
-        }
+        
 
         tb_entry_progress::where('nim', Auth::user()->nim_nip)
             ->where('semester_aktif', $request->semester_aktif)

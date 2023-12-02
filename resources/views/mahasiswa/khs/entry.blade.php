@@ -201,7 +201,7 @@
                                                     <div class="col-12 mt-3">
                                                         <label class="form-label">Scan PKL</label>
                                                         <div class="dropzone">
-                                                            <input type="file" class="filepond" id="file3" name="file3" data-allow-reorder="true">
+                                                            <input type="file" class="filepond" id="file3" name="file" data-allow-reorder="true">
                                                         </div>
                                                     </div>
                                                     <!-- Dropzone END -->
@@ -245,8 +245,8 @@
                                                         <label class="form-label text-dark">Status</label>
                                                         <select class="form-select @error('status_skripsi') is-invalid @enderror" id="status_skripsi" name="status_skripsi">
                                                             <option value="">-- Pilih Status --</option>
-                                                            <option value="Sedang Ambil">Lulus</option>
-                                                            <option value="Lulus">Tidak Lulus</option>
+                                                            <option value="Lulus">Lulus</option>
+                                                            <option value="Tidak Lulus">Tidak Lulus</option>
                                                         </select>
                                                         <div class="text-danger small fst-italic">*Pilih status Skripsi Anda</div>
                                                     </div>
@@ -279,7 +279,7 @@
                                                     <div class="col-12">
                                                         <label class="form-label">Scan Skripsi</label>
                                                         <div class="dropzone">
-                                                            <input type="file" class="filepond" id="file4" name="file4" data-allow-reorder="true">
+                                                            <input type="file" class="filepond" id="file4" name="file" data-allow-reorder="true">
                                                         </div>
                                                     </div>
                                                     <!-- Dropzone END -->
