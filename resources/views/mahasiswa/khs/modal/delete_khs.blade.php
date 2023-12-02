@@ -1,4 +1,4 @@
-<form action="{{ route('irs.destroy', [$data->semester_aktif, $data->nim]) }}" method="POST">
+<form action="{{ route('khs.destroy', [$data->semester_aktif, $data->nim]) }}" method="POST">
     @csrf
     @method('DELETE')
     <div class="modal-body">

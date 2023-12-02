@@ -232,7 +232,7 @@ class IRSController extends Controller
 
         // Alert success
         Alert::success('Success!', 'Data IRS berhasil dihapus');
-        return redirect()->route('irs.index');
+        return redirect()->route('data_irs');
     }
 
 }

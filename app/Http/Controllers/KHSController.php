@@ -219,14 +219,24 @@ class KHSController extends Controller
         }
     }
 
+    public function delete($semester_aktif, $nim)
+    {
+        $data = khs::where('nim', $nim)->where('semester_aktif', $semester_aktif)->first();
+        return view('mahasiswa.khs.modal.delete_khs', compact('data'));
+    }
+
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($semester_aktif, $nim)
     {
-        //
+        khs::where('nim', $nim)->where('semester_aktif', $semester_aktif)->delete();
+
+        // Alert success
+        Alert::success('Success!', 'Data KHS berhasil dihapus');
+        return redirect()->route('data_khs');
     }
 }

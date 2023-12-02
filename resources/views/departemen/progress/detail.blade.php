@@ -122,8 +122,12 @@
                 <ul class="nav nav-tabs nav-bottom-line justify-content-center justify-content-md-start">
                     <li class="nav-item"> <a class="text-white nav-link active" data-bs-toggle="tab" href="#tab-1" id="tab1"> IRS </a> </li>
                     <li class="nav-item"> <a class="text-white nav-link" data-bs-toggle="tab" href="#tab-2" id="tab2"> KHS </a> </li>
+                    @if ($semester >= 6)
                     <li class="nav-item"> <a class="text-white nav-link" data-bs-toggle="tab" href="#tab-3" id="tab3"> PKL </a> </li>
+                    @endif
+                    @if ($semester >= 8)
                     <li class="nav-item"> <a class="text-white nav-link" data-bs-toggle="tab" href="#tab-4" id="tab4"> Skripsi </a> </li>
+                    @endif
                 </ul>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" id="btnClose" aria-label="Close"></button>
             </div>
@@ -147,6 +151,26 @@
 <script src="{{ asset('assets/js/data-table.js') }}"></script>
 
 <script type="text/javascript">
+    function handleTabVisibility(semester) {
+        var pklTab = $("#tab3");
+        var skripsiTab = $("#tab4");
+
+        // Semua tab diaktifkan terlepas dari semester
+        pklTab.show();
+        skripsiTab.show();
+
+        // Semua tab dinonaktifkan untuk semester < 6
+        if (semester < 6) {
+            pklTab.hide();
+            skripsiTab.hide();
+        }
+
+        // Tab PKL dinonaktifkan untuk semester < 8
+        if (semester < 8) {
+            pklTab.hide();
+        }
+    }
+    
     $(document).on("click", "#buttonModalProgress", function() {
         event.preventDefault();
         let href = $(this).attr("data-attr");
@@ -156,6 +180,7 @@
             success: function(result) {
                 $("#progress_view").modal("show");
                 $("#showModalProgress").html(result).show();
+                handleTabVisibility(result.semester);
             },
             error: function(jqXHR, testStatus, error) {
                 console.log(error);
@@ -163,6 +188,8 @@
             },
         });
     });
+
+
 </script>
 
 @stop

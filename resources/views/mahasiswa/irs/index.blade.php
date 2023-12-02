@@ -58,10 +58,9 @@
                                                     <i class="bi bi-pencil-square"></i> Edit
                                                 </a>
                                                 <a class="btn btn-danger btn-sm" id="buttonConfirmDelete_irs" data-bs-toggle="modal" data-bs-target="#confirm_delete_irs" data-attr="{{ route('delete_irs', [$item->semester_aktif, $item->nim]) }}">
-                                                    <i class="bi bi-trash-fill"></i>
+                                                    <i class="bi bi-trash-fill"></i> Hapus
                                                 </a>
                                                 @endif
-
                                             </td>
                                         </tr>
                                         @endforeach
@@ -77,6 +76,7 @@
         <!-- Container END -->
     </main>
 </div>
+@include('sweetalert::alert')
 
 <!-- modal edit irs -->
 <div class="modal fade" data-bs-backdrop="static" data-keyboard="false" id="editIRS" tabindex="-1" role="dialog" aria-hidden="true">
@@ -103,28 +103,16 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div id="showModalConfirmDelete_irs">
-            <form action="{{ route('irs.destroy', [$item->semester_aktif, $item->nim]) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <div class="modal-body">
-                    <p>Apakah anda yakin ingin menghapus data ini?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-sm btn-danger" id="btnDelete">Hapus</button>
-                </div>
-            </form>
+                    
             </div>
         </div>
     </div>
 </div>
 
-
 @endsection
 
 @section('script')
 
-@include('sweetalert::alert')
 
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
@@ -186,5 +174,6 @@
     });
 
 </script>
+
 
 @stop

@@ -88,6 +88,41 @@ $(document).on("click", "#buttonModalIRS", function() {
     });
 });
 
+// display a modal confirm delete irs
+$(document).on("click", "#buttonConfirmDelete_irs", function (event) {
+    event.preventDefault();
+    let href = $(this).attr("data-attr");
+    $.ajax({
+        url: href,
+        // return the result
+        success: function (result) {
+            $("#confirm_delete_irs").modal("show");
+            $("#showModalConfirmDelete_irs").html(result).show();
+        },
+        error: function (jqXHR, testStatus, error) {
+            console.log(error);
+            alert("Page " + href + " cannot open. Error:" + error);
+        },
+    });
+});
+
+// display a modal confirm delete khs
+$(document).on("click", "#buttonConfirmDelete_khs", function (event) {
+    event.preventDefault();
+    let href = $(this).attr("data-attr");
+    $.ajax({
+        url: href,
+        // return the result
+        success: function (result) {
+            $("#confirm_delete_khs").modal("show");
+            $("#showModalConfirmDelete_khs").html(result).show();
+        },
+        error: function (jqXHR, testStatus, error) {
+            console.log(error);
+            alert("Page " + href + " cannot open. Error:" + error);
+        },
+    });
+});
 
 let modal_content = document.getElementsByClassName("modal-content");
 

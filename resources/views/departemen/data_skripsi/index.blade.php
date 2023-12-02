@@ -16,8 +16,9 @@
 
                 <div class="col-md-8 col-lg-6 vstack gap-4">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body" style="margin-top: 0px;">
                             <h5 class="card-title">Grafik Mahasiswa Skripsi per Angkatan</h5>
+                            <br>
                             <div class="chart-container">
                                 <div id="grafik"></div>
 
@@ -194,8 +195,9 @@
                     </div>
 
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body" style="margin-top: 0px;">
                             <h5 class="card-title"style="text-align: center;">Daftar Sudah/Belum Lulus Skripsi Mahasiswa Informatika</h5>
+                            <br>
                             <div class="col-12">
                                 <div class="d-flex flex-column align-items-end mb-4">
                                     <div id="table_wrapper"></div>

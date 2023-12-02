@@ -75,16 +75,17 @@ Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
         Route::resource('/mahasiswa/irs', IRSController::class);
         Route::get('/mahasiswa/data/irs', [IRSController::class, 'data'])->name('data_irs');
         Route::get('/mahasiswa/irs/{semester}/{nim}/edit', [IRSController::class, 'edit'])->name('irs.edit');
-        //Route::get('/mahasiswa/irs/{semester}/{nim}/delete', [IRSController::class, 'delete'])->name('delete_irs');
-        //Route::delete('/irs/{semester_aktif}/{nim}', 'IRSController@destroy')->name('irs.destroy');
-        //Route::delete('/irs/{semester_aktif}/{nim}', [IRSController::class, 'destroy'])->name('irs.destroy');
-        Route::delete('/mahasiswa/data/irs/{semester_aktif}/{nim}', 'IRSController@destroy')->name('delete_irs');
-
+         //Menampilkan konfirmasi penghapusan
+        Route::get('/mahasiswa/delete_irs/{semester_aktif}/{nim}', [IRSController::class, 'delete'])->name('delete_irs');
+        Route::delete('/mahasiswa/delete_irs/{semester_aktif}/{nim}', [IRSController::class, 'destroy'])->name('irs.destroy');
 
         // khs
         Route::resource('/mahasiswa/khs', KHSController::class);
         Route::get('/mahasiswa/data/khs', [KHSController::class, 'data'])->name('data_khs');
         Route::get('/mahasiswa/khs/{semester}/{nim}/edit', [KHSController::class, 'edit'])->name('khs.edit');
+        Route::get('/mahasiswa/delete_khs/{semester_aktif}/{nim}', [KHSController::class, 'delete'])->name('delete_khs');
+        Route::delete('/mahasiswa/delete_khs/{semester_aktif}/{nim}', [KHSController::class, 'destroy'])->name('khs.destroy');
+
 
         // pkl
         Route::resource('/mahasiswa/pkl', PKLController::class);
@@ -130,6 +131,7 @@ Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
 
         // data mahasiswa pkl
         Route::get('/departemen/data_mahasiswa_pkl', [MahasiswaController::class, 'data_pkl']);
+        Route::post('/departemen/data_mahasiswa/detail', [MahasiswaController::class, 'data_mahasiswa_detail'])->name('data_mahasiswa_detail');
 
         // data mahasiswa skripsi
         Route::get('/departemen/data_mahasiswa_skripsi', [MahasiswaController::class, 'data_skripsi']);

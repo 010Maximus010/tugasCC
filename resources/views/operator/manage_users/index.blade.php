@@ -36,7 +36,7 @@
                         <div class="card-header d-sm-flex text-center align-items-center justify-content-between border-0 pb-0">
                             <h1 class="card-title h5">Manajemen Akun</h1>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" style="margin-top: 0px;">
                             <ul class="nav nav-tabs nav-bottom-line justify-content-center justify-content-md-start">
                                 <li class="nav-item"> <a class="nav-link active" data-bs-toggle="tab" href="#tab-1"> Mahasiswa </a> </li>
                                 <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#tab-2"> Dosen </a> </li>

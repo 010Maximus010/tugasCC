@@ -2,7 +2,7 @@
 
 <div class="col-md-8 col-lg-6 vstack gap-4">
     <div class="card" style="background: linear-gradient(to right, #8fb996, #a1cca5);">
-        <div class="card-body">
+        <div class="card-body" style="margin-top: 0px;">
             <h5 class="card-title">Informasi Mahasiswa</h5>
             <br />
             <div class="hstack gap-2 gap-xl-3 justify-content-center text-center">
