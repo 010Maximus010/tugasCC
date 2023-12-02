@@ -20,6 +20,9 @@ return new class extends Migration
             $table->boolean('is_pkl')->default(false);
             $table->boolean('is_skripsi')->default(false);
             $table->boolean('is_verifikasi')->default(false);
+            $table->boolean('is_verifikasi_khs')->default(false);
+            $table->boolean('is_verifikasi_pkl')->default(false);
+            $table->boolean('is_verifikasi_skripsi')->default(false);
             $table->timestamps();
             $table->unique(['nim', 'semester_aktif']);
             $table->foreign('nim')->references('nim')->on('mahasiswas')->onDelete('cascade');

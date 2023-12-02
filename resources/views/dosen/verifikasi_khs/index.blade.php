@@ -32,7 +32,7 @@
                     <div class="card">
                         <!-- Card header START -->
                         <div class="card-header d-sm-flex text-center align-items-center justify-content-between border-0 pb-0">
-                            <h1 class="card-title h5">Verifikasi Berkas Mahasiswa</h1>
+                            <h1 class="card-title h5">Verifikasi Berkas KHS</h1>
                         </div>
                         <div class="card-body" style="margin-top: 0px;">
                             <div class="row g-3 mb-4">
@@ -57,7 +57,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <form action="{{ route('berkas_detail') }}" method="GET">
+                            <form action="{{ route('berkas_detail_khs') }}" method="GET">
                                 @csrf
                                 <div class="row g-3">
                                     <div class="col-12">
@@ -69,6 +69,7 @@
                                                         <th>Nama</th>
                                                         <th>NIM</th>
                                                         <th>Angkatan</th>
+                                                        <th>Verifikasi</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -78,6 +79,13 @@
                                                         <td>{{ $mahasiswa->where('nim', $data->nim)->first()->nama }}</td>
                                                         <td>{{ $mahasiswa->where('nim', $data->nim)->first()->nim }}</td>
                                                         <td>{{ $mahasiswa->where('nim', $data->nim)->first()->angkatan }}</td>
+                                                        <td>
+                                                            @if ($data->is_verifikasi_khs == 1)
+                                                                <span class="badge bg-success">Sudah diverifikasi</span>
+                                                            @else
+                                                                <span class="badge bg-danger">Belum diverifikasi</span>
+                                                            @endif
+                                                        </td>
                                                         <button type="submit" id="{{ $data->nim }}_{{ $data->semester_aktif }}" name="nim_semester" value="{{ $data->nim }}_{{ $data->semester_aktif }}" hidden> Detail</button>
                                                     </tr>
                                                     @endforeach

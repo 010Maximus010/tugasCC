@@ -19,6 +19,7 @@ use App\Http\Controllers\SkripsiController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\WilayahController;
 use App\Http\Controllers\VerifikasiBerkasController;
+use App\Http\Controllers\VerifikasiBerkasKHSController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\ProgressMhsContoller;
 use App\Http\Controllers\EntryProgressController;
@@ -86,16 +87,20 @@ Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
         Route::get('/mahasiswa/delete_khs/{semester_aktif}/{nim}', [KHSController::class, 'delete'])->name('delete_khs');
         Route::delete('/mahasiswa/delete_khs/{semester_aktif}/{nim}', [KHSController::class, 'destroy'])->name('khs.destroy');
 
-
         // pkl
         Route::resource('/mahasiswa/pkl', PKLController::class);
         Route::get('/mahasiswa/data/pkl', [PKLController::class, 'data'])->name('data_pkl');
         Route::get('/mahasiswa/pkl/{semester}/{nim}/edit', [PKLController::class, 'edit'])->name('pkl.edit');
+        Route::get('/mahasiswa/delete_pkl/{semester_aktif}/{nim}', [PKLController::class, 'delete'])->name('delete_pkl');
+        Route::delete('/mahasiswa/delete_pkl/{semester_aktif}/{nim}', [PKLController::class, 'destroy'])->name('pkl.destroy');
 
         // skripsi
         Route::resource('/mahasiswa/skripsi', SkripsiController::class);
         Route::get('/mahasiswa/data/skripsi', [SkripsiController::class, 'data'])->name('data_skripsi');
         Route::get('/mahasiswa/skripsi/{semester}/{nim}/edit', [SkripsiController::class, 'edit'])->name('skripsi.edit');
+        Route::get('/mahasiswa/delete_skripsi/{semester_aktif}/{nim}', [SkripsiController::class, 'delete'])->name('delete_skripsi');
+        Route::delete('/mahasiswa/delete_skripsi/{semester_aktif}/{nim}', [SkripsiController::class, 'destroy'])->name('skripsi.destroy');
+
     });
 
     // Fiture Dosen
@@ -106,9 +111,17 @@ Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
         Route::get('/dosen/progress_studi_mahasiswa/semester', [ProgressMhsContoller::class, 'show_semester'])->name('progress_detail_semester');
 
         // verifikasi berkas mahasiswa
-        Route::get('/dosen/verifikasi_berkas_mahasiswa', [VerifikasiBerkasController::class, 'index']);
+        //IRS
+        Route::get('/dosen/verifikasi_berkas_mahasiswa', [VerifikasiBerkasController::class, 'index'])->name('verif_irs');
         Route::get('/dosen/verifikasi_berkas_mahasiswa/detail', [VerifikasiBerkasController::class, 'show'])->name('berkas_detail');
         Route::post('/dosen/verifikasi_berkas_mahasiswa/update', [VerifikasiBerkasController::class, 'update'])->name('verifikasi_update');
+        //Route::delete('/delete_berkas', [VerifikasiBerkasController::class, 'delete'])->name('delete_berkas');
+
+        //KHS
+        Route::get('/dosen/verifikasi_berkas_mahasiswa_khs', [VerifikasiBerkasKHSController::class, 'index']);
+        Route::get('/dosen/verifikasi_berkas_mahasiswa_khs/detail', [VerifikasiBerkasKHSController::class, 'show'])->name('berkas_detail_khs');
+        Route::post('/dosen/verifikasi_berkas_mahasiswa_khs/update', [VerifikasiBerkasKHSController::class, 'update'])->name('verifikasi_update_khs');
+
     });
 
     // Fiture Departemen

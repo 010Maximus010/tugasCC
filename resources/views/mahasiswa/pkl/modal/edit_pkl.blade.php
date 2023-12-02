@@ -8,7 +8,7 @@
         <select class="form-select" id="status_pkl" name="status_pkl">
             <option value="">-- Pilih Status --</option>
             <option value="Belum Ambil" {{ $data->status == 'Belum Ambil' ? 'selected="true"' : '' }}>Belum Ambil</option>
-            <option value="Sedang Ambil" {{ $data->status == 'Sedang Ambil' ? 'selected="true"' : '' }}>Sedang Ambil</option>
+            <!--<option value="Sedang Ambil" {{ $data->status == 'Sedang Ambil' ? 'selected="true"' : '' }}>Sedang Ambil</option>-->
             <option value="Lulus" {{ $data->status == 'Lulus' ? 'selected="true"' : '' }}>Lulus</option>
         </select>
     </div>

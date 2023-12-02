@@ -162,7 +162,7 @@ class PKLController extends Controller
     public function edit($semester_aktif, $nim)
     {
         $data = pkl::where('nim', $nim)->where('semester_aktif', $semester_aktif)->first();
-        return view('mahasiswa.pkl.modal', compact('data'));
+        return view('mahasiswa.pkl.modal.edit_pkl', compact('data'));
     }
 
     /**
@@ -218,14 +218,24 @@ class PKLController extends Controller
         }
     }
 
+    public function delete($semester_aktif, $nim)
+    {
+        $data = pkl::where('nim', $nim)->where('semester_aktif', $semester_aktif)->first();
+        return view('mahasiswa.pkl.modal.delete_pkl', compact('data'));
+    }
+
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($semester_aktif, $nim)
     {
-        //
+        pkl::where('nim', $nim)->where('semester_aktif', $semester_aktif)->delete();
+
+        // Alert success
+        Alert::success('Success!', 'Data PKL berhasil dihapus');
+        return redirect()->route('data_pkl');
     }
 }

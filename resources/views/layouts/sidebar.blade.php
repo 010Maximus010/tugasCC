@@ -122,6 +122,8 @@
                                     <i class="bi bi-mortarboard"></i><span> Skripsi</span>
                                 </a>
                             </li>
+
+                            <!--Dosen-->
                             @elseif (Auth::user()->role == 'dosen')
                             <li class="nav-item">
                                 <a style="font-size: 14px;" class="nav-link {{ ($title == 'Progress Studi Mahasiswa')? 'active' : '' }}" href="/dosen/progress_studi_mahasiswa">
@@ -129,17 +131,58 @@
                                 </a>
                             </li>
                             <?php
-                            $progress = App\Models\tb_entry_progress::where('nip', Auth::user()->nim_nip)->where('is_irs', 1)->where('is_khs', 1)->where('is_pkl', 1)->where('is_skripsi', 1)->where('is_verifikasi', '0')->get();
+                            $progress = App\Models\tb_entry_progress::where('nip', Auth::user()->nim_nip)->where('is_irs', 1)->where('is_verifikasi', '0')->get();
                             $count = count($progress);
                             ?>
                             <li class="nav-item">
-                                <a style="font-size: 14px;" class="nav-link {{ ($title == 'Verifikasi Berkas Mahasiswa')? 'active' : '' }}" href="/dosen/verifikasi_berkas_mahasiswa">
-                                    <i class="bi bi-clipboard2-check"></i><span> Verifikasi Berkas Mahasiswa
+                                <a style="font-size: 14px;" class="nav-link {{ ($title == 'Verifikasi Berkas IRS')? 'active' : '' }}" href="/dosen/verifikasi_berkas_mahasiswa">
+                                    <i class="bi bi-clipboard2-check"></i><span> Verifikasi IRS
                                         @if ($count > 0)
                                         <span class="badge bg-danger">{{ $count }}</span>
                                         @endif
                                 </a>
                             </li>
+
+                            <?php
+                            $progress = App\Models\tb_entry_progress::where('nip', Auth::user()->nim_nip)->where('is_khs', 1)->where('is_verifikasi_khs', '0')->get();
+                            $count = count($progress);
+                            ?>
+                            <li class="nav-item">
+                                <a style="font-size: 14px;" class="nav-link {{ ($title == 'Verifikasi Berkas KHS')? 'active' : '' }}" href="/dosen/verifikasi_berkas_mahasiswa_khs">
+                                    <i class="bi bi-clipboard2-check"></i><span> Verifikasi KHS
+                                        @if ($count > 0)
+                                        <span class="badge bg-danger">{{ $count }}</span>
+                                        @endif
+                                </a>
+                            </li>
+
+                            <?php
+                            $progress = App\Models\tb_entry_progress::where('nip', Auth::user()->nim_nip)->where('is_irs', 1)->where('is_khs', 1)->where('is_pkl', 1)->where('is_skripsi', 1)->where('is_verifikasi', '0')->get();
+                            $count = count($progress);
+                            ?>
+                            <li class="nav-item">
+                                <a style="font-size: 14px;" class="nav-link {{ ($title == 'Verifikasi Berkas PKL')? 'active' : '' }}" href="/dosen/verifikasi_berkas_mahasiswa">
+                                    <i class="bi bi-clipboard2-check"></i><span> Verifikasi PKL
+                                        @if ($count > 0)
+                                        <span class="badge bg-danger">{{ $count }}</span>
+                                        @endif
+                                </a>
+                            </li>
+
+                            <?php
+                            $progress = App\Models\tb_entry_progress::where('nip', Auth::user()->nim_nip)->where('is_irs', 1)->where('is_khs', 1)->where('is_pkl', 1)->where('is_skripsi', 1)->where('is_verifikasi', '0')->get();
+                            $count = count($progress);
+                            ?>
+                            <li class="nav-item">
+                                <a style="font-size: 14px;" class="nav-link {{ ($title == 'Verifikasi Berkas Skripsi')? 'active' : '' }}" href="/dosen/verifikasi_berkas_mahasiswa">
+                                    <i class="bi bi-clipboard2-check"></i><span> Verifikasi Skripsi
+                                        @if ($count > 0)
+                                        <span class="badge bg-danger">{{ $count }}</span>
+                                        @endif
+                                </a>
+                            </li>
+
+                            <!--Departemen-->
                             @elseif (Auth::user()->role == 'departemen')
                             <li class="nav-item">
                                 <a style="font-size: 14px;" class="nav-link {{ ($title == 'Progress Studi Mahasiswa')? 'active' : '' }}" href="/departemen/progress_studi_mahasiswa">

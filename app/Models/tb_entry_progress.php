@@ -18,5 +18,8 @@ class tb_entry_progress extends Model
         'is_pkl',
         'is_skripsi',
         'is_verifikasi',
+        'is_verifikasi_khs',
+        'is_verifikasi_pkl',
+        'is_verifikasi_skripsi',
     ];
 }

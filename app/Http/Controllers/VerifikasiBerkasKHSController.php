@@ -16,22 +16,22 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class VerifikasiBerkasController extends Controller
+class VerifikasiBerkasKHSController extends Controller
 {
     public function index()
-    {
-        $mahasiswa = mahasiswa::where('kode_wali', Auth::user()->nim_nip)->get();
-        $dosen = dosen::where('nip', Auth::user()->nim_nip)->first();
+{
+    $mahasiswa = mahasiswa::where('kode_wali', Auth::user()->nim_nip)->get();
+    $dosen = dosen::where('nip', Auth::user()->nim_nip)->first();
 
-        // Mengambil semua data tanpa memperdulikan nilai is_verifikasi
-        $progress = tb_entry_progress::where('nip', Auth::user()->nim_nip)
-            ->where('is_irs', 1)
-            ->get();
+    // Mengambil semua data tanpa memperdulikan nilai is_verifikasi_khs
+    $progress = tb_entry_progress::where('nip', Auth::user()->nim_nip)
+        ->where('is_khs', 1)
+        ->get();
 
-        return view('dosen.verifikasi_irs.index', [
-            'title' => 'Verifikasi Berkas Mahasiswa',
-        ])->with(compact('mahasiswa', 'progress', 'dosen'));
-    }
+    return view('dosen.verifikasi_khs.index', [
+        'title' => 'Verifikasi Berkas Mahasiswa',
+    ])->with(compact('mahasiswa', 'progress', 'dosen'));
+}
 
 
     public function show(Request $request)
@@ -47,8 +47,8 @@ class VerifikasiBerkasController extends Controller
         $mahasiswa = mahasiswa::where('nim', $nim)->first();
         $dosen = dosen::where('nip', $mahasiswa->kode_wali)->first();
         $progress = tb_entry_progress::where('nim', $nim)->where('semester_aktif', $semester)->first();
-        $irs = irs::where('nim', $nim)->where('semester_aktif', $semester)->first();
-        //$khs = khs::where('nim', $nim)->where('semester_aktif', $semester)->first();
+        //$irs = irs::where('nim', $nim)->where('semester_aktif', $semester)->first();
+        $khs = khs::where('nim', $nim)->where('semester_aktif', $semester)->first();
         //$pkl = pkl::where('nim', $nim)->where('semester_aktif', $semester)->first();
         //$skripsi = skripsi::where('nim', $nim)->where('semester_aktif', $semester)->first();
 
@@ -57,9 +57,9 @@ class VerifikasiBerkasController extends Controller
         //} else if ($progress->is_irs == 0 || $progress->is_khs == 0 || $progress->is_pkl == 0 || $progress->is_skripsi == 0) {
         //    return redirect()->back()->with('error', 'Mahasiswa belum mengisi semua data');
         } else {
-            return view('dosen.verifikasi_irs.berkas', [
+            return view('dosen.verifikasi_khs.berkas', [
                 'title' => 'Verifikasi Berkas Mahasiswa',
-            ])->with(compact('mahasiswa', 'dosen', 'progress', 'irs'));
+            ])->with(compact('mahasiswa', 'dosen', 'progress', 'khs'));
         }
     }
 
@@ -67,27 +67,16 @@ class VerifikasiBerkasController extends Controller
     {
         if ($request->id == 1) {
             tb_entry_progress::where('nim', $request->nim)->where('semester_aktif', $request->semester)->update([
-                'is_verifikasi' => '1',
+                'is_verifikasi_khs' => '1',
             ]);
             Alert::success('Berhasil', 'Berkas berhasil diverifikasi');
-            return redirect('/dosen/verifikasi_berkas_mahasiswa');
+            return redirect('/dosen/verifikasi_berkas_mahasiswa_khs');
         } else {
             tb_entry_progress::where('nim', $request->nim)->where('semester_aktif', $request->semester)->update([
-                'is_verifikasi' => '0',
+                'is_verifikasi_khs' => '0',
             ]);
             Alert::success('Berhasil', 'Berkas berhasil dibatalkan');
-            return redirect('/dosen/verifikasi_berkas_mahasiswa');
+            return redirect('/dosen/verifikasi_berkas_mahasiswa_khs');
         }
     }
-
-    /*public function delete(Request $request)
-    {
-        tb_entry_progress::where('nim', $request->nim)->where('semester_aktif', $request->semester)->delete([
-            'is_verifikasi' => '2'
-        ]);
-
-        // Alert success
-        Alert::success('Berhasil', 'Berkas berhasil dihapus');
-        return redirect()->route('verif_irs');
-    }*/
 }

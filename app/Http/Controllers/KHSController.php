@@ -161,7 +161,7 @@ class KHSController extends Controller
     public function edit($semester_aktif, $nim)
     {
         $data = khs::where('nim', $nim)->where('semester_aktif', $semester_aktif)->first();
-        return view('mahasiswa.khs.modal', compact('data'));
+        return view('mahasiswa.khs.modal.edit_khs', compact('data'));
     }
 
     /**

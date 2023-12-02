@@ -63,14 +63,14 @@
                                             <td><a href="{{ asset($item->upload_skripsi) }}" class="btn btn-info btn-sm"><i class="bi bi-eye"></i> Lihat</a></td>
                                             </td>
                                             <td>
-                                                @if ($progress->where('nim', Auth::User()->nim_nip)->where('semester_aktif', $item->semester_aktif)->first()->is_verifikasi == 1)
+                                                @if ($progress->where('nim', Auth::User()->nim_nip)->where('semester_aktif', $item->semester_aktif)->first()->is_verifikasi_skripsi == 1)
                                                 <small>Data telah diverifikasi</small>
                                                 @else
                                                 <a href="" class="btn btn-success btn-sm" id="buttonModalSkripsi" data-bs-toggle="modal" data-bs-target="#editSkripsi" data-attr="{{ route('skripsi.edit', [$item->semester_aktif, $item->nim]) }}">
                                                     <i class="bi bi-pencil-square"></i> Edit
                                                 </a>
                                                 <a class="btn btn-danger btn-sm" id="buttonConfirmDelete_skripsi" data-bs-toggle="modal" data-bs-target="#confirm_delete_skripsi" data-attr="{{ route('delete_skripsi', [$item->semester_aktif, $item->nim]) }}">
-                                                    <i class="bi bi-trash-fill"></i>
+                                                    <i class="bi bi-trash-fill"></i> Hapus
                                                 </a>
                                                 @endif
                                             </td>
@@ -114,17 +114,6 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div id="showModalConfirmDelete_khs">
-            <form action="{{ route('skripsis.destroy', [$item->semester_aktif, $item->nim]) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <div class="modal-body">
-                    <p>Apakah anda yakin ingin menghapus data ini?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-sm btn-danger" id="btnDelete">Hapus</button>
-                </div>
-            </form>
             </div>
         </div>
     </div>
