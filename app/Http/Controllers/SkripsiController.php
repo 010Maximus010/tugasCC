@@ -230,16 +230,21 @@ class SkripsiController extends Controller
     public function delete($semester_aktif, $nim)
     {
         $data = skripsi::where('nim', $nim)->where('semester_aktif', $semester_aktif)->first();
-        return view('mahasiswa.pkl.modal.delete_skripsi', compact('data'));
+        return view('mahasiswa.skripsi.modal.delete_skripsi', compact('data'));
     }
+
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($semester_aktif, $nim)
     {
-        //
+        skripsi::where('nim', $nim)->where('semester_aktif', $semester_aktif)->delete();
+
+        // Alert success
+        Alert::success('Success!', 'Data Skripsi berhasil dihapus');
+        return redirect()->route('data_skripsi');
     }
 }

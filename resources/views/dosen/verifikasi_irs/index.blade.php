@@ -82,8 +82,10 @@
                                                         <td>
                                                             @if ($data->is_verifikasi == 1)
                                                                 <span class="badge bg-success">Sudah diverifikasi</span>
-                                                            @else
+                                                            @elseif ($data->is_verifikasi == 0)
                                                                 <span class="badge bg-danger">Belum diverifikasi</span>
+                                                            @else
+                                                                <span class="badge bg-dark">Ditolak</span>
                                                             @endif
                                                         </td>
                                                         <button type="submit" id="{{ $data->nim }}_{{ $data->semester_aktif }}" name="nim_semester" value="{{ $data->nim }}_{{ $data->semester_aktif }}" hidden> Detail</button>

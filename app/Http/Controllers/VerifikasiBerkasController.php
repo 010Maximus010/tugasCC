@@ -71,11 +71,17 @@ class VerifikasiBerkasController extends Controller
             ]);
             Alert::success('Berhasil', 'Berkas berhasil diverifikasi');
             return redirect('/dosen/verifikasi_berkas_mahasiswa');
-        } else {
+        } else if ($request->id == 0){
             tb_entry_progress::where('nim', $request->nim)->where('semester_aktif', $request->semester)->update([
                 'is_verifikasi' => '0',
             ]);
             Alert::success('Berhasil', 'Berkas berhasil dibatalkan');
+            return redirect('/dosen/verifikasi_berkas_mahasiswa');
+        } else{
+            tb_entry_progress::where('nim', $request->nim)->where('semester_aktif', $request->semester)->update([
+                'is_verifikasi' => '2',
+            ]);
+            Alert::success('Berhasil', 'Berkas berhasil ditolak');
             return redirect('/dosen/verifikasi_berkas_mahasiswa');
         }
     }

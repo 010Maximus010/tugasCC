@@ -23,8 +23,10 @@
                             </a>
                             @if ($progress->is_verifikasi == 0)
                             <div class="badge bg-danger">Belum diverifikasi</div>
-                            @else
+                            @elseif ($progress->is_verifikasi == 1)
                             <div class="badge bg-success">Sudah diverifikasi</div>
+                            @else ($progress->is_verifikasi == 2)
+                            <div class="badge bg-dark">Ditolak</div>
                             @endif
 
                         </div>
@@ -96,36 +98,39 @@
                             </div>
                             
                             @if (Auth::user()->role == 'dosen')
-                            <div class="text-end">
-                                <form action="{{ route('verifikasi_update') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="nim" value="{{ $progress->nim }}">
-                                    <input type="hidden" name="semester" value="{{ $progress->semester_aktif }}">
-                                    @if ($progress->is_verifikasi == 1)
-                                    <input type="hidden" name="id" value="0">
-                                    <button type="submit" class="btn btn-warning btn-sm">
-                                        <i class="bi bi-x-circle"></i> Batalkan Verifikasi Berkas
-                                    </button>
-                                    @else
-                                    <input type="hidden" name="id" value="1">
-                                    <button type="submit" class="btn btn-success btn-sm">
-                                        <i class="bi bi-check2-circle"></i> Verifikasi Berkas
-                                    </button>
-                                    @endif
-                                </form>
-                                <!-- Tombol Hapus 
-                                <br>
-                                <form action="{{ route('delete_berkas') }}" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <input type="hidden" name="nim" value="{{ $progress->nim }}">
-                                    <input type="hidden" name="semester" value="{{ $progress->semester_aktif }}">
-                                    <button type="submit" class="btn btn-danger btn-sm">
-                                        <i class="bi bi-trash"></i> Hapus Berkas
-                                    </button>
-                                </form>-->
-                            </div>
+                                <div class="text-end">
+                                    <!-- Form untuk Batalkan Verifikasi atau Verifikasi Berkas -->
+                                    <form action="{{ route('verifikasi_update') }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        <input type="hidden" name="nim" value="{{ $progress->nim }}">
+                                        <input type="hidden" name="semester" value="{{ $progress->semester_aktif }}">
+                                        
+                                        @if ($progress->is_verifikasi == 1)
+                                            <input type="hidden" name="id" value="0">
+                                            <button type="submit" class="btn btn-warning btn-sm">
+                                                <i class="bi bi-x-circle"></i> Batalkan Verifikasi Berkas
+                                            </button>
+                                        @elseif ($progress->is_verifikasi == 0 || $progress->is_verifikasi == 2)
+                                            <input type="hidden" name="id" value="1">
+                                            <button type="submit" class="btn btn-success btn-sm">
+                                                <i class="bi bi-check2-circle"></i> Verifikasi Berkas
+                                            </button>
+                                        @endif
+                                    </form>
+
+                                    <!-- Form untuk Menolak Berkas -->
+                                    <form action="{{ route('verifikasi_update') }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        <input type="hidden" name="nim" value="{{ $progress->nim }}">
+                                        <input type="hidden" name="semester" value="{{ $progress->semester_aktif }}">
+                                        <input type="hidden" name="id" value="2">
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="bi bi-trash"></i> Tolak Berkas
+                                        </button>
+                                    </form>
+                                </div>
                             @endif
+
                         </div>
                         <!-- Card body END -->
                     </div>

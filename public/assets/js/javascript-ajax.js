@@ -160,6 +160,24 @@ $(document).on("click", "#buttonConfirmDelete_pkl", function (event) {
     });
 });
 
+// display a modal confirm delete skripsi
+$(document).on("click", "#buttonConfirmDelete_skripsi", function (event) {
+    event.preventDefault();
+    let href = $(this).attr("data-attr");
+    $.ajax({
+        url: href,
+        // return the result
+        success: function (result) {
+            $("#confirm_delete_skripsi").modal("show");
+            $("#showModalConfirmDelete_skripsi").html(result).show();
+        },
+        error: function (jqXHR, testStatus, error) {
+            console.log(error);
+            alert("Page " + href + " cannot open. Error:" + error);
+        },
+    });
+});
+
 let modal_content = document.getElementsByClassName("modal-content");
 
 // click class btn-close data-bs-toggle="tab" href="#tab-1" click
