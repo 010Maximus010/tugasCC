@@ -165,7 +165,7 @@ class SkripsiController extends Controller
     public function edit($semester_aktif, $nim)
     {
         $data = skripsi::where('nim', $nim)->where('semester_aktif', $semester_aktif)->first();
-        return view('mahasiswa.skripsi.modal', compact('data'));
+        return view('mahasiswa.skripsi.modal.edit_skripsi', compact('data'));
     }
 
     /**
@@ -227,6 +227,11 @@ class SkripsiController extends Controller
         }
     }
 
+    public function delete($semester_aktif, $nim)
+    {
+        $data = skripsi::where('nim', $nim)->where('semester_aktif', $semester_aktif)->first();
+        return view('mahasiswa.pkl.modal.delete_skripsi', compact('data'));
+    }
     /**
      * Remove the specified resource from storage.
      *

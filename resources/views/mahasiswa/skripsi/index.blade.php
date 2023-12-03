@@ -111,7 +111,7 @@
                 <h5 class="modal-title" id="modalConfirmDeleteLabel">Konfirmasi Hapus Data</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div id="showModalConfirmDelete_khs">
+            <div id="showModalConfirmDelete_skripsi">
             </div>
         </div>
     </div>
@@ -182,5 +182,6 @@
         });
     });
 </script>
+
 
 @stop
