@@ -98,6 +98,10 @@ class KHSController extends Controller
 
         $temp = temp_file::where('path', $request->file)->first();
         $irs = irs::where('nim', Auth::user()->nim_nip)->where('semester_aktif', $request->semester_aktif)->first();
+        if (!$irs) {
+            // If sks not found, validation error will be triggered
+            return redirect()->back()->withErrors(['irs' => 'Silahkan isi IRS terlebih dahulu.'])->withInput();
+        }
         $sks = $irs->sks;
 
         // sum sks from 1 - semester aktif

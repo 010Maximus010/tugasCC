@@ -176,15 +176,16 @@ class PKLController extends Controller
     {
         // Validate
         $request->validate([
-            'status_pkl' => 'required|in:Lulus,Tidak Lulus',
+            'confirm' => 'sometimes|accepted',
+            'status_pkl' => 'required|in:Lulus,Sedang Ambil,Belum Ambil',
             'nilai_pkl' => 'required_if:status_pkl,Lulus|in:,A,B,C,D,E',
-            'fileEdit' => 'required',
+            'fileEdit' => 'required_if:confirm,on',
         ], [
             'status_pkl.required' => 'Status PKL tidak boleh kosong',
             'status_pkl.in' => 'Status PKL tidak valid',
             'nilai_pkl.required_if' => 'Nilai PKL tidak boleh kosong',
             'nilai_pkl.in' => 'Nilai PKL tidak valid',
-            'fileEdit.required' => 'File tidak boleh kosong',
+            'fileEdit.required_if' => 'File tidak boleh kosong',
         ]);
 
         if ($request->status_pkl != 'Lulus' && $request->nilai_pkl != null) {
@@ -194,8 +195,9 @@ class PKLController extends Controller
 
         $db = pkl::where('semester_aktif', $semester_aktif)->where('nim', $request->nim)->first();
 
-        $temp = temp_file::where('path', $request->file)->first();
+        $temp = temp_file::where('path', $request->fileEdit)->first();
 
+        if ($temp && $request->confirm == 'on') {
             if (pkl::where('semester_aktif', $semester_aktif)->where('nim', $request->nim)->where('upload_pkl', '!=', NULL)->first()) {
                 unlink(public_path($db->upload_pkl));
             }
@@ -207,7 +209,12 @@ class PKLController extends Controller
                 'upload_pkl' => 'files/pkl/' . $db->nim . '_' . $db->semester_aktif  . '_' . $uniq . '.pdf'
             ]);
             $temp->delete();
-        
+        } else {
+            pkl::where('semester_aktif', $semester_aktif)->where('nim', $request->nim)->update([
+                'status' => $request->status_pkl,
+                'nilai' => $request->nilai_pkl,
+            ]);
+        }
 
         if ($db->update()) {
             Alert::success('Berhasil', 'Data berhasil diubah');
@@ -217,6 +224,7 @@ class PKLController extends Controller
             return redirect('/mahasiswa/data/pkl');
         }
     }
+
 
     public function delete($semester_aktif, $nim)
     {

@@ -7,9 +7,8 @@
         <label class="form-label text-dark">Status</label>
         <select class="form-select" id="status_skripsi" name="status_skripsi">
             <option value="">-- Pilih Status --</option>
-            <option value="Belum Ambil" {{ $data->status == 'Belum Ambil' ? 'selected="true"' : '' }}>Belum Ambil</option>
-            <option value="Sedang Ambil" {{ $data->status == 'Sedang Ambil' ? 'selected="true"' : '' }}>Sedang Ambil</option>
             <option value="Lulus" {{ $data->status == 'Lulus' ? 'selected="true"' : '' }}>Lulus</option>
+            <option value="Tidak Lulus" {{ $data->status == 'Tidak Lulus' ? 'selected="true"' : '' }}>Tidak Lulus</option>
         </select>
     </div>
     <!-- Pilih Status END-->

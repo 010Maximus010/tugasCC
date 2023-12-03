@@ -54,8 +54,6 @@
                                             <td>{{$item->tanggal_sidang != null ? $item->tanggal_sidang : '-'}}</td>
                                             <td>@if ($item->status == 'Lulus')
                                                 <span class="badge bg-success">{{$item->status}}</span>
-                                                @elseif ($item->status == 'Sedang Ambil')
-                                                <span class="badge bg-warning">{{$item->status}}</span>
                                                 @else
                                                 <span class="badge bg-danger">{{$item->status}}</span>
                                                 @endif
