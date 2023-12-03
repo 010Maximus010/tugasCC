@@ -32,7 +32,7 @@
                     <div class="card">
                         <!-- Card header START -->
                         <div class="card-header d-sm-flex text-center align-items-center justify-content-between border-0 pb-0">
-                            <h1 class="card-title h5">Verifikasi Berkas KHS</h1>
+                            <h1 class="card-title h5">Verifikasi Berkas Skripsi</h1>
                         </div>
                         <div class="card-body" style="margin-top: 0px;">
                             <div class="row g-3 mb-4">
@@ -57,7 +57,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <form action="{{ route('berkas_detail_khs') }}" method="GET">
+                            <form action="{{ route('berkas_detail_skripsi') }}" method="GET">
                                 @csrf
                                 <div class="row g-3">
                                     <div class="col-12">
@@ -80,9 +80,9 @@
                                                         <td>{{ $mahasiswa->where('nim', $data->nim)->first()->nim }}</td>
                                                         <td>{{ $mahasiswa->where('nim', $data->nim)->first()->angkatan }}</td>
                                                         <td>
-                                                            @if ($data->is_verifikasi_khs == 1)
+                                                            @if ($data->is_verifikasi_skripsi == 1)
                                                                 <span class="badge bg-success">Sudah diverifikasi</span>
-                                                            @elseif ($data->is_verifikasi_khs == 0)
+                                                            @elseif ($data->is_verifikasi_skripsi == 0)
                                                                 <span class="badge bg-danger">Belum diverifikasi</span>
                                                             @else
                                                                 <span class="badge bg-dark">Ditolak</span>

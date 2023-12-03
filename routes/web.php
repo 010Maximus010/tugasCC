@@ -20,6 +20,8 @@ use App\Http\Controllers\UploadController;
 use App\Http\Controllers\WilayahController;
 use App\Http\Controllers\VerifikasiBerkasController;
 use App\Http\Controllers\VerifikasiBerkasKHSController;
+use App\Http\Controllers\VerifikasiBerkasPKLController;
+use App\Http\Controllers\VerifikasiBerkasSkripsiController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\ProgressMhsContoller;
 use App\Http\Controllers\EntryProgressController;
@@ -87,6 +89,7 @@ Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
         Route::get('/mahasiswa/delete_khs/{semester_aktif}/{nim}', [KHSController::class, 'delete'])->name('delete_khs');
         Route::delete('/mahasiswa/delete_khs/{semester_aktif}/{nim}', [KHSController::class, 'destroy'])->name('khs.destroy');
 
+
         // pkl
         Route::resource('/mahasiswa/pkl', PKLController::class);
         Route::get('/mahasiswa/data/pkl', [PKLController::class, 'data'])->name('data_pkl');
@@ -122,6 +125,15 @@ Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
         Route::get('/dosen/verifikasi_berkas_mahasiswa_khs/detail', [VerifikasiBerkasKHSController::class, 'show'])->name('berkas_detail_khs');
         Route::post('/dosen/verifikasi_berkas_mahasiswa_khs/update', [VerifikasiBerkasKHSController::class, 'update'])->name('verifikasi_update_khs');
 
+        //PKL
+        Route::get('/dosen/verifikasi_berkas_mahasiswa_pkl', [VerifikasiBerkasPKLController::class, 'index']);
+        Route::get('/dosen/verifikasi_berkas_mahasiswa_pkl/detail', [VerifikasiBerkasPKLController::class, 'show'])->name('berkas_detail_pkl');
+        Route::post('/dosen/verifikasi_berkas_mahasiswa_pkl/update', [VerifikasiBerkasPKLController::class, 'update'])->name('verifikasi_update_pkl');
+
+        //SKRIPSI
+        Route::get('/dosen/verifikasi_berkas_mahasiswa_skripsi', [VerifikasiBerkasSkripsiController::class, 'index']);
+        Route::get('/dosen/verifikasi_berkas_mahasiswa_skripsi/detail', [VerifikasiBerkasSkripsiController::class, 'show'])->name('berkas_detail_skripsi');
+        Route::post('/dosen/verifikasi_berkas_mahasiswa_skripsi/update', [VerifikasiBerkasSkripsiController::class, 'update'])->name('verifikasi_update_skripsi');
     });
 
     // Fiture Departemen

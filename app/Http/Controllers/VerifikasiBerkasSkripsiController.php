@@ -16,19 +16,19 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class VerifikasiBerkasKHSController extends Controller
+class VerifikasiBerkasSkripsiController extends Controller
 {
     public function index()
 {
     $mahasiswa = mahasiswa::where('kode_wali', Auth::user()->nim_nip)->get();
     $dosen = dosen::where('nip', Auth::user()->nim_nip)->first();
 
-    // Mengambil semua data tanpa memperdulikan nilai is_verifikasi_khs
+    // Mengambil semua data tanpa memperdulikan nilai is_verifikasi_skripsi
     $progress = tb_entry_progress::where('nip', Auth::user()->nim_nip)
-        ->where('is_khs', 1)
+        ->where('is_skripsi', 1)
         ->get();
 
-    return view('dosen.verifikasi_khs.index', [
+    return view('dosen.verifikasi_skripsi.index', [
         'title' => 'Verifikasi Berkas Mahasiswa',
     ])->with(compact('mahasiswa', 'progress', 'dosen'));
 }
@@ -48,7 +48,7 @@ class VerifikasiBerkasKHSController extends Controller
         $dosen = dosen::where('nip', $mahasiswa->kode_wali)->first();
         $progress = tb_entry_progress::where('nim', $nim)->where('semester_aktif', $semester)->first();
         //$irs = irs::where('nim', $nim)->where('semester_aktif', $semester)->first();
-        $khs = khs::where('nim', $nim)->where('semester_aktif', $semester)->first();
+        $skripsi = skripsi::where('nim', $nim)->where('semester_aktif', $semester)->first();
         //$pkl = pkl::where('nim', $nim)->where('semester_aktif', $semester)->first();
         //$skripsi = skripsi::where('nim', $nim)->where('semester_aktif', $semester)->first();
 
@@ -57,9 +57,9 @@ class VerifikasiBerkasKHSController extends Controller
         //} else if ($progress->is_irs == 0 || $progress->is_khs == 0 || $progress->is_pkl == 0 || $progress->is_skripsi == 0) {
         //    return redirect()->back()->with('error', 'Mahasiswa belum mengisi semua data');
         } else {
-            return view('dosen.verifikasi_khs.berkas', [
+            return view('dosen.verifikasi_skripsi.berkas', [
                 'title' => 'Verifikasi Berkas Mahasiswa',
-            ])->with(compact('mahasiswa', 'dosen', 'progress', 'khs'));
+            ])->with(compact('mahasiswa', 'dosen', 'progress', 'skripsi'));
         }
     }
 
@@ -67,22 +67,22 @@ class VerifikasiBerkasKHSController extends Controller
     {
         if ($request->id == 1) {
             tb_entry_progress::where('nim', $request->nim)->where('semester_aktif', $request->semester)->update([
-                'is_verifikasi_khs' => '1',
+                'is_verifikasi_skripsi' => '1',
             ]);
             Alert::success('Berhasil', 'Berkas berhasil diverifikasi');
-            return redirect('/dosen/verifikasi_berkas_mahasiswa_khs');
+            return redirect('/dosen/verifikasi_berkas_mahasiswa_skripsi');
         } elseif ($request->id == 0) {
             tb_entry_progress::where('nim', $request->nim)->where('semester_aktif', $request->semester)->update([
-                'is_verifikasi_khs' => '0',
+                'is_verifikasi_skripsi' => '0',
             ]);
             Alert::success('Berhasil', 'Berkas berhasil dibatalkan');
-            return redirect('/dosen/verifikasi_berkas_mahasiswa_khs');
+            return redirect('/dosen/verifikasi_berkas_mahasiswa_skripsi');
         } else{
             tb_entry_progress::where('nim', $request->nim)->where('semester_aktif', $request->semester)->update([
-                'is_verifikasi_khs' => '2',
+                'is_verifikasi_skripsi' => '2',
             ]);
             Alert::success('Berhasil', 'Berkas berhasil ditolak');
-            return redirect('/dosen/verifikasi_berkas_mahasiswa_khs');
+            return redirect('/dosen/verifikasi_berkas_mahasiswa_skripsi');
         }
     }
 }

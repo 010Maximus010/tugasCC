@@ -157,11 +157,11 @@
                             </li>
 
                             <?php
-                            $progress = App\Models\tb_entry_progress::where('nip', Auth::user()->nim_nip)->where('is_irs', 1)->where('is_khs', 1)->where('is_pkl', 1)->where('is_skripsi', 1)->where('is_verifikasi', '0')->get();
+                            $progress = App\Models\tb_entry_progress::where('nip', Auth::user()->nim_nip)->where('is_pkl', 1)->where('is_verifikasi_pkl', '0')->get();
                             $count = count($progress);
                             ?>
                             <li class="nav-item">
-                                <a style="font-size: 14px;" class="nav-link {{ ($title == 'Verifikasi Berkas PKL')? 'active' : '' }}" href="/dosen/verifikasi_berkas_mahasiswa">
+                                <a style="font-size: 14px;" class="nav-link {{ ($title == 'Verifikasi Berkas PKL')? 'active' : '' }}" href="/dosen/verifikasi_berkas_mahasiswa_pkl">
                                     <i class="bi bi-clipboard2-check"></i><span> Verifikasi PKL
                                         @if ($count > 0)
                                         <span class="badge bg-danger">{{ $count }}</span>
@@ -170,11 +170,11 @@
                             </li>
 
                             <?php
-                            $progress = App\Models\tb_entry_progress::where('nip', Auth::user()->nim_nip)->where('is_irs', 1)->where('is_khs', 1)->where('is_pkl', 1)->where('is_skripsi', 1)->where('is_verifikasi', '0')->get();
+                            $progress = App\Models\tb_entry_progress::where('nip', Auth::user()->nim_nip)->where('is_skripsi', 1)->where('is_verifikasi_skripsi', '0')->get();
                             $count = count($progress);
                             ?>
                             <li class="nav-item">
-                                <a style="font-size: 14px;" class="nav-link {{ ($title == 'Verifikasi Berkas Skripsi')? 'active' : '' }}" href="/dosen/verifikasi_berkas_mahasiswa">
+                                <a style="font-size: 14px;" class="nav-link {{ ($title == 'Verifikasi Berkas Skripsi')? 'active' : '' }}" href="/dosen/verifikasi_berkas_mahasiswa_skripsi">
                                     <i class="bi bi-clipboard2-check"></i><span> Verifikasi Skripsi
                                         @if ($count > 0)
                                         <span class="badge bg-danger">{{ $count }}</span>

@@ -23,8 +23,10 @@
                             </a>
                             @if ($progress->is_verifikasi_khs == 0)
                             <div class="badge bg-danger">Belum diverifikasi</div>
-                            @else
+                            @elseif ($progress->is_verifikasi_khs == 1)
                             <div class="badge bg-success">Sudah diverifikasi</div>
+                            @else ($progress->is_verifikasi_khs == 2)
+                            <div class="badge bg-dark">Ditolak</div>
                             @endif
 
                         </div>
@@ -110,7 +112,7 @@
                             
                             @if (Auth::user()->role == 'dosen')
                             <div class="text-end">
-                                <form action="{{ route('verifikasi_update_khs') }}" method="POST">
+                                <form action="{{ route('verifikasi_update_khs') }}" method="POST" style="display: inline;">
                                     @csrf
                                     <input type="hidden" name="nim" value="{{ $progress->nim }}">
                                     <input type="hidden" name="semester" value="{{ $progress->semester_aktif }}">
@@ -119,12 +121,23 @@
                                     <button type="submit" class="btn btn-warning btn-sm">
                                         <i class="bi bi-x-circle"></i> Batalkan Verifikasi Berkas
                                     </button>
-                                    @else
+                                    @elseif ($progress->is_verifikasi_khs == 0 || $progress->is_verifikasi_khs == 2)
                                     <input type="hidden" name="id" value="1">
                                     <button type="submit" class="btn btn-success btn-sm">
                                         <i class="bi bi-check2-circle"></i> Verifikasi Berkas
                                     </button>
                                     @endif
+                                </form>
+
+                                <!-- Form untuk Menolak Berkas -->
+                                <form action="{{ route('verifikasi_update_khs') }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        <input type="hidden" name="nim" value="{{ $progress->nim }}">
+                                        <input type="hidden" name="semester" value="{{ $progress->semester_aktif }}">
+                                        <input type="hidden" name="id" value="2">
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="bi bi-trash"></i> Tolak Berkas
+                                        </button>
                                 </form>
                             </div>
                             @endif

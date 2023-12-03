@@ -21,11 +21,11 @@
                                 <i class="bi bi-backspace"></i>
                                 Kembali
                             </a>
-                            @if ($progress->is_verifikasi_pkl == 0)
+                            @if ($progress->is_verifikasi_skripsi == 0)
                             <div class="badge bg-danger">Belum diverifikasi</div>
-                            @elseif ($progress->is_verifikasi_pkl == 1)
+                            @elseif ($progress->is_verifikasi_skripsi == 1)
                             <div class="badge bg-success">Sudah diverifikasi</div>
-                            @else ($progress->is_verifikasi_pkl == 2)
+                            @else ($progress->is_verifikasi_skripsi == 2)
                             <div class="badge bg-dark">Ditolak</div>
                             @endif
 
@@ -79,7 +79,7 @@
                                 </div>
                             </div>
                             <hr>
-                            <h6 class="text-center">Data PKL</h6>
+                            <h6 class="text-center">Data Skripsi</h6>
                             <div class="row g-3 mb-3 table-responsive">
                                 <div class="col-1">
                                 </div>
@@ -87,18 +87,22 @@
                                     <table cellpadding="10" width="100%">
                                         <tr>
                                             <td class="col-2 mb-3"> <strong> Status: </strong> </td>
-                                            <td> {{ $pkl->status }} </td>
+                                            <td> {{ $skripsi->status }} </td>
                                         </tr>
-                                        @if ($pkl->status != 'Belum Ambil')
+                                        @if ($skripsi->status != 'Belum Ambil')
                                         <tr>
                                             <td class="col-2 mb-3"> <strong> Nilai: </strong> </td>
-                                            <td> {{ $pkl->nilai != null ? $pkl->nilai : '-'}} </td>
+                                            <td> {{ $skripsi->nilai != null ? $skripsi->nilai : '-'}} </td>
                                         </tr>
                                         <tr>
-                                            <td class="col-2 mb-3"> <strong> File PKL: </strong> </td>
+                                            <td class="col-2 mb-3"> <strong> Tanggal Sidang: </strong> </td>
+                                            <td> {{ $skripsi->tanggal_sidang != null ? $skripsi->tanggal_sidang : '-' }} </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-2 mb-3"> <strong> File Skripsi: </strong> </td>
                                             <td>
-                                                @if ($pkl->upload_pkl != null)
-                                                <iframe src="{{ asset($pkl->upload_pkl) }}" width="600" height="500"></iframe>
+                                                @if ($skripsi->upload_skripsi != null)
+                                                <iframe src="{{ asset($skripsi->upload_skripsi) }}" width="600" height="500"></iframe>
                                                 @else
                                                 -
                                                 @endif
@@ -108,19 +112,18 @@
                                     </table>
                                 </div>
                             </div>
-                            <hr>
                             @if (Auth::user()->role == 'dosen')
                             <div class="text-end">
-                                <form action="{{ route('verifikasi_update_pkl') }}" method="POST" style="display: inline;">
+                                <form action="{{ route('verifikasi_update_skripsi') }}" method="POST" style="display: inline;">
                                     @csrf
                                     <input type="hidden" name="nim" value="{{ $progress->nim }}">
                                     <input type="hidden" name="semester" value="{{ $progress->semester_aktif }}">
-                                    @if ($progress->is_verifikasi_pkl == 1)
+                                    @if ($progress->is_verifikasi_skripsi == 1)
                                     <input type="hidden" name="id" value="0">
                                     <button type="submit" class="btn btn-warning btn-sm">
                                         <i class="bi bi-x-circle"></i> Batalkan Verifikasi Berkas
                                     </button>
-                                    @elseif ($progress->is_verifikasi_pkl == 0 || $progress->is_verifikasi_pkl == 2)
+                                    @elseif ($progress->is_verifikasi_skripsi == 0 || $progress->is_verifikasi_skripsi == 2)
                                     <input type="hidden" name="id" value="1">
                                     <button type="submit" class="btn btn-success btn-sm">
                                         <i class="bi bi-check2-circle"></i> Verifikasi Berkas
@@ -129,7 +132,7 @@
                                 </form>
 
                                 <!-- Form untuk Menolak Berkas -->
-                                <form action="{{ route('verifikasi_update_pkl') }}" method="POST" style="display: inline;">
+                                <form action="{{ route('verifikasi_update_skripsi') }}" method="POST" style="display: inline;">
                                         @csrf
                                         <input type="hidden" name="nim" value="{{ $progress->nim }}">
                                         <input type="hidden" name="semester" value="{{ $progress->semester_aktif }}">

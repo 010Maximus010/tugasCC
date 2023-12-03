@@ -215,13 +215,24 @@ class KHSController extends Controller
         }
 
         if ($db->update()) {
+            tb_entry_progress::where('nim', Auth::user()->nim_nip)->where('semester_aktif', $semester_aktif)->update(['is_verifikasi_khs' => 0]);
             Alert::success('Berhasil', 'Data berhasil diubah');
             return redirect('/mahasiswa/data/khs');
         } else {
             Alert::error('Gagal', 'Data gagal diubah');
             return redirect('/mahasiswa/data/khs');
         }
+
     }
+
+    /*public function verifikasiUlang($semester_aktif, $nim){
+        tb_entry_progress::where('nim', $nim)
+        ->where('semester_aktif', $semester_aktif)
+        ->update([
+            'is_verifikasi_khs' => 0,
+        ]);
+        return view('mahasiswa.khs.modal.edit_khs', compact('data'));
+    }*/
 
     public function delete($semester_aktif, $nim)
     {

@@ -61,7 +61,15 @@
                                             <td>
                                                 @if ($progress->where('nim', Auth::User()->nim_nip)->where('semester_aktif', $item->semester_aktif)->first()->is_verifikasi_pkl == 1)
                                                 <small>Data telah diverifikasi</small>
-                                                @else
+                                                @elseif ($progress->where('nim', Auth::User()->nim_nip)->where('semester_aktif', $item->semester_aktif)->first()->is_verifikasi_pkl == 2)
+                                                <small>Data ditolak</small>
+                                                <a href="" class="btn btn-success btn-sm" id="buttonModalPKL" data-bs-toggle="modal" data-bs-target="#editPKL" data-attr="{{ route('pkl.edit', [$item->semester_aktif, $item->nim]) }}">
+                                                    <i class="bi bi-pencil-square"></i> Edit
+                                                </a>
+                                                <a class="btn btn-danger btn-sm" id="buttonConfirmDelete_pkl" data-bs-toggle="modal" data-bs-target="#confirm_delete_pkl" data-attr="{{ route('delete_pkl', [$item->semester_aktif, $item->nim]) }}">
+                                                    <i class="bi bi-trash-fill"></i> Hapus
+                                                </a>
+                                                @else ($progress->where('nim', Auth::User()->nim_nip)->where('semester_aktif', $item->semester_aktif)->first()->is_verifikasi_pkl == 0)
                                                 <a href="" class="btn btn-success btn-sm" id="buttonModalPKL" data-bs-toggle="modal" data-bs-target="#editPKL" data-attr="{{ route('pkl.edit', [$item->semester_aktif, $item->nim]) }}">
                                                     <i class="bi bi-pencil-square"></i> Edit
                                                 </a>

@@ -216,6 +216,7 @@ class PKLController extends Controller
         }
 
         if ($db->update()) {
+            tb_entry_progress::where('nim', Auth::user()->nim_nip)->where('semester_aktif', $semester_aktif)->update(['is_verifikasi_pkl' => 0]);
             Alert::success('Berhasil', 'Data berhasil diubah');
             return redirect('/mahasiswa/data/pkl');
         } else {
