@@ -82,8 +82,7 @@ class SkripsiController extends Controller
         $request->validate([
             'semester_aktif' => 'required|unique:skripsis,semester_aktif,NULL,id,nim,' . Auth::user()->nim_nip,
             'tanggal_sidang' => 'required_if:status_skripsi,Lulus',
-            'nilai_skripsi' => 'required_if:status_skripsi,Lulus|in:,A,B,C,D,E',
-            'status_skripsi' => 'required|in:,Lulus,Tidak Lulus',
+            'nilai_skripsi' => 'required',
             'file' => 'required',
         ], [
             'semester_aktif.required' => 'Semester Aktif tidak boleh kosong',
@@ -91,15 +90,13 @@ class SkripsiController extends Controller
             'tanggal_sidang.required_if' => 'Tanggal Sidang tidak boleh kosong',
             'nilai_skripsi.required_if' => 'Nilai Skripsi tidak boleh kosong',
             'nilai_skripsi.in' => 'Nilai Skripsi harus diisi dengan A, B, C, D, E',
-            'status_skripsi.required' => 'Status Skripsi tidak boleh kosong',
-            'status_skripsi.in' => 'Status Skripsi harus diisi dengan Lulus, Tidak Lulus',
             'file.required' => 'File tidak boleh kosong',
         ]);
 
-        if ($request->status_skripsi != 'Lulus' && $request->nilai_skripsi != null) {
+       /* if ($request->status_skripsi != 'Lulus' && $request->nilai_skripsi != null) {
             Alert::error('Gagal', 'Nilai Skripsi hanya bisa diisi jika status Skripsi adalah Lulus');
             return redirect()->back();
-        }
+        }*/
 
         $temp = temp_file::where('path', $request->file)->first();
 
@@ -109,17 +106,18 @@ class SkripsiController extends Controller
                 'nim' => Auth::user()->nim_nip,
                 'semester_aktif' => $request->semester_aktif,
                 'tanggal_sidang' => $request->tanggal_sidang,
-                'status' => $request->status_skripsi,
+                'status' => 'Lulus',
                 'upload_skripsi' => $temp->path,
+                'nilai' => $request->nilai_skripsi,
             ]);
-            if ($request->status_skripsi == 'Lulus') {
+          /*  if ($request->status_skripsi == 'Lulus') {
                 skripsi::where('nim', Auth::user()->nim_nip)
                     ->where('semester_aktif', $request->semester_aktif)
                     ->update([
                         'nilai' => $request->nilai_skripsi,
                     ]);
             }
-        
+        */
 
         tb_entry_progress::where('nim', Auth::user()->nim_nip)
             ->where('semester_aktif', $request->semester_aktif)
@@ -180,13 +178,10 @@ class SkripsiController extends Controller
         // Validate
         $request->validate([
             'confirm' => 'sometimes|accepted',
-            'status_skripsi' => 'required|in:Lulus,Tidak Lulus',
-            'nilai_skripsi' => 'required_if:status_skripsi,Lulus|in:,A,B,C,D,E',
+            'nilai_skripsi' => 'required',
             'tanggal_sidang' => 'required_if:status_skripsi,Lulus',
             'fileEdit' => 'required_if:confirm,on',
         ], [
-            'status_skripsi.required' => 'Status Skripsi tidak boleh kosong',
-            'status_skripsi.in' => 'Status Skripsi harus diisi dengan Lulus, Sedang Ambil, Belum Ambil',
             'nilai_skripsi.required_if' => 'Nilai Skripsi tidak boleh kosong',
             'nilai_skripsi.in' => 'Nilai Skripsi harus diisi dengan A, B, C, D, E',
             'tanggal_sidang.required_if' => 'Tanggal Sidang tidak boleh kosong',
@@ -205,7 +200,7 @@ class SkripsiController extends Controller
             rename(public_path('files/temp/' . $temp->folder . '/' . $temp->path), public_path('files/skripsi/' . $db->nim . '_' . $db->semester_aktif . '_' . $uniq . '.pdf'));
             skripsi::where('semester_aktif', $semester_aktif)->where('nim', $request->nim)->update([
                 'tanggal_sidang' => $request->tanggal_sidang,
-                'status' => $request->status_skripsi,
+                'status' => 'Lulus',
                 'nilai' => $request->nilai_skripsi,
                 'upload_skripsi' => 'files/skripsi/' . $db->nim . '_' . $db->semester_aktif . '_' . $uniq . '.pdf'
             ]);
@@ -213,7 +208,7 @@ class SkripsiController extends Controller
         } else {
             skripsi::where('semester_aktif', $semester_aktif)->where('nim', $request->nim)->update([
                 'tanggal_sidang' => $request->tanggal_sidang,
-                'status' => $request->status_skripsi,
+                'status' => 'Lulus',
                 'nilai' => $request->nilai_skripsi,
             ]);
         }

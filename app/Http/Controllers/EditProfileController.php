@@ -151,7 +151,7 @@ class EditProfileController extends Controller
         ]);
 
         // if found nim on tb_entry_progress
-        if (tb_entry_progress::where('nim', $id)->first()) {
+       if (tb_entry_progress::where('nim', $id)->first()) {
             // Update tb_entry_progress
             tb_entry_progress::where('nim', $id)->update([
                 'nip' => $request->dosen_wali,

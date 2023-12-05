@@ -77,70 +77,69 @@ class PKLController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        // Validate
-        $request->validate([
-            'semester_aktif' => 'required|unique:pkls,semester_aktif,NULL,id,nim,' . Auth::user()->nim_nip,
-            'status_pkl' => 'required|in:,Lulus,Tidak Lulus',
-            'nilai_pkl' => 'required_if:status_pkl,Lulus|in:,A,B,C,D,E',
-            'file' => 'required',
-        ], [
-            'semester_aktif.required' => 'Semester Aktif tidak boleh kosong',
-            'semester_aktif.unique' => 'Semester Aktif sudah ada',
-            'status_pkl.required' => 'Status PKL tidak boleh kosong',
-            'status_pkl.in' => 'Status PKL tidak valid',
-            'nilai_pkl.required_if' => 'Nilai PKL tidak boleh kosong',
-            'nilai_pkl.in' => 'Nilai PKL tidak valid',
-            'file.required' => 'File tidak boleh kosong',
-        ]);
+{
+    // Validate
+    $request->validate([
+        'semester_aktif' => 'required|unique:pkls,semester_aktif,NULL,id,nim,' . Auth::user()->nim_nip,
+        'nilai_pkl' => 'required_if:status_pkl,Lulus|in:,A,B,C,D,E',
+        'file' => 'required',
+    ], [
+        'semester_aktif.required' => 'Semester Aktif tidak boleh kosong',
+        'semester_aktif.unique' => 'Semester Aktif sudah ada',
+        'nilai_pkl.required_if' => 'Nilai PKL tidak boleh kosong',
+        'nilai_pkl.in' => 'Nilai PKL tidak valid',
+        'file.required' => 'File tidak boleh kosong',
+    ]);
 
-        if ($request->status_pkl != 'Lulus' && $request->nilai_pkl != null) {
-            Alert::error('Gagal', 'Nilai PKL hanya bisa diisi jika status PKL adalah Lulus');
-            return redirect()->back();
-        }
+    // Validasi tambahan
+    /*if ($request->status_pkl != 'Lulus' && $request->nilai_pkl != null) {
+        Alert::error('Gagal', 'Nilai PKL hanya bisa diisi jika status PKL adalah Lulus');
+        return redirect()->back();
+    }*/
 
-        $temp = temp_file::where('path', $request->file)->first();
+    $temp = temp_file::where('path', $request->file)->first();
 
-        // Insert to DB
-       
-            $db = pkl::create([
-                'nim' => Auth::user()->nim_nip,
-                'semester_aktif' => $request->semester_aktif,
-                'status' => $request->status_pkl,
-                'upload_pkl' => $temp->path,
-            ]);
-            if ($request->status_pkl == 'Lulus') {
-                pkl::where('nim', Auth::user()->nim_nip)
-                    ->where('semester_aktif', $request->semester_aktif)
-                    ->update([
-                        'nilai' => $request->nilai_pkl,
-                    ]);
-            }
-        
+    // Insert to DB
+    $db = pkl::create([
+        'nim' => Auth::user()->nim_nip,
+        'semester_aktif' => $request->semester_aktif,
+        'status' => 'Lulus', // Mengeset status 'Lulus'
+        'upload_pkl' => $temp->path,
+        'nilai' => $request->nilai_pkl,
+    ]);
 
-        tb_entry_progress::where('nim', Auth::user()->nim_nip)
+   /* if ($request->status_pkl == 'Lulus') {
+        pkl::where('nim', Auth::user()->nim_nip)
             ->where('semester_aktif', $request->semester_aktif)
             ->update([
-                'is_pkl' => 1,
+                'nilai' => $request->nilai_pkl,
             ]);
+    }*/
 
-        if ($temp) {
-            $uniq = time() . uniqid();
-            rename(public_path('files/temp/' . $temp->folder . '/' . $temp->path), public_path('files/pkl/' . $db->nim . '_' . $db->semester_aktif . '_' . $uniq . '.pdf'));
-            $db->where('nim', Auth::user()->nim_nip)->where('semester_aktif', $request->semester_aktif)->update([
-                'upload_pkl' => 'files/pkl/' . $db->nim . '_' . $db->semester_aktif . '_' . $uniq . '.pdf'
-            ]);
-            $temp->delete();
-        }
+    tb_entry_progress::where('nim', Auth::user()->nim_nip)
+        ->where('semester_aktif', $request->semester_aktif)
+        ->update([
+            'is_pkl' => 1,
+        ]);
 
-        if ($db->save()) {
-            Alert::success('Berhasil', 'Data berhasil disimpan');
-            return redirect()->route('skripsi.index');
-        } else {
-            Alert::error('Gagal', 'Data gagal disimpan');
-            return redirect()->route('pkl.index');
-        }
+    if ($temp) {
+        $uniq = time() . uniqid();
+        rename(public_path('files/temp/' . $temp->folder . '/' . $temp->path), public_path('files/pkl/' . $db->nim . '_' . $db->semester_aktif . '_' . $uniq . '.pdf'));
+        $db->where('nim', Auth::user()->nim_nip)->where('semester_aktif', $request->semester_aktif)->update([
+            'upload_pkl' => 'files/pkl/' . $db->nim . '_' . $db->semester_aktif . '_' . $uniq . '.pdf'
+        ]);
+        $temp->delete();
     }
+
+    if ($db->save()) {
+        Alert::success('Berhasil', 'Data berhasil disimpan');
+        return redirect()->route('skripsi.index');
+    } else {
+        Alert::error('Gagal', 'Data gagal disimpan');
+        return redirect()->route('pkl.index');
+    }
+}
+
 
     /**
      * Display the specified resource.
@@ -177,12 +176,9 @@ class PKLController extends Controller
         // Validate
         $request->validate([
             'confirm' => 'sometimes|accepted',
-            'status_pkl' => 'required|in:Lulus,Tidak Lulus',
             'nilai_pkl' => 'required_if:status_pkl,Lulus|in:,A,B,C,D,E',
             'fileEdit' => 'required_if:confirm,on',
         ], [
-            'status_pkl.required' => 'Status PKL tidak boleh kosong',
-            'status_pkl.in' => 'Status PKL tidak valid',
             'nilai_pkl.required_if' => 'Nilai PKL tidak boleh kosong',
             'fileEdit.required_if' => 'File tidak boleh kosong',
         ]);
@@ -203,14 +199,14 @@ class PKLController extends Controller
             $uniq = time() . uniqid();
             rename(public_path('files/temp/' . $temp->folder . '/' . $temp->path), public_path('files/pkl/' . $db->nim . '_' . $db->semester_aktif . '_' . $uniq . '.pdf'));
             pkl::where('semester_aktif', $semester_aktif)->where('nim', $request->nim)->update([
-                'status' => $request->status_pkl,
+                'status' => 'Lulus',
                 'nilai' => $request->nilai_pkl,
                 'upload_pkl' => 'files/pkl/' . $db->nim . '_' . $db->semester_aktif  . '_' . $uniq . '.pdf'
             ]);
             $temp->delete();
         } else {
             pkl::where('semester_aktif', $semester_aktif)->where('nim', $request->nim)->update([
-                'status' => $request->status_pkl,
+                'status' => 'Lulus',
                 'nilai' => $request->nilai_pkl,
             ]);
         }

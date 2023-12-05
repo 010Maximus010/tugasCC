@@ -166,14 +166,10 @@
                                                 <div class="row">
                                                     <!-- Input Pilih Status START -->
                                                     <div class="col-6">
-                                                        <label class="form-label text-dark">Status</label>
-                                                        <select class="form-select @error('status_pkl') is-invalid @enderror" id="status_pkl" name="status_pkl">
-                                                            <option value="">-- Pilih Status --</option>
-                                                            <option value="Lulus">Lulus</option>
-                                                            <option value="Tidak Lulus">Tidak Lulus</option>
-                                                        </select>
-                                                        <div class="text-danger small fst-italic">*Pilih status PKL Anda</div>
+                                                        <label class="form-label">Status</label>
+                                                            <input type="text" class="form-control" id="status_pkl" name="status_pkl" value="Lulus" readonly>
                                                     </div>
+
                                                     <!-- Input Pilih Status END -->
 
                                                     <!-- Pilih Nilai START-->
@@ -234,18 +230,15 @@
 
                                             <div id="skripsi" class="col-12">
                                                 <div class="row">
-
-                                                    <!-- Pilih Status START-->
+                                                    <!-- Input Pilih Status START -->
                                                     <div class="col-12 mb-3">
-                                                        <label class="form-label text-dark">Status</label>
-                                                        <select class="form-select @error('status_skripsi') is-invalid @enderror" id="status_skripsi" name="status_skripsi">
-                                                            <option value="">-- Pilih Status --</option>
-                                                            <option value="Lulus">Lulus</option>
-                                                            <option value="Tidak Lulus">Tidak Lulus</option>
-                                                        </select>
-                                                        <div class="text-danger small fst-italic">*Pilih status Skripsi Anda</div>
+                                                        <label class="form-label">Status</label>
+                                                            <input type="text" class="form-control" id="status_skripsi" name="status_skripsi" value="Lulus" readonly>
                                                     </div>
-                                                    <!-- Pilih Status END-->
+                                            
+                                        
+
+                                                    <!-- Input Pilih Status END -->
 
                                                     <!-- Input Tanggal START -->
                                                     <div class="col-6 mb-3">

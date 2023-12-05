@@ -4,13 +4,10 @@
     <input type="hidden" name="nim" value="{{ $data->nim }}">
     <!-- Pilih Status START-->
     <div class="col-12">
-        <label class="form-label text-dark">Status</label>
-        <select class="form-select" id="status_skripsi" name="status_skripsi">
-            <option value="">-- Pilih Status --</option>
-            <option value="Lulus" {{ $data->status == 'Lulus' ? 'selected="true"' : '' }}>Lulus</option>
-            <option value="Tidak Lulus" {{ $data->status == 'Tidak Lulus' ? 'selected="true"' : '' }}>Tidak Lulus</option>
-        </select>
+        <label class="form-label">Status</label>
+            <input type="text" class="form-control" id="status_pkl" name="status_pkl" value="Lulus" readonly>
     </div>
+
     <!-- Pilih Status END-->
 
     <!-- Input Tanggal START -->
