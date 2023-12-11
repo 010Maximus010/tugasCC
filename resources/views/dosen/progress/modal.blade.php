@@ -68,7 +68,7 @@
         </div>
     </div>
     @endif
-    @if ($request->semester >= 8)
+    @if ($request->semester >= 7)
     <div class="tab-pane fade" id="tab-4">
         <div class="row g-3">
             <div class="text-end">

@@ -25,6 +25,9 @@ use App\Http\Controllers\VerifikasiBerkasSkripsiController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\ProgressMhsContoller;
 use App\Http\Controllers\EntryProgressController;
+use App\Http\Controllers\RekapPKLController;
+use App\Http\Controllers\RekapSkripsiController;
+use App\Http\Controllers\RekapController;
 
 /*
 |--------------------------------------------------------------------------
@@ -155,11 +158,32 @@ Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
         Route::post('/departemen/data_mahasiswa/detail', [MahasiswaController::class, 'data_mahasiswa_detail'])->name('data_mahasiswa_detail');
 
         // data mahasiswa pkl
-        Route::get('/departemen/data_mahasiswa_pkl', [MahasiswaController::class, 'data_pkl']);
-        Route::post('/departemen/data_mahasiswa/detail', [MahasiswaController::class, 'data_mahasiswa_detail'])->name('data_mahasiswa_detail');
+        Route::get('/rekap-pkl', [RekapPKLController::class, 'index'])->name('rekap.pkl');
+        Route::get('/list-pkl/{status}/{year}', [RekapPKLController::class, 'listPKL'])->name('list.pkl');
+        //Route::get('/list_sudah_pkl/{year}', 'RekapPKLController@listPKLSudah');
+        //Route::get('/list_belum_pkl/{year}', 'RekapPKLController@listPKLBelum');
+        //Route::get('/departemen/data_mahasiswa_pkl', [MahasiswaController::class, 'data_pkl']);
+        //Route::get('/departemen/data_mahasiswa_pkl', [RekapPKLController::class, 'getRekapData'])->name('rekap.data');
+        //Route::get('/departemen/data_mahasiswa_pkl', [RekapPKLController::class, 'rekap_pkl']);
+        Route::get('/departemen/data_mahasiswa_pkl', [RekapPKLController::class, 'rekap_pkl']);
+        Route::get('/rekap.dataPKL', [RekapPKLController::class, 'getRekapDataPKL'])->name('rekap.dataPKL');
 
         // data mahasiswa skripsi
+        Route::get('/departemen/data_mahasiswa_skripsi', [RekapSkripsiController::class, 'rekap_skripsi']);
+        Route::get('/rekap.dataSkripsi', [RekapSkripsiController::class, 'getRekapDataSkripsi'])->name('rekap.dataSkripsi');
         Route::get('/departemen/data_mahasiswa_skripsi', [MahasiswaController::class, 'data_skripsi']);
+        Route::get('/rekap-skripsi', [RekapSkripsiController::class, 'index'])->name('rekap.skripsi');
+        Route::get('/list-skripsi/{status}/{year}', [RekapSkripsiController::class, 'listSkripsi'])->name('list.skripsi');
+
+        // data mahasiswa status
+        //Route::get('/departemen/data_status_mahasiswa', [MahasiswaController::class, 'rekap_angkatan'])->name('rekap_angkatan');
+        //Route::get('/departemen/data_status_mahasiswa', [MahasiswaController::class, 'rekap_status'])->name('rekap_status');
+        // Menggunakan controller sebagai objek
+        Route::get('/rekap/status/{status}', [RekapController::class, 'status'])->name('rekap.status');
+        Route::get('/rekap/angkatan/{angkatan}', [RekapController::class, 'angkatan'])->name('rekap.angkatan');
+        Route::get('/rekap/tahun-status/{tahun}/{status}', [RekapController::class, 'tahunStatus'])->name('rekap.tahun-status');
+
+
     });
 
     //edit profile

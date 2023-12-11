@@ -61,7 +61,7 @@
                                             <td>
                                                 @if ($progress->where('nim', Auth::User()->nim_nip)->where('semester_aktif', $item->semester_aktif)->first()->is_verifikasi_pkl == 1)
                                                 <small>Data telah diverifikasi</small>
-                                                @elseif ($progress->where('nim', Auth::User()->nim_nip)->where('semester_aktif', $item->semester_aktif)->first()->is_verifikasi_pkl == 2)
+                                                @elseif ($progress->where('nim', Auth::User()->nim_nip)->where('semester_aktif', $item->semester_aktif)->first()->is_pkl == 0)
                                                 <small>Data ditolak</small>
                                                 <a href="" class="btn btn-success btn-sm" id="buttonModalPKL" data-bs-toggle="modal" data-bs-target="#editPKL" data-attr="{{ route('pkl.edit', [$item->semester_aktif, $item->nim]) }}">
                                                     <i class="bi bi-pencil-square"></i> Edit

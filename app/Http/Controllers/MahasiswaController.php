@@ -249,6 +249,14 @@ class MahasiswaController extends Controller
         ])->with(compact('mahasiswaAll'));
     }
 
+    public function rekap_angkatan()
+    {
+        $mahasiswaAll = mahasiswa::all();
+        return view('departemen.data_status.index', [
+            'title' => 'Data Status Mahasiswa',
+        ])->with(compact('mahasiswaAll'));
+    }
+
     public function data_mahasiswa_detail(Request $request)
     {
         $mahasiswa = mahasiswa::where('nim', $request->nim)->first();
@@ -260,7 +268,7 @@ class MahasiswaController extends Controller
         ])->with(compact('mahasiswa', 'dosen', 'kabupaten', 'provinsi'));
     }
 
-    public function data_pkl()
+    public function data_pkl_detail()
     {
         $mahasiswaAll = mahasiswa::orderBy('angkatan', 'asc')->get();
         $selectPKL = mahasiswa::orderBy('tb_entry_progresses.semester_aktif', 'desc')->join('pkls', 'mahasiswas.nim', '=', 'pkls.nim')
@@ -277,7 +285,21 @@ class MahasiswaController extends Controller
             $mahasiswaPKL[] = $value;
         }
 
-        return view('departemen.data_pkl.index', [
+        //$jumlahSudahPKL = [];
+        //$jumlahBelumPKL = [];
+
+       // foreach ($mahasiswaAll as $angkatan) {
+            // Menghitung jumlah mahasiswa sudah PKL per angkatan
+        //    $sudahPKLCount = $mahasiswaPKL->where('angkatan', $angkatan->angkatan)->count();
+        //    $jumlahSudahPKL[$angkatan->angkatan] = $sudahPKLCount;
+    
+            // Menghitung jumlah mahasiswa belum PKL per angkatan
+        //    $belumPKLCount = $mahasiswaAll->where('angkatan', $angkatan->angkatan)->count() - $sudahPKLCount;
+        //    $jumlahBelumPKL[$angkatan->angkatan] = $belumPKLCount;
+        //}
+
+
+        return view('departemen.data_pkl.list_pkl_sudah', [
             'title' => 'Data Mahasiswa PKL',
         ])->with(compact('mahasiswaAll', 'mahasiswaPKL'));
     }

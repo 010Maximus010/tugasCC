@@ -79,7 +79,7 @@ class VerifikasiBerkasController extends Controller
             return redirect('/dosen/verifikasi_berkas_mahasiswa');
         } else{
             tb_entry_progress::where('nim', $request->nim)->where('semester_aktif', $request->semester)->update([
-                'is_verifikasi' => '2',
+                'is_irs' => '0',
             ]);
             Alert::success('Berhasil', 'Berkas berhasil ditolak');
             return redirect('/dosen/verifikasi_berkas_mahasiswa');

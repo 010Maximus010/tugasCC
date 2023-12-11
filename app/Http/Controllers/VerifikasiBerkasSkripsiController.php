@@ -79,7 +79,7 @@ class VerifikasiBerkasSkripsiController extends Controller
             return redirect('/dosen/verifikasi_berkas_mahasiswa_skripsi');
         } else{
             tb_entry_progress::where('nim', $request->nim)->where('semester_aktif', $request->semester)->update([
-                'is_verifikasi_skripsi' => '2',
+                'is_skripsi' => '0',
             ]);
             Alert::success('Berhasil', 'Berkas berhasil ditolak');
             return redirect('/dosen/verifikasi_berkas_mahasiswa_skripsi');

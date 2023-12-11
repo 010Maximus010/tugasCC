@@ -206,7 +206,7 @@ class IRSController extends Controller
         }
 
         if ($db->update()) {
-            tb_entry_progress::where('nim', Auth::user()->nim_nip)->where('semester_aktif', $semester_aktif)->update(['is_verifikasi' => 0]);
+            tb_entry_progress::where('nim', Auth::user()->nim_nip)->where('semester_aktif', $semester_aktif)->update(['is_irs' => 1,'is_verifikasi' => 0]);
             Alert::success('Berhasil', 'Data berhasil diubah');
             return redirect('/mahasiswa/data/irs');
         } else {
@@ -230,6 +230,12 @@ class IRSController extends Controller
     public function destroy($semester_aktif, $nim)
     {
         irs::where('nim', $nim)->where('semester_aktif', $semester_aktif)->delete();
+
+
+        // Update is_khs menjadi 0
+        tb_entry_progress::where('nim', $nim)
+        ->where('semester_aktif', $semester_aktif)
+        ->update(['is_irs' => 0]);
 
         // Alert success
         Alert::success('Success!', 'Data IRS berhasil dihapus');

@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
+
 class VerifikasiBerkasPKLController extends Controller
 {
     public function index()
@@ -56,7 +57,7 @@ class VerifikasiBerkasPKLController extends Controller
             return redirect()->back()->with('error', 'Data tidak ditemukan');
         //} else if ($progress->is_irs == 0 || $progress->is_khs == 0 || $progress->is_pkl == 0 || $progress->is_skripsi == 0) {
         //    return redirect()->back()->with('error', 'Mahasiswa belum mengisi semua data');
-        } else {
+        }   else {
             return view('dosen.verifikasi_pkl.berkas', [
                 'title' => 'Verifikasi Berkas Mahasiswa',
             ])->with(compact('mahasiswa', 'dosen', 'progress', 'pkl'));
@@ -79,7 +80,7 @@ class VerifikasiBerkasPKLController extends Controller
             return redirect('/dosen/verifikasi_berkas_mahasiswa_pkl');
         } else{
             tb_entry_progress::where('nim', $request->nim)->where('semester_aktif', $request->semester)->update([
-                'is_verifikasi_pkl' => '2',
+                'is_pkl' => '0',
             ]);
             Alert::success('Berhasil', 'Berkas berhasil ditolak');
             return redirect('/dosen/verifikasi_berkas_mahasiswa_pkl');

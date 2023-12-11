@@ -74,22 +74,24 @@
                                                 </thead>
                                                 <tbody>
                                                     @foreach ($progress as $data)
-                                                    <tr style="cursor: pointer;">
-                                                        <td>{{ $data->semester_aktif }}</td>
-                                                        <td>{{ $mahasiswa->where('nim', $data->nim)->first()->nama }}</td>
-                                                        <td>{{ $mahasiswa->where('nim', $data->nim)->first()->nim }}</td>
-                                                        <td>{{ $mahasiswa->where('nim', $data->nim)->first()->angkatan }}</td>
-                                                        <td>
-                                                            @if ($data->is_verifikasi_khs == 1)
-                                                                <span class="badge bg-success">Sudah diverifikasi</span>
-                                                            @elseif ($data->is_verifikasi_khs == 0)
-                                                                <span class="badge bg-danger">Belum diverifikasi</span>
-                                                            @else
-                                                                <span class="badge bg-dark">Ditolak</span>
-                                                            @endif
-                                                        </td>
-                                                        <button type="submit" id="{{ $data->nim }}_{{ $data->semester_aktif }}" name="nim_semester" value="{{ $data->nim }}_{{ $data->semester_aktif }}" hidden> Detail</button>
-                                                    </tr>
+                                                        @if ($data->is_khs == 1)
+                                                            <tr style="cursor: pointer;">
+                                                                <td>{{ $data->semester_aktif }}</td>
+                                                                <td>{{ $mahasiswa->where('nim', $data->nim)->first()->nama }}</td>
+                                                                <td>{{ $mahasiswa->where('nim', $data->nim)->first()->nim }}</td>
+                                                                <td>{{ $mahasiswa->where('nim', $data->nim)->first()->angkatan }}</td>
+                                                                <td>
+                                                                    @if ($data->is_verifikasi_khs == 1)
+                                                                        <span class="badge bg-success">Sudah diverifikasi</span>
+                                                                    @elseif ($data->is_verifikasi_khs == 0)
+                                                                        <span class="badge bg-danger">Belum diverifikasi</span>
+                                                                    @else
+                                                                        <span class="badge bg-dark">Ditolak</span>
+                                                                    @endif
+                                                                </td>
+                                                                <button type="submit" id="{{ $data->nim }}_{{ $data->semester_aktif }}" name="nim_semester" value="{{ $data->nim }}_{{ $data->semester_aktif }}" hidden> Detail</button>
+                                                            </tr>
+                                                        @endif
                                                     @endforeach
                                                 </tbody>
                                             </table>

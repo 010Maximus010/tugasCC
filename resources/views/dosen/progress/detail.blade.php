@@ -127,15 +127,15 @@
                     <li class="nav-item"> <a class="text-white nav-link {{ request('semester') == 1 ? 'active' : '' }}" data-bs-toggle="tab" href="#tab-1" id="tab1"> IRS </a> </li>
                     <li class="nav-item"> <a class="text-white nav-link {{ request('semester') == 2 ? 'active' : '' }}" data-bs-toggle="tab" href="#tab-2" id="tab2"> KHS </a> </li>
 
-                    {{-- Tampilkan PKL hanya jika $isShowPKL true --}}
-                    @if ($isShowPKL)
-                        <li class="nav-item"> <a class="text-white nav-link {{ request('semester') == 3 ? 'active' : '' }}" data-bs-toggle="tab" href="#tab-3" id="tab3"> PKL </a> </li>
-                    @endif
+                    {{-- Tampilkan PKL hanya jika semester lebih dari atau sama dengan 7 --}}
+                @if (request('semester') >= 6)
+                    <li class="nav-item"> <a class="text-white nav-link {{ request('semester') == 3 ? 'active' : '' }}" data-bs-toggle="tab" href="#tab-3" id="tab3"> PKL </a> </li>
+                @endif
 
-                    {{-- Tampilkan Skripsi hanya jika $isShowSkripsi true --}}
-                    @if ($isShowSkripsi)
-                        <li class="nav-item"> <a class="text-white nav-link {{ request('semester') == 4 ? 'active' : '' }}" data-bs-toggle="tab" href="#tab-4" id="tab4"> Skripsi </a> </li>
-                    @endif
+                {{-- Tampilkan Skripsi hanya jika semester lebih dari atau sama dengan 6 --}}
+                @if (request('semester') >= 7)
+                    <li class="nav-item"> <a class="text-white nav-link {{ request('semester') == 4 ? 'active' : '' }}" data-bs-toggle="tab" href="#tab-4" id="tab4"> Skripsi </a> </li>
+                @endif
                 </ul>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" id="btnClose" aria-label="Close"></button>
             </div>

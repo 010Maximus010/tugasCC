@@ -55,9 +55,10 @@ class PKLController extends Controller
         $progress = tb_entry_progress::where('nim', Auth::user()->nim_nip)->first();
         $mahasiswa = mahasiswa::where('nim', Auth::user()->nim_nip)->first();
         $pkl = pkl::where('nim', Auth::user()->nim_nip)->get();
+        
         return view('mahasiswa.pkl.index', [
             'title' => 'PKL',
-        ])->with(compact('mahasiswa', 'pkl', 'progress'));
+        ])->with(compact('mahasiswa', 'pkl', 'progress', ));
     }
 
     /**
@@ -81,23 +82,20 @@ class PKLController extends Controller
         // Validate
         $request->validate([
             'semester_aktif' => 'required|unique:pkls,semester_aktif,NULL,id,nim,' . Auth::user()->nim_nip,
-            'status_pkl' => 'required|in:,Lulus,Tidak Lulus',
             'nilai_pkl' => 'required_if:status_pkl,Lulus|in:,A,B,C,D,E',
             'file' => 'required',
         ], [
             'semester_aktif.required' => 'Semester Aktif tidak boleh kosong',
             'semester_aktif.unique' => 'Semester Aktif sudah ada',
-            'status_pkl.required' => 'Status PKL tidak boleh kosong',
-            'status_pkl.in' => 'Status PKL tidak valid',
             'nilai_pkl.required_if' => 'Nilai PKL tidak boleh kosong',
             'nilai_pkl.in' => 'Nilai PKL tidak valid',
             'file.required' => 'File tidak boleh kosong',
         ]);
 
-        if ($request->status_pkl != 'Lulus' && $request->nilai_pkl != null) {
+        /*if ($request->status_pkl != 'Lulus' && $request->nilai_pkl != null) {
             Alert::error('Gagal', 'Nilai PKL hanya bisa diisi jika status PKL adalah Lulus');
             return redirect()->back();
-        }
+        }*/
 
         $temp = temp_file::where('path', $request->file)->first();
 
@@ -106,16 +104,18 @@ class PKLController extends Controller
             $db = pkl::create([
                 'nim' => Auth::user()->nim_nip,
                 'semester_aktif' => $request->semester_aktif,
-                'status' => $request->status_pkl,
+                'status' => 'Lulus', // Mengeset status 'Lulus'
                 'upload_pkl' => $temp->path,
+                'nilai' => $request->nilai_pkl,
             ]);
-            if ($request->status_pkl == 'Lulus') {
+
+            /*if ($request->status_pkl == 'Lulus') {
                 pkl::where('nim', Auth::user()->nim_nip)
                     ->where('semester_aktif', $request->semester_aktif)
                     ->update([
                         'nilai' => $request->nilai_pkl,
                     ]);
-            }
+            }*/
         
 
         tb_entry_progress::where('nim', Auth::user()->nim_nip)
@@ -203,20 +203,20 @@ class PKLController extends Controller
             $uniq = time() . uniqid();
             rename(public_path('files/temp/' . $temp->folder . '/' . $temp->path), public_path('files/pkl/' . $db->nim . '_' . $db->semester_aktif . '_' . $uniq . '.pdf'));
             pkl::where('semester_aktif', $semester_aktif)->where('nim', $request->nim)->update([
-                'status' => $request->status_pkl,
+                'status' => 'Lulus',
                 'nilai' => $request->nilai_pkl,
                 'upload_pkl' => 'files/pkl/' . $db->nim . '_' . $db->semester_aktif  . '_' . $uniq . '.pdf'
             ]);
             $temp->delete();
         } else {
             pkl::where('semester_aktif', $semester_aktif)->where('nim', $request->nim)->update([
-                'status' => $request->status_pkl,
+                'status' => 'Lulus',
                 'nilai' => $request->nilai_pkl,
             ]);
         }
 
         if ($db->update()) {
-            tb_entry_progress::where('nim', Auth::user()->nim_nip)->where('semester_aktif', $semester_aktif)->update(['is_verifikasi_pkl' => 0]);
+            tb_entry_progress::where('nim', Auth::user()->nim_nip)->where('semester_aktif', $semester_aktif)->update(['is_pkl' => 1,'is_verifikasi_pkl' => 0]);
             Alert::success('Berhasil', 'Data berhasil diubah');
             return redirect('/mahasiswa/data/pkl');
         } else {
@@ -241,6 +241,11 @@ class PKLController extends Controller
     public function destroy($semester_aktif, $nim)
     {
         pkl::where('nim', $nim)->where('semester_aktif', $semester_aktif)->delete();
+
+        // Update is_khs menjadi 0
+        tb_entry_progress::where('nim', $nim)
+        ->where('semester_aktif', $semester_aktif)
+        ->update(['is_pkl' => 0]);
 
         // Alert success
         Alert::success('Success!', 'Data PKL berhasil dihapus');

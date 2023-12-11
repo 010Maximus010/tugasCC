@@ -206,6 +206,7 @@ class KHSController extends Controller
                 'ip_kumulatif' => $request->ip_kumulatif,
                 'upload_khs' => 'files/khs/' . $db->nim . '_' . $db->semester_aktif  . '_' . $uniq . '.pdf'
             ]);
+            
             unlink(public_path($db->upload_khs));
         } else {
             khs::where('semester_aktif', $semester_aktif)->where('nim', $request->nim)->update([
@@ -215,7 +216,7 @@ class KHSController extends Controller
         }
 
         if ($db->update()) {
-            tb_entry_progress::where('nim', Auth::user()->nim_nip)->where('semester_aktif', $semester_aktif)->update(['is_verifikasi_khs' => 0]);
+            tb_entry_progress::where('nim', Auth::user()->nim_nip)->where('semester_aktif', $semester_aktif)->update(['is_khs' => 1,'is_verifikasi_khs' => 0]);
             Alert::success('Berhasil', 'Data berhasil diubah');
             return redirect('/mahasiswa/data/khs');
         } else {
@@ -249,6 +250,11 @@ class KHSController extends Controller
     public function destroy($semester_aktif, $nim)
     {
         khs::where('nim', $nim)->where('semester_aktif', $semester_aktif)->delete();
+
+        // Update is_khs menjadi 0
+        tb_entry_progress::where('nim', $nim)
+        ->where('semester_aktif', $semester_aktif)
+        ->update(['is_khs' => 0]);
 
         // Alert success
         Alert::success('Success!', 'Data KHS berhasil dihapus');

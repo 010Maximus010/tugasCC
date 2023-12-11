@@ -201,12 +201,12 @@
                             </li>
                             <li class="nav-item">
                                 <a style="font-size: 14px;" class="nav-link {{ ($title == 'Data Mahasiswa PKL')? 'active' : '' }}" href="/departemen/data_mahasiswa_pkl">
-                                    <i class="bi bi-building"></i><span> Data Mahasiswa PKL</span>
+                                    <i class="bi bi-building"></i><span> Rekap Mahasiswa PKL</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a style="font-size: 14px;" class="nav-link {{ ($title == 'Data Mahasiswa Skripsi')? 'active' : '' }}" href="/departemen/data_mahasiswa_skripsi">
-                                    <i class="bi bi-mortarboard"></i><span> Data Mahasiswa Skripsi</span>
+                                    <i class="bi bi-mortarboard"></i><span> Rekap Mahasiswa Skripsi</span>
                                 </a>
                             </li>
                             @endif

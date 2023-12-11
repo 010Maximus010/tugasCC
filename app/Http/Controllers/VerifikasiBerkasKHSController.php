@@ -77,12 +77,12 @@ class VerifikasiBerkasKHSController extends Controller
             ]);
             Alert::success('Berhasil', 'Berkas berhasil dibatalkan');
             return redirect('/dosen/verifikasi_berkas_mahasiswa_khs');
-        } else{
+        } elseif ($request->id == '2'){
             tb_entry_progress::where('nim', $request->nim)->where('semester_aktif', $request->semester)->update([
-                'is_verifikasi_khs' => '2',
+                'is_khs' => '0',
             ]);
             Alert::success('Berhasil', 'Berkas berhasil ditolak');
             return redirect('/dosen/verifikasi_berkas_mahasiswa_khs');
-        }
+        } 
     }
 }
