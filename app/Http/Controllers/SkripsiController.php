@@ -97,7 +97,7 @@ class SkripsiController extends Controller
         if ($request->status_skripsi != 'Lulus' && $request->nilai_skripsi != null) {
             Alert::error('Gagal', 'Nilai Skripsi hanya bisa diisi jika status Skripsi adalah Lulus');
             return redirect()->back();
-        }*/
+        }
 
         $temp = temp_file::where('path', $request->file)->first();
 
@@ -179,7 +179,6 @@ class SkripsiController extends Controller
         // Validate
         $request->validate([
             'confirm' => 'sometimes|accepted',
-            'status_skripsi' => 'required|in:Lulus,Tidak Lulus',
             'nilai_skripsi' => 'required_if:status_skripsi,Lulus|in:,A,B,C,D,E',
             'tanggal_sidang' => 'required_if:status_skripsi,Lulus',
             'fileEdit' => 'required_if:confirm,on',

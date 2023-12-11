@@ -82,14 +82,11 @@ class PKLController extends Controller
         // Validate
         $request->validate([
             'semester_aktif' => 'required|unique:pkls,semester_aktif,NULL,id,nim,' . Auth::user()->nim_nip,
-            'status_pkl' => 'required|in:,Lulus,Tidak Lulus',
             'nilai_pkl' => 'required_if:status_pkl,Lulus|in:,A,B,C,D,E',
             'file' => 'required',
         ], [
             'semester_aktif.required' => 'Semester Aktif tidak boleh kosong',
             'semester_aktif.unique' => 'Semester Aktif sudah ada',
-            'status_pkl.required' => 'Status PKL tidak boleh kosong',
-            'status_pkl.in' => 'Status PKL tidak valid',
             'nilai_pkl.required_if' => 'Nilai PKL tidak boleh kosong',
             'nilai_pkl.in' => 'Nilai PKL tidak valid',
             'file.required' => 'File tidak boleh kosong',
