@@ -104,7 +104,7 @@
                                     <a class="btn btn-danger btn-sm mb-1"></a> <small>Belum diisikan (IRS dan KHS) atau tidak digunakan</small><br />
                                     <a class="btn btn-info btn-sm mb-1"></a> <small>Sudah diisikan (IRS dan KHS)</small><br />
                                     <a class="btn btn-warning btn-sm mb-1"></a> <small>Sudah Lulus PKL (IRS, KHS, dan PKL)</small><br />
-                                    <a class="btn btn-success btn-sm mb-1"></a> <small>Sudah Lulus Skripsi)</small><br />
+                                    <a class="btn btn-success btn-sm mb-1"></a> <small>Sudah Lulus Skripsi</small><br />
                                 </div>
                             </div>
                         </div>

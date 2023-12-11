@@ -7,6 +7,7 @@
         <label class="form-label">Status</label>
             <input type="text" class="form-control" id="status_pkl" name="status_pkl" value="Lulus" readonly>
     </div>
+
     <!-- Pilih Status END-->
 
     <!-- Input Tanggal START -->

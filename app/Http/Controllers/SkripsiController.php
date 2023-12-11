@@ -83,6 +83,7 @@ class SkripsiController extends Controller
             'semester_aktif' => 'required|unique:skripsis,semester_aktif,NULL,id,nim,' . Auth::user()->nim_nip,
             'tanggal_sidang' => 'required_if:status_skripsi,Lulus',
             'nilai_skripsi' => 'required_if:status_skripsi,Lulus|in:,A,B,C,D,E',
+            'status_skripsi' => 'required|in:,Lulus,Tidak Lulus',
             'file' => 'required',
         ], [
             'semester_aktif.required' => 'Semester Aktif tidak boleh kosong',
@@ -93,7 +94,7 @@ class SkripsiController extends Controller
             'file.required' => 'File tidak boleh kosong',
         ]);
 
-        /*if ($request->status_skripsi != 'Lulus' && $request->nilai_skripsi != null) {
+        if ($request->status_skripsi != 'Lulus' && $request->nilai_skripsi != null) {
             Alert::error('Gagal', 'Nilai Skripsi hanya bisa diisi jika status Skripsi adalah Lulus');
             return redirect()->back();
         }*/
@@ -110,13 +111,13 @@ class SkripsiController extends Controller
                 'upload_skripsi' => $temp->path,
                 'nilai' => $request->nilai_skripsi,
             ]);
-            /*if ($request->status_skripsi == 'Lulus') {
+            if ($request->status_skripsi == 'Lulus') {
                 skripsi::where('nim', Auth::user()->nim_nip)
                     ->where('semester_aktif', $request->semester_aktif)
                     ->update([
                         'nilai' => $request->nilai_skripsi,
                     ]);
-            }*/
+            }
         
 
         tb_entry_progress::where('nim', Auth::user()->nim_nip)
@@ -178,6 +179,7 @@ class SkripsiController extends Controller
         // Validate
         $request->validate([
             'confirm' => 'sometimes|accepted',
+            'status_skripsi' => 'required|in:Lulus,Tidak Lulus',
             'nilai_skripsi' => 'required_if:status_skripsi,Lulus|in:,A,B,C,D,E',
             'tanggal_sidang' => 'required_if:status_skripsi,Lulus',
             'fileEdit' => 'required_if:confirm,on',
