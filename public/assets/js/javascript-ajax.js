@@ -183,22 +183,22 @@ let modal_content = document.getElementsByClassName("modal-content");
 // click class btn-close data-bs-toggle="tab" href="#tab-1" click
 $("#btnClose").click(function () {
     // function tab1 click
-    $("#tab1").click();
+    $("#tab1-progress-view").click();
 
     // href to tab 1
-    $("#tab-1").addClass("show active");
-    $("#tab-2").removeClass("active");
+    $("#tab-1-progress-view").addClass("show active");
+    $("#tab-2-progress-view").removeClass("active");
     $("#tab-3").removeClass("active");
-    $("#tab-4").removeClass("active");
+    $("#tab-4-progress-view1").removeClass("active");
 
     // nav-link set active
-    $("#tab1").addClass("active");
-    $("#tab2").removeClass("active");
+    $("#tab1-progress-view").addClass("active");
+    $("#tab2-progress-view").removeClass("active");
     $("#tab3").removeClass("active");
-    $("#tab4").removeClass("active");
+    $("#tab4-progress-view1").removeClass("active");
 });
 
-$("#tab1").click(function () {
+$("#tab1-progress-view").click(function () {
     // change modal content
     modal_content[0].classList.add("bg-info");
     modal_content[0].classList.remove("bg-danger");
@@ -206,7 +206,7 @@ $("#tab1").click(function () {
     modal_content[0].classList.remove("bg-success");
 });
 
-$("#tab2").click(function () {
+$("#tab2-progress-view").click(function () {
     // change modal content
     modal_content[0].classList.remove("bg-info");
     modal_content[0].classList.add("bg-danger");
@@ -222,10 +222,12 @@ $("#tab3").click(function () {
     modal_content[0].classList.remove("bg-success");
 });
 
-$("#tab4").click(function () {
+$("#tab4-progress-view1").click(function () {
     // change modal content
     modal_content[0].classList.remove("bg-info");
     modal_content[0].classList.remove("bg-danger");
     modal_content[0].classList.remove("bg-warning");
     modal_content[0].classList.add("bg-success");
 });
+
+

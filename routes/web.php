@@ -148,6 +148,9 @@ Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
 
         // berkas mahasiswa
         Route::get('/departemen/berkas_mahasiswa/detail', [VerifikasiBerkasController::class, 'show'])->name('departemen_berkas_detail');
+        Route::get('/departemen/berkas_mahasiswa_khs/detail', [VerifikasiBerkasKHSController::class, 'show'])->name('departemen_berkas_detail_khs');
+        Route::get('/departemen/berkas_mahasiswa_pkl/detail', [VerifikasiBerkasPKLController::class, 'show'])->name('departemen_berkas_detail_pkl');
+        Route::get('/departemen/berkas_mahasiswa_skripsi/detail', [VerifikasiBerkasSkripsiController::class, 'show'])->name('departemen_berkas_detail_skripsi');
 
         // data dosen
         Route::get('/departemen/data_dosen', [DosenController::class, 'data_dosen']);

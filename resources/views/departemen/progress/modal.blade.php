@@ -1,5 +1,6 @@
 <div class="tab-content">
-    <div class="tab-pane fade show active" id="tab-1">
+    <!-------------------------->
+    <div class="tab-pane fade show active" id="tab-1-progress-view">
         <div class="row g-3">
             <div class="text-end">
                 <h2 class="text-white">{{ $request->semester }}</h2>
@@ -19,7 +20,7 @@
             </div>
         </div>
     </div>
-    <div class="tab-pane fade" id="tab-2">
+    <div class="tab-pane fade" id="tab-2-progress-view">
         <div class="row g-3">
             <div class="text-end">
                 <h2 class="text-white">{{ $request->semester }}</h2>
@@ -33,7 +34,7 @@
                 SKS Kumulatif: {{ $khs->sks_kumulatif }}<br />
                 IP Kumulatif: {{ $khs->ip_kumulatif }}<br />
                 @endif
-                <form action="{{ route('departemen_berkas_detail') }}" method="GET">
+                <form action="{{ route('departemen_berkas_detail_khs') }}" method="GET">
                     @csrf
                     <input type="hidden" name="nim" value="{{ $request->nim }}">
                     <input type="hidden" name="semester" value="{{ $request->semester }}">
@@ -42,7 +43,8 @@
             </div>
         </div>
     </div>
-    <div class="tab-pane fade" id="tab-3">
+
+    <div class="tab-pane fade" id="tab-3-progress-view2">
         <div class="row g-3">
             <div class="text-end">
                 <h2 class="text-white">{{ $request->semester }}</h2>
@@ -56,7 +58,7 @@
                 @endif
                 Status: {{ $pkl->status }}<br />
                 @endif
-                <form action="{{ route('departemen_berkas_detail') }}" method="GET">
+                <form action="{{ route('departemen_berkas_detail_pkl') }}" method="GET">
                     @csrf
                     <input type="hidden" name="nim" value="{{ $request->nim }}">
                     <input type="hidden" name="semester" value="{{ $request->semester }}">
@@ -65,7 +67,7 @@
             </div>
         </div>
     </div>
-    <div class="tab-pane fade" id="tab-4">
+    <div class="tab-pane fade" id="tab-4-progress-view1">
         <div class="row g-3">
             <div class="text-end">
                 <h2 class="text-white">{{ $request->semester }}</h2>
@@ -80,7 +82,7 @@
                 @endif
                 Status: {{ $skripsi->status }}<br />
                 @endif
-                <form action="{{ route('departemen_berkas_detail') }}" method="GET">
+                <form action="{{ route('departemen_berkas_detail_skripsi') }}" method="GET">
                     @csrf
                     <input type="hidden" name="nim" value="{{ $request->nim }}">
                     <input type="hidden" name="semester" value="{{ $request->semester }}">
@@ -90,3 +92,4 @@
         </div>
     </div>
 </div>
+
