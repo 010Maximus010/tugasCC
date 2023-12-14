@@ -663,8 +663,8 @@ progress {
 }
 
 .container-login {
-  background-color: #2f5f95;
-  background-image: url("https://cdn.jsdelivr.net/gh/010Maximus010/cdn-bootstrap-5/images/logo1.jpg");
+  /*background-color: #2f5f95;*/
+  background-image: url("https://cdn.jsdelivr.net/gh/010Maximus010/cdn-bootstrap-5/images/fsm-undip-2021.jpg");
   background-size: cover; /* Adjust as needed */
   background-position: center; /* Adjust as needed */
   background-repeat: no-repeat;

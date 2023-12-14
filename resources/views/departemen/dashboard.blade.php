@@ -248,10 +248,15 @@
                                             <script src="{{ asset('assets/js/data-table.js') }}"></script>
                                             <script>
                                                 $(document).ready(function() {
-                                                    $("#table_4").DataTable().buttons().container().appendTo("#table_wrapper");
+                                                    var table = $('#new_table_id').DataTable({
+                                                        dom: 'Bfrtip',
+                                                        buttons: [
+                                                            'print', 'excel'
+                                                        ]
+                                                    });
                                                 });
-                                                $('#table_4 tbody').on('click', 'tr', function() {
-                                                    var data = $('#table_1').DataTable().row(this).data();
+                                                $('#new_table_id tbody').on('click', 'tr', function() {
+                                                    var data = $('#new_table_id').DataTable().row(this).data();
                                                     var nim = data[2];
                                                     document.getElementById(nim).click();
                                                 });
@@ -290,7 +295,7 @@
                 
                                 <div class="col-12">
                                     <div class="table-responsive">
-                                        <table class="table table-bordered" id="table_4">
+                                        <table class="table table-bordered" id="new_table_id">
                                         <thead class="thead-dark">
                                             <tr>
                                                 <th>Status</th>

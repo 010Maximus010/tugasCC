@@ -1,7 +1,7 @@
 @include('layouts.sidebar')
 
 <div class="col-md-8 col-lg-6 vstack gap-4">
-    <div class="card" style="background: linear-gradient(to right, #8fb996, #a1cca5);">
+    <div class="card" style="background: linear-gradient(to right, #cfdbd5, #778da9);">
         <div class="card-body" style="margin-top: 0px;">
             <h5 class="card-title">Informasi Mahasiswa</h5>
             <br />
@@ -18,9 +18,9 @@
                     @elseif ($pkl->status == 'Belum Ambil')
                     <span class="badge bg-danger">{{ $pkl->status }}</span>
                     @elseif ($pkl->status == 'Sedang Ambil')
-                    <span class="badge btn-warning-soft">{{ $pkl->status }}</span>
+                    <span class="badge btn-warning">{{ $pkl->status }}</span>
                     @else
-                    <span class="badge btn-success-soft">{{ $pkl->status }}</span>
+                    <span class="badge btn-success">{{ $pkl->status }}</span>
                     @endif
                 </div>
                 <div class="vr"></div>
@@ -31,37 +31,10 @@
                     @elseif ($skripsi->status == 'Belum Ambil')
                     <span class="badge bg-danger">{{ $skripsi->status }}</span>
                     @elseif ($skripsi->status == 'Sedang Ambil')
-                    <span class="badge btn-warning-soft">{{ $skripsi->status }}</span>
+                    <span class="badge btn-warning">{{ $skripsi->status }}</span>
                     @else
-                    <span class="badge btn-success-soft">{{ $skripsi->status }}</span>
+                    <span class="badge btn-success">{{ $skripsi->status }}</span>
                     @endif
-                </div>
-            </div>
-            <div class="row g-3 mt-2">
-                <div class=" col-1">
-                </div>
-                <div class="col-10">
-                    <h6>Semester</h6>
-                    <a class="btn avatar-xl mb-3 me-3 text-white" id="buttonModalProgress" data-bs-toggle="modal" data-bs-target="#progress_view" data-attr="{{ route('departemen_progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 1]) }}"><br />1</a>
-                    <a class="btn avatar-xl mb-3 me-3 text-white" id="buttonModalProgress" data-bs-toggle="modal" data-bs-target="#progress_view" data-attr="{{ route('departemen_progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 2]) }}"><br />2</a>
-                    <a class="btn avatar-xl mb-3 me-3 text-white" id="buttonModalProgress" data-bs-toggle="modal" data-bs-target="#progress_view" data-attr="{{ route('departemen_progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 3]) }}"><br />3</a>
-                    <a class="btn avatar-xl mb-3 me-3 text-white" id="buttonModalProgress" data-bs-toggle="modal" data-bs-target="#progress_view" data-attr="{{ route('departemen_progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 4]) }}"><br />4</a>
-                    <a class="btn avatar-xl mb-3 me-3 text-white" id="buttonModalProgress" data-bs-toggle="modal" data-bs-target="#progress_view" data-attr="{{ route('departemen_progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 5]) }}"><br />5</a>
-                    <a class="btn avatar-xl mb-3 me-3 text-white" id="buttonModalProgress" data-bs-toggle="modal" data-bs-target="#progress_view" data-attr="{{ route('departemen_progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 6]) }}"><br />6</a>
-                    <a class="btn avatar-xl mb-3 me-3 text-white" id="buttonModalProgress" data-bs-toggle="modal" data-bs-target="#progress_view" data-attr="{{ route('departemen_progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 7]) }}"><br />7</a>
-                    <a class="btn avatar-xl mb-3 me-3 text-white" id="buttonModalProgress" data-bs-toggle="modal" data-bs-target="#progress_view" data-attr="{{ route('departemen_progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 8]) }}"><br />8</a>
-                    <a class="btn avatar-xl mb-3 me-3 text-white" id="buttonModalProgress" data-bs-toggle="modal" data-bs-target="#progress_view" data-attr="{{ route('departemen_progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 9]) }}"><br />9</a>
-                    <a class="btn avatar-xl mb-3 me-3 text-white" id="buttonModalProgress" data-bs-toggle="modal" data-bs-target="#progress_view" data-attr="{{ route('departemen_progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 10]) }}"><br />10</a>
-                    <a class="btn avatar-xl mb-3 me-3 text-white" id="buttonModalProgress" data-bs-toggle="modal" data-bs-target="#progress_view" data-attr="{{ route('departemen_progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 11]) }}"><br />11</a>
-                    <a class="btn avatar-xl mb-3 me-3 text-white" id="buttonModalProgress" data-bs-toggle="modal" data-bs-target="#progress_view" data-attr="{{ route('departemen_progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 12]) }}"><br />12</a>
-                    <a class="btn avatar-xl mb-3 me-3 text-white" id="buttonModalProgress" data-bs-toggle="modal" data-bs-target="#progress_view" data-attr="{{ route('departemen_progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 13]) }}"><br />13</a>
-                    <a class="btn avatar-xl mb-3 me-3 text-white" id="buttonModalProgress" data-bs-toggle="modal" data-bs-target="#progress_view" data-attr="{{ route('departemen_progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 14]) }}"><br />14</a>
-                    <br />
-                    <h6 class="mt-2 mb-2">Keterangan:</h6>
-                    <a class="btn btn-danger btn-sm mb-1"></a> <small>Belum diisikan (IRS dan KHS) atau tidak digunakan</small><br />
-                    <a class="btn btn-info btn-sm mb-1"></a> <small>Sudah diisikan (IRS dan KHS)</small><br />
-                    <a class="btn btn-warning btn-sm mb-1"></a> <small>Sudah Lulus PKL (IRS, KHS, dan PKL)</small><br />
-                    <a class="btn btn-success btn-sm mb-1"></a> <small>Sudah Lulus Skripsi</small><br />
                 </div>
             </div>
         </div>

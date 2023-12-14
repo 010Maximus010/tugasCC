@@ -27,7 +27,7 @@ class DashboardController extends Controller
         $mahasiswaAll = mahasiswa::all();
         $dosenAll = dosen::all();
         return view('dashboard.index', [
-            'title' => 'Dashboard',
+            'title' => 'Rekap Status Angkatan',
         ])->with(compact('mahasiswa', 'mahasiswaAll', 'dosen', 'dosenAll', 'khs', 'pkl', 'skripsi'));
     }
 }

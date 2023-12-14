@@ -73,7 +73,7 @@
                 var table = $("#table_belum_skripsi").DataTable({
                     dom: 'Bfrtip',
                     buttons: [
-                        'copy', 'excel', 'pdf', 'print'
+                         'print', 'excel'
                     ]
                 });
             });

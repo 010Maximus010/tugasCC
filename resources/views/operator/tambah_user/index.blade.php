@@ -74,7 +74,7 @@
                                             <input type="text" class="form-control" id="angkatan" name="angkatan" placeholder="Angkatan" value="{{ old('angkatan') }}" required>
                                         </div>
                                         <div class="col-12 text-end">
-                                            <button type="submit" class="btn btn-sm btn-success mb-0" style="background-color: #73ba9b;" >Generate</button>
+                                            <button type="submit" class="btn btn-sm btn-primary mb-0" style="background-color: #2374ab;" >Generate</button>
                                         </div>
                                     </form>
                                 </div>
@@ -110,7 +110,7 @@
                                             </select>
                                         </div>
                                         <div class="col-12 text-end">
-                                            <button type="submit" class="btn btn-sm btn-success mb-0" style="background-color: #73ba9b;">Generate</button>
+                                            <button type="submit" class="btn btn-sm btn-primary mb-0" style="background-color: #2374ab;">Generate</button>
                                         </div>
                                     </form>
                                 </div>

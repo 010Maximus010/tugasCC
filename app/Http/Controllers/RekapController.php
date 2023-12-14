@@ -19,7 +19,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 class RekapController extends Controller
 {
     public function status($status) {
-        $title = 'Rekap Mahasiswa Status';
+        $title = "Rekap Mahasiswa Status $status";
         $mahasiswaData = Mahasiswa::leftJoin('dosens', 'mahasiswas.kode_wali', '=', 'dosens.nip')
             ->select('mahasiswas.*', 'dosens.nama as nama_dosen')
             ->where('mahasiswas.status', $status) // Specify the table for the 'status' column
@@ -28,7 +28,7 @@ class RekapController extends Controller
     }
     
     public function angkatan($angkatan) {
-        $title = 'Rekap Mahasiswa Angkatan';
+        $title = "Rekap Mahasiswa Angkatan $angkatan";
         $mahasiswaData = Mahasiswa::leftJoin('dosens', 'mahasiswas.kode_wali', '=', 'dosens.nip')
             ->select('mahasiswas.*', 'dosens.nama as nama_dosen')
             ->where('mahasiswas.angkatan', $angkatan) // Specify the table for the 'angkatan' column
@@ -37,7 +37,7 @@ class RekapController extends Controller
     }
     
     public function tahunStatus($tahun, $status) {
-        $title = 'Rekap Mahasiswa Angkatan-Status';
+        $title = "Rekap Mahasiswa Angkatan $tahun - Status $status";
         $mahasiswaData = Mahasiswa::leftJoin('dosens', 'mahasiswas.kode_wali', '=', 'dosens.nip')
             ->select('mahasiswas.*', 'dosens.nama as nama_dosen')
             ->where('mahasiswas.angkatan', $tahun)

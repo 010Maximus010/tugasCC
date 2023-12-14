@@ -77,7 +77,7 @@
                 var table = $("#table_rekap_status_tahun").DataTable({
                     dom: 'Bfrtip',
                     buttons: [
-                        'copy', 'excel', 'pdf', 'print'
+                        'print', 'excel'
                     ]
                 });
             });

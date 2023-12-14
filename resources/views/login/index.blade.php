@@ -12,7 +12,7 @@
 </style>
   
 <main>
-    <div class="container-login" style="background: linear-gradient(to right, #70a9a1, #cfe0c3);">
+    <div class="container-login" >
         <div class="row justify-content-center align-item-center">
             <div class="col-lg-5 col-md-5 col-sm-10 py-md-5">
                 <div class="row shadow">
@@ -47,7 +47,7 @@
                             </div>
                             <!-- Button -->
                             <div class="d-grid">
-                                <button type="submit" class="btn btn-secondary" style="background-color: #216869;">Login</button>
+                                <button type="submit" class="btn btn-secondary" style="background-color: #004e98;">Login</button>
                             </div>
 
                         </form>

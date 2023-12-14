@@ -27,10 +27,8 @@
             </div>
         </main>
     </div>
-@endsection
 
-@section('script')
-    @include('sweetalert::alert')
+    @section('script')
     <!-- Dalam bagian head -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.bootstrap5.min.css">
@@ -71,7 +69,7 @@
                     statusRow += "</tr>";
 
                     // Menambahkan baris ke dalam tabel
-                    $("#tableBody").append(yearRow + statusRow);
+                    $("#table_rekap_skripsi thead").append(yearRow + statusRow);
 
                     // Menambahkan baris untuk data
                     var dataRow = "<tr>";
@@ -82,13 +80,25 @@
                     dataRow += "</tr>";
 
                     // Menambahkan baris ke dalam tabel
-                    $("#tableBody").append(dataRow);
+                    $("#table_rekap_skripsi tbody").append(dataRow);
 
                     // Inisialisasi DataTable setelah menambahkan data
                     var table = $("#table_rekap_skripsi").DataTable({
                         dom: 'Bfrtip',
                         buttons: [
-                            'copy', 'excel', 'pdf', 'print'
+                            {
+                                extend: 'print',
+                                exportOptions: {
+                                    columns: ':visible'
+                                }
+            
+                            },
+                            {
+                                extend: 'excel',
+                                exportOptions: {
+                                    columns: ':visible'
+                                }
+                            }
                         ]
                     });
                 },
@@ -105,7 +115,8 @@
         }
     </script>
     <script>
-        var title = 'List Belum Skripsi';
+        var title = 'Rekap Skripsi';
     </script>
     <script src="{{ asset('assets/js/data-table.js') }}"></script>
+    @stop
 @endsection

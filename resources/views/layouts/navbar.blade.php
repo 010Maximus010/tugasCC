@@ -1,5 +1,5 @@
     <!-- Header START -->
-    <header class="navbar-light fixed-top header-static" style="background-color: #1f363d;">
+    <header class="navbar-light fixed-top header-static" style="background-color: #0b3954;">
 
         <!-- Logo Nav START -->
         <nav class="navbar navbar-expand-lg">
