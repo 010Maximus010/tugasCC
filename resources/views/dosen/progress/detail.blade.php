@@ -90,21 +90,21 @@
                                     <a class="btn {{ $semester[3] }} avatar-xl mb-3 me-3 text-white" id="buttonModalProgress" data-bs-toggle="modal" data-bs-target="#progress_view" data-attr="{{ route('progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 3]) }}"><br />3</a>
                                     <a class="btn {{ $semester[4] }} avatar-xl mb-3 me-3 text-white" id="buttonModalProgress" data-bs-toggle="modal" data-bs-target="#progress_view" data-attr="{{ route('progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 4]) }}"><br />4</a>
                                     <a class="btn {{ $semester[5] }} avatar-xl mb-3 me-3 text-white" id="buttonModalProgress" data-bs-toggle="modal" data-bs-target="#progress_view" data-attr="{{ route('progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 5]) }}"><br />5</a>
-                                    <a class="btn {{ $semester[6] }} avatar-xl mb-3 me-3 text-white" id="buttonModalProgress" data-bs-toggle="modal" data-bs-target="#progress_view" data-attr="{{ route('progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 6]) }}"><br />6</a>
-                                    <a class="btn {{ $semester[7] }} avatar-xl mb-3 me-3 text-white" id="buttonModalProgress" data-bs-toggle="modal" data-bs-target="#progress_view" data-attr="{{ route('progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 7]) }}"><br />7</a>
-                                    <a class="btn {{ $semester[8] }} avatar-xl mb-3 me-3 text-white" id="buttonModalProgress" data-bs-toggle="modal" data-bs-target="#progress_view" data-attr="{{ route('progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 8]) }}"><br />8</a>
-                                    <a class="btn {{ $semester[9] }} avatar-xl mb-3 me-3 text-white" id="buttonModalProgress" data-bs-toggle="modal" data-bs-target="#progress_view" data-attr="{{ route('progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 9]) }}"><br />9</a>
-                                    <a class="btn {{ $semester[10] }} avatar-xl mb-3 me-3 text-white" id="buttonModalProgress" data-bs-toggle="modal" data-bs-target="#progress_view" data-attr="{{ route('progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 10]) }}"><br />10</a>
-                                    <a class="btn {{ $semester[11] }} avatar-xl mb-3 me-3 text-white" id="buttonModalProgress" data-bs-toggle="modal" data-bs-target="#progress_view" data-attr="{{ route('progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 11]) }}"><br />11</a>
-                                    <a class="btn {{ $semester[12] }} avatar-xl mb-3 me-3 text-white" id="buttonModalProgress" data-bs-toggle="modal" data-bs-target="#progress_view" data-attr="{{ route('progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 12]) }}"><br />12</a>
-                                    <a class="btn {{ $semester[13] }} avatar-xl mb-3 me-3 text-white" id="buttonModalProgress" data-bs-toggle="modal" data-bs-target="#progress_view" data-attr="{{ route('progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 13]) }}"><br />13</a>
-                                    <a class="btn {{ $semester[14] }} avatar-xl mb-3 me-3 text-white" id="buttonModalProgress" data-bs-toggle="modal" data-bs-target="#progress_view" data-attr="{{ route('progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 14]) }}"><br />14</a>
+                                    <a class="btn {{ $semester[6] }} avatar-xl mb-3 me-3 text-white" id="buttonModalProgress2" data-bs-toggle="modal" data-bs-target="#progress_view2" data-attr="{{ route('progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 6]) }}"><br />6</a>
+                                    <a class="btn {{ $semester[7] }} avatar-xl mb-3 me-3 text-white" id="buttonModalProgress1" data-bs-toggle="modal" data-bs-target="#progress_view1" data-attr="{{ route('progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 7]) }}"><br />7</a>
+                                    <a class="btn {{ $semester[8] }} avatar-xl mb-3 me-3 text-white" id="buttonModalProgress1" data-bs-toggle="modal" data-bs-target="#progress_view1" data-attr="{{ route('progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 8]) }}"><br />8</a>
+                                    <a class="btn {{ $semester[9] }} avatar-xl mb-3 me-3 text-white" id="buttonModalProgress1" data-bs-toggle="modal" data-bs-target="#progress_view1" data-attr="{{ route('progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 9]) }}"><br />9</a>
+                                    <a class="btn {{ $semester[10] }} avatar-xl mb-3 me-3 text-white" id="buttonModalProgress1" data-bs-toggle="modal" data-bs-target="#progress_view1" data-attr="{{ route('progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 10]) }}"><br />10</a>
+                                    <a class="btn {{ $semester[11] }} avatar-xl mb-3 me-3 text-white" id="buttonModalProgress1" data-bs-toggle="modal" data-bs-target="#progress_view1" data-attr="{{ route('progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 11]) }}"><br />11</a>
+                                    <a class="btn {{ $semester[12] }} avatar-xl mb-3 me-3 text-white" id="buttonModalProgress1" data-bs-toggle="modal" data-bs-target="#progress_view1" data-attr="{{ route('progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 12]) }}"><br />12</a>
+                                    <a class="btn {{ $semester[13] }} avatar-xl mb-3 me-3 text-white" id="buttonModalProgress1" data-bs-toggle="modal" data-bs-target="#progress_view1" data-attr="{{ route('progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 13]) }}"><br />13</a>
+                                    <a class="btn {{ $semester[14] }} avatar-xl mb-3 me-3 text-white" id="buttonModalProgress1" data-bs-toggle="modal" data-bs-target="#progress_view1" data-attr="{{ route('progress_detail_semester', ['nim' => $mahasiswa->nim, 'semester' => 14]) }}"><br />14</a>
                                     <br />
                                     <h6 class="mt-2 mb-2">Keterangan:</h6>
                                     <a class="btn btn-danger btn-sm mb-1"></a> <small>Belum diisikan (IRS dan KHS) atau tidak digunakan</small><br />
                                     <a class="btn btn-info btn-sm mb-1"></a> <small>Sudah diisikan (IRS dan KHS)</small><br />
                                     <a class="btn btn-warning btn-sm mb-1"></a> <small>Sudah Lulus PKL (IRS, KHS, dan PKL)</small><br />
-                                    <a class="btn btn-success btn-sm mb-1"></a> <small>Sudah Lulus Skripsi)</small><br />
+                                    <a class="btn btn-success btn-sm mb-1"></a> <small>Sudah Lulus Skripsi</small><br />
                                 </div>
                             </div>
                         </div>
@@ -115,31 +115,60 @@
     </main>
 </div>
 
+<!-- First Modal -->
 <div class="modal fade" data-bs-backdrop="static" data-keyboard="false" id="progress_view" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content bg-info">
+        <div class="modal-content bg-light">
             <div class="modal-header">
-                @php
-                    $isShowPKL = request('semester') >= 6;
-                    $isShowSkripsi = request('semester') >= 8;
-                @endphp
                 <ul class="nav nav-tabs nav-bottom-line justify-content-center justify-content-md-start">
-                    <li class="nav-item"> <a class="text-white nav-link {{ request('semester') == 1 ? 'active' : '' }}" data-bs-toggle="tab" href="#tab-1" id="tab1"> IRS </a> </li>
-                    <li class="nav-item"> <a class="text-white nav-link {{ request('semester') == 2 ? 'active' : '' }}" data-bs-toggle="tab" href="#tab-2" id="tab2"> KHS </a> </li>
-
-                    {{-- Tampilkan PKL hanya jika semester lebih dari atau sama dengan 7 --}}
-                @if (request('semester') >= 6)
-                    <li class="nav-item"> <a class="text-white nav-link {{ request('semester') == 3 ? 'active' : '' }}" data-bs-toggle="tab" href="#tab-3" id="tab3"> PKL </a> </li>
-                @endif
-
-                {{-- Tampilkan Skripsi hanya jika semester lebih dari atau sama dengan 6 --}}
-                @if (request('semester') >= 7)
-                    <li class="nav-item"> <a class="text-white nav-link {{ request('semester') == 4 ? 'active' : '' }}" data-bs-toggle="tab" href="#tab-4" id="tab4"> Skripsi </a> </li>
-                @endif
+                    <li class="nav-item"> <a class="text-black nav-link active" data-bs-toggle="tab" href="#tab-1-progress-view1" id="tab1-progress-view1"> IRS </a> </li>
+                    <li class="nav-item"> <a class="text-black nav-link" data-bs-toggle="tab" href="#tab-2-progress-view1" id="tab2-progress-view1"> KHS </a> </li>
                 </ul>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" id="btnClose" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body" id="showModalProgress">
+            <div class="modal-body" id="showModalProgressView">
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Second Modal -->
+<div class="modal fade" data-bs-backdrop="static" data-keyboard="false" id="progress_view1" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-light">
+            <div class="modal-header">
+                <ul class="nav nav-tabs nav-bottom-line justify-content-center justify-content-md-start">
+                    <li class="nav-item"> <a class="text-black nav-link active" data-bs-toggle="tab" href="#tab-1-progress-view1" id="tab1-progress-view1"> IRS </a> </li>
+                    <li class="nav-item"> <a class="text-black nav-link" data-bs-toggle="tab" href="#tab-2-progress-view1" id="tab2-progress-view1"> KHS </a> </li>
+                    <li class="nav-item"> <a class="text-black nav-link" data-bs-toggle="tab" href="#tab-3-progress-view1" id="tab3-progress-view1"> PKL </a> </li>
+                    <li class="nav-item"> <a class="text-black nav-link" data-bs-toggle="tab" href="#tab-4-progress-view1" id="tab4-progress-view1"> Skripsi </a> </li>
+                </ul>
+                <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="showModalProgressView1">
+                
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Third Modal -->
+<div class="modal fade" data-bs-backdrop="static" data-keyboard="false" id="progress_view2" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-light">
+            <div class="modal-header">
+                <ul class="nav nav-tabs nav-bottom-line justify-content-center justify-content-md-start">
+                    <li class="nav-item"> <a class="text-black nav-link active" data-bs-toggle="tab" href="#tab-1-progress-view1" id="tab1-progress-view1"> IRS </a> </li>
+                    <li class="nav-item"> <a class="text-black nav-link" data-bs-toggle="tab" href="#tab-2-progress-view1" id="tab2-progress-view1"> KHS </a> </li>
+                    <li class="nav-item"> <a class="text-black nav-link" data-bs-toggle="tab" href="#tab-3-progress-view1" id="tab3-progress-view1"> PKL </a> </li>
+                </ul>
+                <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="showModalProgressView2">
             </div>
             <div class="modal-footer">
             </div>
@@ -159,6 +188,24 @@
 <script src="{{ asset('assets/js/data-table.js') }}"></script>
 
 <script type="text/javascript">
+    function handleTabVisibility(semester, modalID, tab1, tab2, tab3, tab4) {
+        var pklTab = $("#" + modalID + " " + " #tab3-" + modalID);
+        var skripsiTab = $("#" + modalID  + " " + " #tab4-" + modalID);
+
+        if (semester == 6) {
+            // If it's semester 6, hide the PKL tab
+            pklTab.hide();
+        } else if (semester == 7 || semester == 8 || semester == 9 || semester == 10 || semester == 11 || semester == 12 || semester == 13 || semester == 14) {
+            // If it's semester 7 to 14, hide the PKL and Skripsi tabs
+            pklTab.hide();
+            skripsiTab.hide();
+        } else {
+            // Otherwise, show all tabs
+            pklTab.show();
+            skripsiTab.show();
+        } 
+    }
+
     $(document).on("click", "#buttonModalProgress", function() {
         event.preventDefault();
         let href = $(this).attr("data-attr");
@@ -167,7 +214,47 @@
             // return the result
             success: function(result) {
                 $("#progress_view").modal("show");
-                $("#showModalProgress").html(result).show();
+                $("#showModalProgressView").html(result).show();
+                handleTabVisibility(result.semester, "progress_view", "tab1-progress-view-modal1", "tab2-progress-view-modal1");
+            },
+            error: function(jqXHR, testStatus, error) {
+                console.log(error);
+                alert("Page " + href + " cannot open. Error:" + error);
+            },
+        });
+    });
+
+    // Add a similar click handler for the second modal if needed
+    $(document).on("click", "#buttonModalProgress1", function() {
+        event.preventDefault();
+        let href = $(this).attr("data-attr");
+        $.ajax({
+            url: href,
+            // return the result
+            success: function(result) {
+                $("#progress_view1").modal("show");
+                $("#showModalProgressView1").html(result).show();
+                handleTabVisibility(result.semester, "progress_view1", "tab1-progress-view-modal2", "tab2-progress-view-modal2", "tab3-progress-view2-modal2", "tab4-progress-view1-modal2");
+
+            },
+            error: function(jqXHR, testStatus, error) {
+                console.log(error);
+                alert("Page " + href + " cannot open. Error:" + error);
+            },
+        });
+    });
+
+    // Add a similar click handler for the second modal if needed
+    $(document).on("click", "#buttonModalProgress2", function() {
+        event.preventDefault();
+        let href = $(this).attr("data-attr");
+        $.ajax({
+            url: href,
+            // return the result
+            success: function(result) {
+                $("#progress_view2").modal("show");
+                $("#showModalProgressView2").html(result).show();
+                handleTabVisibility(result.semester, "progress_view2", "tab1-progress-view-modal3", "tab2-progress-view-modal3", "tab3-progress-view2-modal3");
             },
             error: function(jqXHR, testStatus, error) {
                 console.log(error);

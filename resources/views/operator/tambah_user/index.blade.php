@@ -151,7 +151,7 @@
                         <input class="form-control" type="file" id="file" name="file" accept=".xlsx, .xls, .csv" required>
                     </div>
                     <div class="mb-3 text-end">
-                        <button type="submit" class="btn btn-sm btn-success" style="background-color: #73ba9b;" >Upload</button>
+                        <button type="submit" class="btn btn-sm btn-info" style="background-color: #2374ab;" >Upload</button>
                     </div>
                 </form>
             </div>
@@ -181,7 +181,7 @@
                         <input class="form-control" type="file" id="file" name="file" accept=".xlsx, .xls, .csv" required>
                     </div>
                     <div class="mb-3 text-end">
-                        <button type="submit" class="btn btn-sm btn-success" style="background-color: #73ba9b;">Upload</button>
+                        <button type="submit" class="btn btn-sm btn-info" style="background-color: #2374ab;">Upload</button>
                     </div>
                 </form>
             </div>

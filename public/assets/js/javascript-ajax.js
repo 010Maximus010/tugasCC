@@ -188,46 +188,78 @@ $("#btnClose").click(function () {
     // href to tab 1
     $("#tab-1-progress-view").addClass("show active");
     $("#tab-2-progress-view").removeClass("active");
-    $("#tab-3").removeClass("active");
-    $("#tab-4-progress-view1").removeClass("active");
+    $("#tab-3-progress-view").removeClass("active");
+    $("#tab-4-progress-view").removeClass("active");
 
     // nav-link set active
     $("#tab1-progress-view").addClass("active");
     $("#tab2-progress-view").removeClass("active");
-    $("#tab3").removeClass("active");
-    $("#tab4-progress-view1").removeClass("active");
+    $("#tab3-progress-view").removeClass("active");
+    $("#tab4-progress-view").removeClass("active");
 });
 
-$("#tab1-progress-view").click(function () {
-    // change modal content
-    modal_content[0].classList.add("bg-info");
-    modal_content[0].classList.remove("bg-danger");
-    modal_content[0].classList.remove("bg-warning");
-    modal_content[0].classList.remove("bg-success");
+// Event handler untuk perubahan tab pada first modal
+$('#tab1-progress-view').on('shown.bs.tab', function (e) {
+    modal_content[1].classList.add("bg-info");
+    modal_content[1].classList.remove("bg-danger");
+    modal_content[1].classList.remove("bg-warning");
+    modal_content[1].classList.remove("bg-success");
 });
 
-$("#tab2-progress-view").click(function () {
-    // change modal content
+$('#tab2-progress-view').on('shown.bs.tab', function (e) {
     modal_content[0].classList.remove("bg-info");
     modal_content[0].classList.add("bg-danger");
     modal_content[0].classList.remove("bg-warning");
     modal_content[0].classList.remove("bg-success");
 });
 
-$("#tab3").click(function () {
-    // change modal content
-    modal_content[0].classList.remove("bg-info");
-    modal_content[0].classList.remove("bg-danger");
-    modal_content[0].classList.add("bg-warning");
-    modal_content[0].classList.remove("bg-success");
+// Event handler untuk perubahan tab pada second modal
+$('#tab1-progress-view1').on('shown.bs.tab', function (e) {
+    modal_content[1].classList.add("bg-info"); // Ganti indeks [1] dengan indeks yang sesuai
+    modal_content[1].classList.remove("bg-danger");
+    modal_content[1].classList.remove("bg-warning");
+    modal_content[1].classList.remove("bg-success");
 });
 
-$("#tab4-progress-view1").click(function () {
-    // change modal content
-    modal_content[0].classList.remove("bg-info");
-    modal_content[0].classList.remove("bg-danger");
-    modal_content[0].classList.remove("bg-warning");
-    modal_content[0].classList.add("bg-success");
+$('#tab2-progress-view1').on('shown.bs.tab', function (e) {
+    modal_content[1].classList.remove("bg-info");
+    modal_content[1].classList.add("bg-danger");
+    modal_content[1].classList.remove("bg-warning");
+    modal_content[1].classList.remove("bg-success");
 });
 
+$('#tab3-progress-view1').on('shown.bs.tab', function (e) {
+    modal_content[1].classList.remove("bg-info");
+    modal_content[1].classList.remove("bg-danger");
+    modal_content[1].classList.add("bg-warning");
+    modal_content[1].classList.remove("bg-success");
+});
+$('#tab4-progress-view1').on('shown.bs.tab', function (e) {
+    modal_content[1].classList.remove("bg-info");
+    modal_content[1].classList.remove("bg-danger");
+    modal_content[1].classList.remove("bg-warning");
+    modal_content[1].classList.add("bg-success");
+});
+
+// Event handler untuk perubahan tab pada third modal
+$('#tab1-progress-view2').on('shown.bs.tab', function (e) {
+    modal_content[2].classList.add("bg-info"); // Ganti indeks [1] dengan indeks yang sesuai
+    modal_content[2].classList.remove("bg-danger");
+    modal_content[2].classList.remove("bg-warning");
+    modal_content[2].classList.remove("bg-success");
+});
+
+$('#tab2-progress-view2').on('shown.bs.tab', function (e) {
+    modal_content[2].classList.remove("bg-info");
+    modal_content[2].classList.add("bg-danger");
+    modal_content[2].classList.remove("bg-warning");
+    modal_content[2].classList.remove("bg-success");
+});
+
+$('#tab3-progress-view1').on('shown.bs.tab', function (e) {
+    modal_content[2].classList.remove("bg-info");
+    modal_content[2].classList.remove("bg-danger");
+    modal_content[2].classList.add("bg-warning");
+    modal_content[2].classList.remove("bg-success");
+});
 

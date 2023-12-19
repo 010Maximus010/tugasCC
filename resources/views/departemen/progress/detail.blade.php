@@ -119,13 +119,13 @@
 <!-- First Modal -->
 <div class="modal fade" data-bs-backdrop="static" data-keyboard="false" id="progress_view" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content bg-info">
+        <div class="modal-content bg-light">
             <div class="modal-header">
                 <ul class="nav nav-tabs nav-bottom-line justify-content-center justify-content-md-start">
-                    <li class="nav-item"> <a class="text-white nav-link active" data-bs-toggle="tab" href="#tab-1-progress-view" id="tab1-progress-view"> IRS </a> </li>
-                    <li class="nav-item"> <a class="text-white nav-link" data-bs-toggle="tab" href="#tab-2-progress-view" id="tab2-progress-view"> KHS </a> </li>
+                    <li class="nav-item"> <a class="text-black nav-link active" data-bs-toggle="tab" href="#tab-1-progress-view1" id="tab1-progress-view1"> IRS </a> </li>
+                    <li class="nav-item"> <a class="text-black nav-link" data-bs-toggle="tab" href="#tab-2-progress-view1" id="tab2-progress-view1"> KHS </a> </li>
                 </ul>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" id="showModalProgressView">
             </div>
@@ -138,17 +138,18 @@
 <!-- Second Modal -->
 <div class="modal fade" data-bs-backdrop="static" data-keyboard="false" id="progress_view1" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content bg-info">
+        <div class="modal-content bg-light">
             <div class="modal-header">
                 <ul class="nav nav-tabs nav-bottom-line justify-content-center justify-content-md-start">
-                    <li class="nav-item"> <a class="text-white nav-link active" data-bs-toggle="tab" href="#tab-1-progress-view" id="tab1-progress-view"> IRS </a> </li>
-                    <li class="nav-item"> <a class="text-white nav-link" data-bs-toggle="tab" href="#tab-2-progress-view" id="tab2-progress-view"> KHS </a> </li>
-                    <li class="nav-item"> <a class="text-white nav-link" data-bs-toggle="tab" href="#tab-3-progress-view2" id="tab3-progress-view2"> PKL </a> </li>
-                    <li class="nav-item"> <a class="text-white nav-link" data-bs-toggle="tab" href="#tab-4-progress-view1" id="tab4-progress-view1"> Skripsi </a> </li>
+                    <li class="nav-item"> <a class="text-black nav-link active" data-bs-toggle="tab" href="#tab-1-progress-view1" id="tab1-progress-view1"> IRS </a> </li>
+                    <li class="nav-item"> <a class="text-black nav-link" data-bs-toggle="tab" href="#tab-2-progress-view1" id="tab2-progress-view1"> KHS </a> </li>
+                    <li class="nav-item"> <a class="text-black nav-link" data-bs-toggle="tab" href="#tab-3-progress-view1" id="tab3-progress-view1"> PKL </a> </li>
+                    <li class="nav-item"> <a class="text-black nav-link" data-bs-toggle="tab" href="#tab-4-progress-view1" id="tab4-progress-view1"> Skripsi </a> </li>
                 </ul>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" id="showModalProgressView1">
+                
             </div>
             <div class="modal-footer">
             </div>
@@ -159,14 +160,14 @@
 <!-- Third Modal -->
 <div class="modal fade" data-bs-backdrop="static" data-keyboard="false" id="progress_view2" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content bg-info">
+        <div class="modal-content bg-light">
             <div class="modal-header">
                 <ul class="nav nav-tabs nav-bottom-line justify-content-center justify-content-md-start">
-                    <li class="nav-item"> <a class="text-white nav-link active" data-bs-toggle="tab" href="#tab-1-progress-view" id="tab1-progress-view"> IRS </a> </li>
-                    <li class="nav-item"> <a class="text-white nav-link" data-bs-toggle="tab" href="#tab-2-progress-view" id="tab2-progress-view"> KHS </a> </li>
-                    <li class="nav-item"> <a class="text-white nav-link" data-bs-toggle="tab" href="#tab-3-progress-view2" id="tab3-progress-view2"> PKL </a> </li>
+                    <li class="nav-item"> <a class="text-black nav-link active" data-bs-toggle="tab" href="#tab-1-progress-view1" id="tab1-progress-view1"> IRS </a> </li>
+                    <li class="nav-item"> <a class="text-black nav-link" data-bs-toggle="tab" href="#tab-2-progress-view1" id="tab2-progress-view1"> KHS </a> </li>
+                    <li class="nav-item"> <a class="text-black nav-link" data-bs-toggle="tab" href="#tab-3-progress-view1" id="tab3-progress-view1"> PKL </a> </li>
                 </ul>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" id="showModalProgressView2">
             </div>
@@ -192,24 +193,22 @@
 <script src="{{ asset('assets/js/data-table.js') }}"></script>
 
 <script type="text/javascript">
-    function handleTabVisibility(semester, modalID) {
-        var pklTab = $("#" + modalID + " #tab3");
-        var skripsiTab = $("#" + modalID + " #tab4");
+    function handleTabVisibility(semester, modalID, tab1, tab2, tab3, tab4) {
+        var pklTab = $("#" + modalID + " " + " #tab3-" + modalID);
+        var skripsiTab = $("#" + modalID  + " " + " #tab4-" + modalID);
 
-        // Semua tab diaktifkan terlepas dari semester
-        pklTab.show();
-        skripsiTab.show();
-
-        // Semua tab dinonaktifkan untuk semester < 6
-        if (semester < 6) {
+        if (semester == 6) {
+            // If it's semester 6, hide the PKL tab
+            pklTab.hide();
+        } else if (semester == 7 || semester == 8 || semester == 9 || semester == 10 || semester == 11 || semester == 12 || semester == 13 || semester == 14) {
+            // If it's semester 7 to 14, hide the PKL and Skripsi tabs
             pklTab.hide();
             skripsiTab.hide();
-        }
-
-        // Tab PKL dinonaktifkan untuk semester < 8
-        if (semester < 8) {
-            pklTab.hide();
-        }
+        } else {
+            // Otherwise, show all tabs
+            pklTab.show();
+            skripsiTab.show();
+        } 
     }
 
     $(document).on("click", "#buttonModalProgress", function() {
@@ -221,7 +220,7 @@
             success: function(result) {
                 $("#progress_view").modal("show");
                 $("#showModalProgressView").html(result).show();
-                handleTabVisibility(result.semester, "progress_view");
+                handleTabVisibility(result.semester, "progress_view", "tab1-progress-view-modal1", "tab2-progress-view-modal1");
             },
             error: function(jqXHR, testStatus, error) {
                 console.log(error);
@@ -240,7 +239,8 @@
             success: function(result) {
                 $("#progress_view1").modal("show");
                 $("#showModalProgressView1").html(result).show();
-                handleTabVisibility(result.semester, "progress_view1");
+                handleTabVisibility(result.semester, "progress_view1", "tab1-progress-view-modal2", "tab2-progress-view-modal2", "tab3-progress-view2-modal2", "tab4-progress-view1-modal2");
+
             },
             error: function(jqXHR, testStatus, error) {
                 console.log(error);
@@ -259,7 +259,7 @@
             success: function(result) {
                 $("#progress_view2").modal("show");
                 $("#showModalProgressView2").html(result).show();
-                handleTabVisibility(result.semester, "progress_view2");
+                handleTabVisibility(result.semester, "progress_view2", "tab1-progress-view-modal3", "tab2-progress-view-modal3", "tab3-progress-view2-modal3");
             },
             error: function(jqXHR, testStatus, error) {
                 console.log(error);

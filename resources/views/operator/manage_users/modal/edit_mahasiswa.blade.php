@@ -60,6 +60,6 @@
         </div>
         <div class="modal-footer bg-white">
             <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="submit" class="btn btn-info" style="background-color: #2374ab;">Submit</button>
         </div>
     </form>
