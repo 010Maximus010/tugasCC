@@ -78,6 +78,12 @@ class SkripsiController extends Controller
      */
     public function store(Request $request)
     {
+        $existingSkripsi = skripsi::where('nim', Auth::user()->nim_nip)
+        ->first();
+
+        if ($existingSkripsi) {
+            return redirect()->back()->withErrors(['error' => 'Anda hanya diizinkan mengisi Skripsi sekali']);
+        }
         // Validate
         $request->validate([
             'semester_aktif' => 'required|unique:skripsis,semester_aktif,NULL,id,nim,' . Auth::user()->nim_nip,

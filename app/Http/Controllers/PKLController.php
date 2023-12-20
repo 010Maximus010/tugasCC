@@ -79,6 +79,12 @@ class PKLController extends Controller
      */
     public function store(Request $request)
     {
+        $existingPkl = pkl::where('nim', Auth::user()->nim_nip)
+        ->first();
+
+        if ($existingPkl) {
+            return redirect()->back()->withErrors(['error' => 'Anda hanya diizinkan mengisi PKL sekali']);
+        }
         // Validate
         $request->validate([
             'semester_aktif' => 'required|unique:pkls,semester_aktif,NULL,id,nim,' . Auth::user()->nim_nip,

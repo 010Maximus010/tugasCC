@@ -6,7 +6,7 @@
         <main>
             <div class="container">
                 <div class="row g-4">
-                  
+                @include('layouts.sidebar')
                     <div class="col-md-8 col-lg-6 vstack gap-4">
                         <div class="card">
                             <div class="card-body" style="margin-top: 0px;">

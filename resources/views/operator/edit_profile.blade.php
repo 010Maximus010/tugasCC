@@ -53,7 +53,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12 text-end">
-                                    <button type="submit" class="btn btn-sm btn-success mt-2 mb-0" style="background-color: #4c956c;">Save</button>
+                                    <button type="submit" class="btn btn-sm btn-info mt-2 mb-0" style="background-color: #2374ab;">Save</button>
                                 </div>
                             </form>
                         </div>
