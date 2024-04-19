@@ -41,7 +41,7 @@ class AuthController extends Controller
             return redirect()->intended('dashboard');
         }
 
-        return back()->withErrors([
+        return back()->with([
             'loginError' => 'Login Failed.',
         ])->onlyInput('loginError');
     }
